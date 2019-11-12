@@ -23,5 +23,3 @@ Feitas estas modificações, é possível executar todos os testes da pasta `and
 O Manual do Fabricante pode ser encontrado [aqui](https://hardware-stone-integration.readme.io/docs/)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-TESTE
