@@ -1,0 +1,63 @@
+[
+  {
+    "pinpadResult": {
+      "command": "GCR",
+      "resultCode": 0
+    },
+    "asyncEvents": [
+      {
+        "time": 100,
+        "id": 2,
+        "params": ""
+      },
+      {
+        "time": 2000,
+        "id": 1,
+        "params": ""
+      }
+    ],
+    "asyncResult": {
+      "time": 1000,
+      "pinpadResult": {
+        "command": "GCR",
+        "resultCode": 0,
+        "output": "03001010500                                                                            29376436871651006=0305000523966        000                                                                                                        15376436871651006    01AMEX GREEN      246SERGIO SANTOS             05013100                   00000000076000"
+      }
+    }
+  },
+  {
+    "pinpadResult": {
+      "command": "GOC",
+      "resultCode": 0
+    },
+    "asyncResult": {
+      "time": 1000,
+      "pinpadResult": {
+        "command": "GOC",
+        "resultCode": 0,
+        "output": "2000018D540BCF3001577AFFFF9876543210E0000C0479F2701809F260804CA8F1428AB5901950580000100009B02E8009F34030201009F100706011A039000005F28020076000"
+      }
+    }
+  },
+  {
+    "pinpadResult": {
+      "command": "FNC",
+      "resultCode": 0,
+      "output": "000000"
+    }
+  },
+  {
+    "pinpadResult": {
+      "command": "RMC",
+      "resultCode": 0
+    },
+    "asyncResult": {
+      "time": 1000,
+      "pinpadResult": {
+        "command": "RMC",
+        "resultCode": 0,
+        "output": ""
+      }
+    }
+  }
+]

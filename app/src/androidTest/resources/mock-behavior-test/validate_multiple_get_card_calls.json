@@ -1,0 +1,40 @@
+[
+  {
+    "pinpadResult": {
+      "command": "OPN",
+      "resultCode": 0
+    }
+  },
+  {
+    "pinpadResult": {
+      "command": "GCR",
+      "resultCode": 0
+    },
+    "asyncEvents": [
+      {
+        "time": 100,
+        "id": 2,
+        "params": ""
+      },
+      {
+        "time": 2000,
+        "id": 1,
+        "params": ""
+      }
+    ],
+    "asyncResult": {
+      "time": 1000,
+      "pinpadResult": {
+        "command": "GCR",
+        "resultCode": 0,
+        "output": "03001010500                                                                            29376436871651006=0305000523966        000                                                                                                        15376436871651006    01AMEX GREEN      246SERGIO SANTOS             05013100                   00000000076000"
+      }
+    }
+  },
+  {
+    "pinpadResult": {
+      "command": "CLO",
+      "resultCode": 0
+    }
+  }
+]

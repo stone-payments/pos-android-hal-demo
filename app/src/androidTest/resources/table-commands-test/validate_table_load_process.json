@@ -1,0 +1,26 @@
+[
+  {
+    "pinpadResult": {
+      "command": "TLI",
+      "resultCode": 0
+    }
+  },
+  {
+    "pinpadResult": {
+      "command": "TLR",
+      "resultCode": 0
+    }
+  },
+  {
+    "pinpadResult": {
+      "command": "TLR",
+      "resultCode": 0
+    }
+  },
+  {
+    "pinpadResult": {
+      "command": "TLE",
+      "resultCode": 0
+    }
+  }
+]

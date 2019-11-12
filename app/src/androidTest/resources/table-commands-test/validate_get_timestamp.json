@@ -1,0 +1,9 @@
+[
+  {
+    "pinpadResult": {
+      "command": "GTS",
+      "resultCode": 0,
+      "output": "1234567890"
+    }
+  }
+]

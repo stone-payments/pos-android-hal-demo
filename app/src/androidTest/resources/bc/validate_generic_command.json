@@ -1,0 +1,16 @@
+[
+  {
+    "pinpadResult": {
+      "command": "GEN",
+      "resultCode": 0
+    },
+    "asyncResult": {
+      "time": 2000,
+      "pinpadResult": {
+        "command": "GEN",
+        "resultCode": 0,
+        "output": ""
+      }
+    }
+  }
+]

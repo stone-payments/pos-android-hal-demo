@@ -1,0 +1,14 @@
+[
+  {
+    "pinpadResult": {
+      "command": "OPN",
+      "resultCode": 0
+    }
+  },
+  {
+    "pinpadResult": {
+      "command": "OPN",
+      "resultCode": 14
+    }
+  }
+]

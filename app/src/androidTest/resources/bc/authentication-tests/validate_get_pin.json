@@ -1,0 +1,16 @@
+[
+  {
+    "pinpadResult": {
+      "command": "GPN",
+      "resultCode": 0
+    },
+    "asyncResult": {
+      "time": 2000,
+      "pinpadResult": {
+        "command": "GPN",
+        "resultCode": 0,
+        "output": "0123456789ABCDEF0123456789ABCDEF0123"
+      }
+    }
+  }
+]

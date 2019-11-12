@@ -1,0 +1,9 @@
+[
+  {
+    "serialNumber": "12345",
+    "isPosAndroid": true,
+    "manufacturerName": "Stone",
+    "fullDeviceName": "Stone Mock Device",
+    "firmwareVersion": "1.0.0"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "pinpadResult": {
+      "command": "RMC",
+      "input": "Remova o cartão",
+      "resultCode": 0
+    },
+    "asyncResult": {
+      "time": 1000,
+      "pinpadResult": {
+        "command": "RMC",
+        "output": "",
+        "resultCode": 0
+      }
+    }
+  }
+]
