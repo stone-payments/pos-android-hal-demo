@@ -37,7 +37,10 @@ fun blockingAssertions(
 
     pinpadCommandsAssertions(resultCallback)
 
-    semaphore.acquire()
+    try {
+        semaphore.acquire()
+    } catch (_: InterruptedException) {
+    }
 }
 
 /**

@@ -32,7 +32,7 @@ dependencies {
 	
 	api 'br.com.stone.posandroid:hal-api:1.0.1'
 	// TODO change to implementation
-	implementation 'br.com.stone.posandroid:hal-mock:1.0.1'
+	implementation 'br.com.stone.posandroid:hal-mock:1.2.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
     implementation 'androidx.appcompat:appcompat:1.1.0'
