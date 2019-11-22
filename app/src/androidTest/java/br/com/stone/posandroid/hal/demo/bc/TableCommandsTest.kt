@@ -23,7 +23,7 @@ class TableCommandsTest : AutoOpenCloseTest() {
         pinpad.runtimeProperties[RESULTS_FILE_KEY] =
             "$stubResultsFolder/validate_table_load_process.json"
 
-        val loadInitInput = "000123456789"
+        val loadInitInput = "080123456789"
         val tableLoadInitResult = pinpad.tableLoadInit(loadInitInput)
         assertTrue(tableLoadInitResult == PP_OK || tableLoadInitResult == PP_TABEXP)
 
