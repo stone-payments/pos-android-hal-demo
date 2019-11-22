@@ -7,6 +7,8 @@ import br.com.stone.posandroid.hal.api.bc.PinpadResult
 import br.com.stone.posandroid.hal.api.bc.PinpadResultCallback
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_OK
 import br.com.stone.posandroid.hal.demo.bc.base.AutoLoadTableTest
+import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_CARD
+import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_INPUT
 import br.com.stone.posandroid.hal.demo.util.blockingAssertions
 import io.mockk.verifySequence
 import org.junit.Assert.assertEquals
@@ -26,8 +28,7 @@ class CardCommandsTest : AutoLoadTableTest() {
 
         val pinpadResultAssertions = { pinpadResult: PinpadResult ->
 
-            val expectedOutput =
-                "03001010500                                                                            29376436871651006=0305000523966        000                                                                                                        15376436871651006    01AMEX GREEN      246SERGIO SANTOS             05013100                   00000000076000"
+            val expectedOutput = DEFAULT_GCR_CARD
             assertEquals(PP_OK, pinpadResult.resultCode)
             assertEquals(expectedOutput, pinpadResult.output)
 
@@ -41,7 +42,7 @@ class CardCommandsTest : AutoLoadTableTest() {
             assertEquals(
                 PP_OK,
                 pinpad.getCard(
-                    "0099000000023850020904164230${TABLE_STUB_TIMESTAMP}000",
+                    DEFAULT_GCR_INPUT,
                     resultCallback
                 )
             )

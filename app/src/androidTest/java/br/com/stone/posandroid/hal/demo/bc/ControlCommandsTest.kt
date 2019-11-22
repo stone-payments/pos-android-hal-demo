@@ -13,7 +13,7 @@ import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_ALRE
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_NOTOPEN
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_OK
 import br.com.stone.posandroid.hal.demo.HALConfig.deviceProvider
-import br.com.stone.posandroid.hal.demo.bc.base.AutoLoadTableTest.Companion.TABLE_STUB_TIMESTAMP
+import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_INPUT
 import br.com.stone.posandroid.hal.demo.util.blockingAssertions
 import io.mockk.every
 import io.mockk.mockk
@@ -98,7 +98,7 @@ class ControlCommandsTest {
             assertEquals(
                 PP_OK,
                 pinpad.getCard(
-                    "0099000000023850020904164230${TABLE_STUB_TIMESTAMP}000",
+                    DEFAULT_GCR_INPUT,
                     resultCallback
                 )
             )
