@@ -9,6 +9,7 @@ import br.com.stone.posandroid.hal.api.bc.PinpadResultCallback
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode
 import br.com.stone.posandroid.hal.demo.HALConfig
 import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_INPUT
+import br.com.stone.posandroid.hal.demo.util.VISA_TESTCARD01_OUTPUT
 import br.com.stone.posandroid.hal.demo.util.blockingAssertions
 import io.mockk.mockk
 import io.mockk.verifySequence
@@ -56,8 +57,7 @@ internal class MockBehaviorTest {
 
         val pinpadResultAssertions = { pinpadResult: PinpadResult ->
 
-            val expectedOutput =
-                "DEFAULT_CARD"
+            val expectedOutput = VISA_TESTCARD01_OUTPUT
             assertEquals(expectedOutput, pinpadResult.output)
         }
 

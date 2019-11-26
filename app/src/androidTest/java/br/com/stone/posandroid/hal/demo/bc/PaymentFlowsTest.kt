@@ -6,8 +6,8 @@ import br.com.stone.posandroid.hal.api.bc.PinpadResult
 import br.com.stone.posandroid.hal.api.bc.PinpadResultCallback
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_OK
 import br.com.stone.posandroid.hal.demo.bc.base.AutoLoadTableTest
-import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_CARD
 import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_INPUT
+import br.com.stone.posandroid.hal.demo.util.VISA_TESTCARD01_OUTPUT
 import br.com.stone.posandroid.hal.demo.util.blockingAssertions
 import br.com.stone.posandroid.hal.demo.util.isValidHex
 import io.mockk.verifySequence
@@ -37,7 +37,7 @@ class PaymentFlowsTest : AutoLoadTableTest() {
 
         val getCardPinpadResultAssertions = { pinpadResult: PinpadResult ->
 
-            val expectedOutput = DEFAULT_GCR_CARD
+            val expectedOutput = VISA_TESTCARD01_OUTPUT
             assertEquals(expectedOutput, pinpadResult.output)
 
             verifySequence {
@@ -97,7 +97,7 @@ class PaymentFlowsTest : AutoLoadTableTest() {
 
         val getCardPinpadResultAssertions = { pinpadResult: PinpadResult ->
 
-            val expectedOutput = DEFAULT_GCR_CARD
+            val expectedOutput = VISA_TESTCARD01_OUTPUT
             assertEquals(expectedOutput, pinpadResult.output)
 
             verifySequence {
