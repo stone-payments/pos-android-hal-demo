@@ -8,7 +8,8 @@ import br.com.stone.posandroid.hal.api.bc.PinpadResult
 import br.com.stone.posandroid.hal.api.bc.PinpadResultCallback
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode
 import br.com.stone.posandroid.hal.demo.HALConfig
-import br.com.stone.posandroid.hal.demo.bc.base.AutoLoadTableTest.Companion.TABLE_STUB_TIMESTAMP
+import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_INPUT
+import br.com.stone.posandroid.hal.demo.util.VISA_TESTCARD01_OUTPUT
 import br.com.stone.posandroid.hal.demo.util.blockingAssertions
 import io.mockk.mockk
 import io.mockk.verifySequence
@@ -56,8 +57,7 @@ internal class MockBehaviorTest {
 
         val pinpadResultAssertions = { pinpadResult: PinpadResult ->
 
-            val expectedOutput =
-                "03001010500                                                                            29376436871651006=0305000523966        000                                                                                                        15376436871651006    01AMEX GREEN      246SERGIO SANTOS             05013100                   00000000076000"
+            val expectedOutput = VISA_TESTCARD01_OUTPUT
             assertEquals(expectedOutput, pinpadResult.output)
         }
 
@@ -65,7 +65,7 @@ internal class MockBehaviorTest {
             assertEquals(
                 ResultCode.PP_OK,
                 pinpad.getCard(
-                    "0099000000023850020904164230${TABLE_STUB_TIMESTAMP}000",
+                    DEFAULT_GCR_INPUT,
                     resultCallback
                 )
             )
