@@ -93,7 +93,11 @@ class ControlCommandsTest {
 
         val pinpadResultAssertions = { _: PinpadResult -> }
 
+        var callback: PinpadResultCallback? = null
+
         val pinpadCommandsAssertions = { resultCallback: PinpadResultCallback ->
+
+            callback = resultCallback
 
             assertEquals(
                 PP_OK,
@@ -104,8 +108,6 @@ class ControlCommandsTest {
             )
 
             pinpad.abort()
-
-            verify(exactly = 0) { resultCallback.onPinpadResult(any()) }
         }
 
         blockingAssertions(
@@ -113,6 +115,7 @@ class ControlCommandsTest {
             pinpadCommandsAssertions
         )
 
+//        verify(exactly = 0) { callback?.onPinpadResult(any()) }
         verify(exactly = 1) { pinpadCallbacks.onAbort() }
     }
 }
