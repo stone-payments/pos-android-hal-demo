@@ -1,6 +1,8 @@
 package br.com.stone.posandroid.hal.demo.printer
 
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import androidx.test.platform.app.InstrumentationRegistry
+import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.printer.Printer
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer
@@ -9,9 +11,7 @@ import br.com.stone.posandroid.hal.demo.HALConfig
 import br.com.stone.posandroid.hal.demo.rule.Precondition
 import br.com.stone.posandroid.hal.demo.rule.PreconditionTestRule
 import br.com.stone.posandroid.hal.demo.util.blockingPrinterAssertions
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
+import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -21,6 +21,7 @@ class PrinterTest {
 
     private val stubResultsFolder = "printer/printer-test"
     private lateinit var subject: Printer
+    private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
     @get:Rule
     val preconditionsTestRule = PreconditionTestRule()
@@ -29,7 +30,10 @@ class PrinterTest {
     @Precondition("Printer must have paper")
     fun printOk() {
         subject = HALConfig.deviceProvider.getPrinter(
-            mapOf(RESULTS_FILE_KEY to "$stubResultsFolder/print-ok.json")
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-ok.json",
+                KEY_CONTEXT to context
+            )
         )
 
         val param = PrinterBuffer()
@@ -40,7 +44,7 @@ class PrinterTest {
                 assertTrue(true)
             },
             errorAssertions = {
-                fail()
+                fail("Codigo de erro: $it")
             },
             functionAssertions = {
                 subject.print(param, it)
@@ -52,7 +56,10 @@ class PrinterTest {
     fun printWithoutContent() {
 
         subject = HALConfig.deviceProvider.getPrinter(
-            mapOf(RESULTS_FILE_KEY to "$stubResultsFolder/print-ok.json")
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-ok.json",
+                KEY_CONTEXT to context
+            )
         )
 
         blockingPrinterAssertions(
@@ -72,7 +79,10 @@ class PrinterTest {
     @Precondition("Printer must have no paper")
     fun printNoPaper() {
         subject = HALConfig.deviceProvider.getPrinter(
-            mapOf(RESULTS_FILE_KEY to "$stubResultsFolder/print-no-paper.json")
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-no-paper.json",
+                KEY_CONTEXT to context
+            )
         )
 
         val param = PrinterBuffer()
