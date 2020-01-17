@@ -1,6 +1,7 @@
 package br.com.stone.posandroid.hal.demo.bc.base
 
 import androidx.test.platform.app.InstrumentationRegistry
+import br.com.stone.hal_demo.R
 import br.com.stone.posandroid.hal.api.Properties
 import br.com.stone.posandroid.hal.api.bc.Pinpad
 import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks
@@ -8,12 +9,13 @@ import br.com.stone.posandroid.hal.api.bc.PinpadResult
 import br.com.stone.posandroid.hal.api.bc.PinpadResult.Companion.TLI
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_OK
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_TABEXP
+import br.com.stone.posandroid.hal.api.bc.constants.RuntimeProperties
 import br.com.stone.posandroid.hal.demo.HALConfig
 import br.com.stone.posandroid.hal.mock.bc.PinpadStub.Companion.CombinedResult
 import io.mockk.mockk
 import org.junit.After
 import org.junit.Before
-import java.util.ArrayDeque
+import java.util.*
 
 
 abstract class AutoLoadTableTest {
@@ -40,6 +42,7 @@ abstract class AutoLoadTableTest {
                 Properties.KEY_CONTEXT to context
             ),
             mutableMapOf(
+                RuntimeProperties.PinLayout.KEY_PIN_KBD_LAYOUT_ID to R.layout.regularkeyboard,
                 Properties.RESULTS_KEY to queue,
                 Properties.TARGET_RESULT_KEY to Properties.RESULTS_KEY
             ), callback
