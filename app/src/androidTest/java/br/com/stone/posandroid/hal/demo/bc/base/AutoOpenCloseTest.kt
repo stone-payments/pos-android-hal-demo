@@ -2,6 +2,7 @@ package br.com.stone.posandroid.hal.demo.bc.base
 
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
+import br.com.stone.hal_demo.R
 import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_KEY
@@ -12,13 +13,14 @@ import br.com.stone.posandroid.hal.api.bc.PinpadResult
 import br.com.stone.posandroid.hal.api.bc.PinpadResult.Companion.CLO
 import br.com.stone.posandroid.hal.api.bc.PinpadResult.Companion.OPN
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_OK
+import br.com.stone.posandroid.hal.api.bc.constants.RuntimeProperties
 import br.com.stone.posandroid.hal.demo.HALConfig.deviceProvider
 import br.com.stone.posandroid.hal.mock.bc.PinpadStub.Companion.CombinedResult
 import io.mockk.mockk
 import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith
-import java.util.ArrayDeque
+import java.util.*
 
 
 @RunWith(AndroidJUnit4ClassRunner::class)
@@ -44,6 +46,7 @@ abstract class AutoOpenCloseTest {
                 KEY_CONTEXT to context
             ),
             mutableMapOf(
+                RuntimeProperties.PinLayout.KEY_PIN_KBD_LAYOUT_ID to R.layout.regularkeyboard,
                 RESULTS_KEY to queue,
                 TARGET_RESULT_KEY to RESULTS_KEY
             ),
