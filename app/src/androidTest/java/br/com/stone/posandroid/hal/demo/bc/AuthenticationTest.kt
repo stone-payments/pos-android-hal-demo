@@ -28,7 +28,7 @@ class AuthenticationTest : AutoOpenCloseTest() {
 
         val pinpadCommandsAssertion = { resultCallback: PinpadResultCallback ->
             val getPinInput =
-                "30800000000000000000000000000000000164391998410650011   10412DIGITE SUA SENHA                "
+                "31600000000000000000000000000000000164391998410650011   10412DIGITE SUA SENHA                "
             assertEquals(PP_OK, pinpad.getPIN(getPinInput, resultCallback))
         }
 
