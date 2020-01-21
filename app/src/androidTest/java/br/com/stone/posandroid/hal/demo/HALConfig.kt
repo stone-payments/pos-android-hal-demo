@@ -7,7 +7,7 @@ import br.com.stone.posandroid.hal.mock.provider.MockDependencyProvider
 object HALConfig {
     // TODO change to your Provider
     val deviceProvider: DeviceProvider = MockDependencyProvider()
-//    val deviceProvider: DeviceProvider = GertecDeviceProvider
+//    val deviceProvider: DeviceProvider = GertecDeviceProvider()
 
     val runningOnEmulator = deviceProvider is MockDependencyProvider
 }
