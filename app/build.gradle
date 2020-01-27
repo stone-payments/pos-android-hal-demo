@@ -34,7 +34,7 @@ dependencies {
     api 'br.com.stone.posandroid:hal-api:1.1.0'
     // TODO change to implementation
     implementation 'br.com.stone.posandroid:hal-mock:1.2.0'
-    implementation 'br.com.stone.posandroid:posandroid-manufacturer-gertec:1.5.3'
+    implementation 'br.com.stone.posandroid:posandroid-manufacturer-gertec:1.5.4'
 
     implementation 'br.com.stone:hal-pin-layout:PR_470-2e1268b-598'
 
