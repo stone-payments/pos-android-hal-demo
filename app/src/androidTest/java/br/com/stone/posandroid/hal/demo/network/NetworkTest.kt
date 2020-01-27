@@ -17,7 +17,6 @@ class NetworkTest {
     private val stubResultsFolder = "network/network-test"
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
-    @Ignore
     @Test
     fun configureApn() {
         val subject = HALConfig.deviceProvider.getNetwork(
