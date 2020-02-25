@@ -19,7 +19,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class PrinterTest {
 
-    private val stubResultsFolder = "printer/printer-test"
+    private val stubResultsFolder = "resources/printer/printer-test"
     private lateinit var subject: Printer
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 

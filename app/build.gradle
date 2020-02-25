@@ -9,7 +9,7 @@ android {
     buildToolsVersion versions.build_tools
 
     defaultConfig {
-        applicationId "br.com.stone.hal_demo"
+        applicationId "br.com.stone.posandroid.hal.demo"
         minSdkVersion versions.android_min_sdk
         targetSdkVersion versions.android_target_sdk
         versionCode 1
@@ -31,9 +31,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api 'br.com.stone.posandroid:hal-api:1.1.1'
-    // TODO change to implementation
-    implementation 'br.com.stone.posandroid:hal-mock:1.2.0'
+    api 'br.com.stone.posandroid:hal-api:PR_54-9aafbf8-140'
+    implementation 'br.com.stone.posandroid:hal-mock:PR_54-9aafbf8-140'
 
     implementation 'br.com.stone:hal-pin-layout:2.10.0'
 
