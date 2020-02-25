@@ -34,9 +34,8 @@ dependencies {
     api 'br.com.stone.posandroid:hal-api:1.1.1'
     // TODO change to implementation
     implementation 'br.com.stone.posandroid:hal-mock:1.2.0'
-    implementation 'br.com.stone.posandroid:posandroid-manufacturer-gertec:1.5.9'
 
-    implementation 'br.com.stone:hal-pin-layout:master-e83a416-649'
+    implementation 'br.com.stone:hal-pin-layout:2.10.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
     implementation 'androidx.appcompat:appcompat:1.1.0'
