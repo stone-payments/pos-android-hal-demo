@@ -19,7 +19,7 @@ import org.junit.Test
 
 internal class MockBehaviorTest {
 
-    private val stubResultsFolder = "mock-behavior-test"
+    private val stubResultsFolder = "resources/mock-behavior-test"
     private lateinit var pinpad: Pinpad
     private lateinit var callback: PinpadCallbacks
 

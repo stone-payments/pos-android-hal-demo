@@ -15,7 +15,7 @@ import kotlin.random.Random
 @RunWith(AndroidJUnit4ClassRunner::class)
 class TableCommandsTest : AutoOpenCloseTest() {
 
-    private val stubResultsFolder = "table-commands-test"
+    private val stubResultsFolder = "resources/table-commands-test"
 
     @Test
     fun validateTableLoadProcess() {

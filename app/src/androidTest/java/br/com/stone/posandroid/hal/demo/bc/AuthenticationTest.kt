@@ -13,7 +13,7 @@ import org.junit.Test
 
 class AuthenticationTest : AutoOpenCloseTest() {
 
-    private val stubResultsFolder = "bc/authentication-tests"
+    private val stubResultsFolder = "resources/bc/authentication-tests"
 
     @Test
     fun validateGetPin() {
