@@ -31,8 +31,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api 'br.com.stone.posandroid:hal-api:PR_54-9aafbf8-140'
-    implementation 'br.com.stone.posandroid:hal-mock:PR_54-9aafbf8-140'
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx}"
+    api 'br.com.stone.posandroid:hal-api:PR_55-b91f5ab-142'
+    implementation 'br.com.stone.posandroid:hal-mock:PR_55-b91f5ab-142'
 
     implementation 'br.com.stone:hal-pin-layout:2.10.0'
 
