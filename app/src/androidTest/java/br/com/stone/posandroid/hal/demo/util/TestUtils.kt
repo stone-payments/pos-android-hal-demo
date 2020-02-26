@@ -1,47 +1,8 @@
 package br.com.stone.posandroid.hal.demo.util
 
-import br.com.stone.posandroid.hal.api.bc.PinpadResult
-import br.com.stone.posandroid.hal.api.bc.PinpadResultCallback
 import br.com.stone.posandroid.hal.api.printer.PrintCallback
-import io.mockk.spyk
 import java.util.concurrent.Semaphore
 import java.util.concurrent.TimeUnit
-
-
-class PinpadResultCallbackImpl(
-    private val semaphore: Semaphore,
-    private val pinpadResultAssertions: (PinpadResult) -> Unit
-) : PinpadResultCallback {
-
-    override fun onPinpadResult(pinpadResult: PinpadResult) {
-        pinpadResultAssertions(pinpadResult)
-        semaphore.release()
-    }
-}
-
-/**
- * Runs assertions in an async way. This method should be used when testing AsyncResults,
- * AsyncEvents or any other Pinpad command that returns results asynchronously.
- *
- * @param pinpadResultAssertions Assertions that should be made after receiving the PinpadResult asynchronously
- * @param pinpadCommandsAssertions Assertions that should be made synchronously for PinpadCommands
- */
-fun blockingAssertions(
-    pinpadResultAssertions: (PinpadResult) -> Unit,
-    pinpadCommandsAssertions: (PinpadResultCallback) -> Unit
-) {
-
-    val semaphore = Semaphore(0)
-
-    val resultCallback = spyk(PinpadResultCallbackImpl(semaphore, pinpadResultAssertions))
-
-    pinpadCommandsAssertions(resultCallback)
-
-    try {
-        semaphore.acquire()
-    } catch (_: InterruptedException) {
-    }
-}
 
 /**
  *
