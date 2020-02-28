@@ -2,7 +2,11 @@ package br.com.stone.posandroid.hal.demo.bc
 
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks
-import br.com.stone.posandroid.hal.api.bc.ext.*
+import br.com.stone.posandroid.hal.api.bc.ext.finishChipOrThrows
+import br.com.stone.posandroid.hal.api.bc.ext.getCardOrThrows
+import br.com.stone.posandroid.hal.api.bc.ext.getPINOrThrows
+import br.com.stone.posandroid.hal.api.bc.ext.goOnChipOrThrows
+import br.com.stone.posandroid.hal.api.bc.ext.removeCardOrThrows
 import br.com.stone.posandroid.hal.demo.bc.base.AutoLoadTableTest
 import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_INPUT
 import br.com.stone.posandroid.hal.demo.util.VISA_TESTCARD01_OUTPUT
