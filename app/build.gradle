@@ -30,10 +30,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-	
-	api 'br.com.stone.posandroid:hal-api:1.0.1'
-	// TODO change to implementation
-	implementation 'br.com.stone.posandroid:hal-mock:1.2.0'
+
+    api 'br.com.stone.posandroid:hal-api:1.1.1'
+    // TODO change to implementation
+    implementation 'br.com.stone.posandroid:hal-mock:1.2.0'
+
+    implementation 'br.com.stone:hal-pin-layout:2.10.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
     implementation 'androidx.appcompat:appcompat:1.1.0'

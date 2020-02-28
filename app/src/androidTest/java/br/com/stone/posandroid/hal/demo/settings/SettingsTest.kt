@@ -1,6 +1,8 @@
 package br.com.stone.posandroid.hal.demo.settings
 
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import androidx.test.platform.app.InstrumentationRegistry
+import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.settings.DeviceInfo
 import br.com.stone.posandroid.hal.demo.HALConfig
@@ -12,16 +14,20 @@ import org.junit.runner.RunWith
 class SettingsTest {
 
     private val stubResultsFolder = "settings/settings-test"
+    private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
     @Test
     fun toggleStatusBar() {
 
         val subject = HALConfig.deviceProvider.getSettings(
-            mapOf(RESULTS_FILE_KEY to "$stubResultsFolder/settings-toggle-statusbar.json")
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/settings-toggle-statusbar.json",
+                KEY_CONTEXT to context
+            )
         )
 
-        Assert.assertTrue(subject.enableStatusBar(true))
         Assert.assertTrue(subject.enableStatusBar(false))
+        Assert.assertTrue(subject.enableStatusBar(true))
     }
 
     @Test

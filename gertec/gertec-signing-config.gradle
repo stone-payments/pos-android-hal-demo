@@ -21,4 +21,6 @@ android {
             matchingFallbacks = ['debug']
         }
     }
+
+    testBuildType "gertec"
 }

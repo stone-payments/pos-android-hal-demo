@@ -20,7 +20,7 @@ class GenericCommandTest : AutoOpenCloseTest() {
             "$stubResultsFolder/validate_generic_command.json"
 
         val pinpadCommandAssertions = { resultCallback: PinpadResultCallback ->
-            val input = "04007040014F"
+            val input = "040040140"
             assertEquals(PP_OK, pinpad.genericCmd(input, resultCallback))
         }
 
