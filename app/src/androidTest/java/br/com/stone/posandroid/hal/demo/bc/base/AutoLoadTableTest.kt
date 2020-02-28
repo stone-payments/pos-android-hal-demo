@@ -1,7 +1,6 @@
 package br.com.stone.posandroid.hal.demo.bc.base
 
 import androidx.test.platform.app.InstrumentationRegistry
-import br.com.stone.hal_demo.R
 import br.com.stone.posandroid.hal.api.Properties
 import br.com.stone.posandroid.hal.api.bc.Pinpad
 import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks
