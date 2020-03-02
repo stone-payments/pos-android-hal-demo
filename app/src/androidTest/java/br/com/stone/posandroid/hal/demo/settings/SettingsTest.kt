@@ -13,7 +13,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class SettingsTest {
 
-    private val stubResultsFolder = "settings/settings-test"
+    private val stubResultsFolder = "resources/settings/settings-test"
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
     @Test

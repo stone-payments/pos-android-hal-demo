@@ -14,7 +14,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class NetworkTest {
 
-    private val stubResultsFolder = "network/network-test"
+    private val stubResultsFolder = "resources/network/network-test"
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
     @Test

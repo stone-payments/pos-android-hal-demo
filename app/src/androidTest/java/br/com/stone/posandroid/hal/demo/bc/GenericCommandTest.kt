@@ -11,7 +11,7 @@ import org.junit.Test
 
 class GenericCommandTest : AutoOpenCloseTest() {
 
-    private val stubResultsFolder = "bc"
+    private val stubResultsFolder = "resources/bc"
 
     @Test
     fun validateGenericCommand() {

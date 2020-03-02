@@ -18,7 +18,7 @@ import org.junit.Test
 
 class CardCommandsTest : AutoLoadTableTest() {
 
-    private val stubResultsFolder = "card-commands-test"
+    private val stubResultsFolder = "resources/card-commands-test"
 
     @Test
     fun validateGetCard() {

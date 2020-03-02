@@ -27,7 +27,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class ControlCommandsTest {
 
-    private val stubResultsFolder = "control-command-test"
+    private val stubResultsFolder = "resources/control-command-test"
     private lateinit var pinpad: Pinpad
     private lateinit var pinpadCallbacks: PinpadCallbacks
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
