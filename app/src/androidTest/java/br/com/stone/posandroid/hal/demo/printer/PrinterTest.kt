@@ -11,7 +11,9 @@ import br.com.stone.posandroid.hal.demo.HALConfig
 import br.com.stone.posandroid.hal.demo.rule.Precondition
 import br.com.stone.posandroid.hal.demo.rule.PreconditionTestRule
 import br.com.stone.posandroid.hal.demo.util.blockingPrinterAssertions
-import org.junit.Assert.*
+import org.junit.Assert.assertTrue
+import org.junit.Assert.fail
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
