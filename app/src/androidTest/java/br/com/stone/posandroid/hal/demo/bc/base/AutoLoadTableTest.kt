@@ -15,7 +15,7 @@ import br.com.stone.posandroid.hal.mock.bc.PinpadStub.Companion.CombinedResult
 import io.mockk.mockk
 import org.junit.After
 import org.junit.Before
-import java.util.*
+import java.util.ArrayDeque
 
 
 abstract class AutoLoadTableTest {
