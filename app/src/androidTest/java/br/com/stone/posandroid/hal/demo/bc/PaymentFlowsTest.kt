@@ -18,7 +18,7 @@ import org.junit.Test
 
 class PaymentFlowsTest : AutoLoadTableTest() {
 
-    private val stubResultsFolder = "bc/payment-flow-tests"
+    private val stubResultsFolder = "resources/bc/payment-flow-tests"
 
     @Test
     fun validatePaymentWithContactApprovedOnline() {

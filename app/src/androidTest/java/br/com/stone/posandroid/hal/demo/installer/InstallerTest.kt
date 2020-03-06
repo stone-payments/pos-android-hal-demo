@@ -12,7 +12,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class InstallerTest {
 
-    private val stubResultsFolder = "installer/installer-test"
+    private val stubResultsFolder = "resources/installer/installer-test"
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
     @Test

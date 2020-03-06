@@ -5,9 +5,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.rule.ActivityTestRule
-import br.com.stone.hal_demo.MainActivity
-import br.com.stone.hal_demo.R
 import br.com.stone.posandroid.hal.demo.HALConfig
+import br.com.stone.posandroid.hal.demo.MainActivity
+import br.com.stone.posandroid.hal.demo.R
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
 import java.util.concurrent.Semaphore

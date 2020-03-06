@@ -1,4 +1,4 @@
-package br.com.stone.hal_demo
+package br.com.stone.posandroid.hal.demo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
