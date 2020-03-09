@@ -4,15 +4,14 @@ import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.Properties.TARGET_RESULT_KEY
 import br.com.stone.posandroid.hal.api.bc.Pinpad
 import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks
-import br.com.stone.posandroid.hal.api.bc.PinpadResult
-import br.com.stone.posandroid.hal.api.bc.PinpadResultCallback
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode
+import br.com.stone.posandroid.hal.api.bc.ext.getCardOrThrows
 import br.com.stone.posandroid.hal.demo.HALConfig
 import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_INPUT
 import br.com.stone.posandroid.hal.demo.util.VISA_TESTCARD01_OUTPUT
-import br.com.stone.posandroid.hal.demo.util.blockingAssertions
 import io.mockk.mockk
 import io.mockk.verifySequence
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -34,7 +33,7 @@ internal class MockBehaviorTest {
     }
 
     @Test
-    fun validateMultipleConsecutiveCommandCalls() {
+    fun validateMultipleConsecutiveCommandCalls() = runBlocking {
 
         pinpad.runtimeProperties[RESULTS_FILE_KEY] =
             "$stubResultsFolder/validate_multiple_get_card_calls.json"
@@ -53,30 +52,10 @@ internal class MockBehaviorTest {
         }
     }
 
-    private fun getCardCall() {
-
-        val pinpadResultAssertions = { pinpadResult: PinpadResult ->
-
-            val expectedOutput = VISA_TESTCARD01_OUTPUT
-            assertEquals(expectedOutput, pinpadResult.output)
-        }
-
-        val pinpadCommandsAssertions = { resultCallback: PinpadResultCallback ->
-            assertEquals(
-                ResultCode.PP_OK,
-                pinpad.getCard(
-                    DEFAULT_GCR_INPUT,
-                    resultCallback
-                )
-            )
-        }
-
+    private suspend fun getCardCall() {
         assertEquals(ResultCode.PP_OK, pinpad.open())
 
-        blockingAssertions(
-            pinpadResultAssertions,
-            pinpadCommandsAssertions
-        )
+        assertEquals(VISA_TESTCARD01_OUTPUT, pinpad.getCardOrThrows(DEFAULT_GCR_INPUT))
 
         assertEquals(ResultCode.PP_OK, pinpad.close())
     }

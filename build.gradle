@@ -11,6 +11,7 @@ buildscript {
                 build_tools          : "29.0.2",
                 build_gradle         : "3.5.0",
                 kotlin               : "1.3.50",
+                kotlinx              : "1.3.2",
                 dokka                : "0.9.18",
                 junit5               : "5.5.0",
                 junit                : "4.12",
