@@ -102,4 +102,154 @@ class PrinterTest {
             }
         )
     }
+
+    @Test
+    fun printUnsupportedFormat(){
+        subject = HALConfig.deviceProvider.getPrinter(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-unsupported-format.json",
+                KEY_CONTEXT to context
+            )
+        )
+
+        val param = PrinterBuffer()
+        param.addLine(Printer::class.simpleName.toString())
+
+        blockingPrinterAssertions(
+            successAssertions = {
+                fail()
+            },
+            errorAssertions = {
+                assertEquals(PrinterErrorCode.PRINTER_UNSUPPORTED_FORMAT, it)
+            },
+            functionAssertions = {
+                subject.print(param, it)
+            }
+        )
+    }
+
+    @Test
+    fun printWithLowEnergy(){
+        subject = HALConfig.deviceProvider.getPrinter(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-with-low-energy.json",
+                KEY_CONTEXT to context
+            )
+        )
+
+        val param = PrinterBuffer()
+        param.addLine(Printer::class.simpleName.toString())
+
+        blockingPrinterAssertions(
+            successAssertions = {
+                fail()
+            },
+            errorAssertions = {
+                assertEquals(PrinterErrorCode.PRINTER_LOW_ENERGY, it)
+            },
+            functionAssertions = {
+                subject.print(param, it)
+            }
+        )
+    }
+
+    @Test
+    fun printWithPrinterBusy(){
+        subject = HALConfig.deviceProvider.getPrinter(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-with-printer-busy.json",
+                KEY_CONTEXT to context
+            )
+        )
+
+        val param = PrinterBuffer()
+        param.addLine(Printer::class.simpleName.toString())
+
+        blockingPrinterAssertions(
+            successAssertions = {
+                fail()
+            },
+            errorAssertions = {
+                assertEquals(PrinterErrorCode.PRINTER_BUSY, it)
+            },
+            functionAssertions = {
+                subject.print(param, it)
+            }
+        )
+    }
+
+    @Test
+    fun printWithPrinterOverheating(){
+        subject = HALConfig.deviceProvider.getPrinter(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-with-printer-overheating.json",
+                KEY_CONTEXT to context
+            )
+        )
+
+        val param = PrinterBuffer()
+        param.addLine(Printer::class.simpleName.toString())
+
+        blockingPrinterAssertions(
+            successAssertions = {
+                fail()
+            },
+            errorAssertions = {
+                assertEquals(PrinterErrorCode.PRINTER_OVERHEATING, it)
+            },
+            functionAssertions = {
+                subject.print(param, it)
+            }
+        )
+    }
+
+    @Test
+    fun printWithInitializingError(){
+        subject = HALConfig.deviceProvider.getPrinter(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-with-initializing-error.json",
+                KEY_CONTEXT to context
+            )
+        )
+
+        val param = PrinterBuffer()
+        param.addLine(Printer::class.simpleName.toString())
+
+        blockingPrinterAssertions(
+            successAssertions = {
+                fail()
+            },
+            errorAssertions = {
+                assertEquals(PrinterErrorCode.PRINTER_INIT_ERROR, it)
+            },
+            functionAssertions = {
+                subject.print(param, it)
+            }
+        )
+    }
+
+    @Test
+    fun printWithPrinterPrintError(){
+        subject = HALConfig.deviceProvider.getPrinter(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-with-printer-print-error.json",
+                KEY_CONTEXT to context
+            )
+        )
+
+        val param = PrinterBuffer()
+        param.addLine(Printer::class.simpleName.toString())
+
+        blockingPrinterAssertions(
+            successAssertions = {
+                fail()
+            },
+            errorAssertions = {
+                assertEquals(PrinterErrorCode.PRINTER_PRINT_ERROR, it)
+            },
+            functionAssertions = {
+                subject.print(param, it)
+            }
+        )
+    }
 }
