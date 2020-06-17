@@ -42,6 +42,20 @@ class PaymentFlowsTest : AutoLoadTableTest() {
         }
     }
 
+    @Test
+    fun validatePaymentWithContactDeniedOnline() = runBlocking {
+        pinpad.runtimeProperties[RESULTS_FILE_KEY] =
+            "$stubResultsFolder/validate_contact_online_denied.json"
+        assertEquals(VISA_TESTCARD01_OUTPUT, pinpad.getCardOrThrows(DEFAULT_GCR_INPUT))
+        assertTrue(pinpad.goOnChipOrThrows("").startsWith('2'))
+        assertTrue(pinpad.finishChipOrThrows("0000000000000").startsWith('2'))
+        assertTrue(pinpad.removeCardOrThrows("Remova o cartão").isBlank())
+        verifySequence {
+            callback.onEvent(PinpadCallbacks.INSERT_SWIPE_CARD, "")
+            callback.onEvent(PinpadCallbacks.PROCESSING, "")
+        }
+    }
+
     @Ignore
     @Test
     fun validatePaymentWithContactDeniedOffline() = runBlocking {
