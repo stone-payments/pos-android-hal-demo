@@ -26,10 +26,14 @@ android {
 
     }
 
+    packagingOptions {
+        pickFirst  '**'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
 
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx}"
     api 'br.com.stone.posandroid:hal-api:1.2.1'

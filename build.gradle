@@ -36,9 +36,8 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "https://packagecloud.io/stone/pos-android-hal/maven2" }
-        maven { url "https://packagecloud.io/stone/pos-android-hal-internal/maven2" }
         maven { url "https://packagecloud.io/stone/sdk-android/maven2" }
+        maven { url "https://packagecloud.io/stone/sdk-android-internal/maven2" }
     }
     group = "br.com.stone.posandroid"
 }
