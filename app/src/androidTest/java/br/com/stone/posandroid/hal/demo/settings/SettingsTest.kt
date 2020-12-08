@@ -1,5 +1,6 @@
 package br.com.stone.posandroid.hal.demo.settings
 
+import android.os.Build
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
@@ -41,5 +42,7 @@ class SettingsTest {
             DeviceInfo("12345", true, "Stone", "Stone Mock Device", "1.0.0"),
             subject.getDeviceInfo()
         )
+
+        Assert.assertEquals(Build.MANUFACTURER, "SUNMI")
     }
 }

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="br.com.stone.posandroid.hal.demo">
 
     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+    <uses-sdk tools:overrideLibrary="br.com.stone.posandroid.hal.sunmi,br.com.setis.sunmi.ppcomp.ppcomp_p2"/>
 
     <application
         android:allowBackup="true"
