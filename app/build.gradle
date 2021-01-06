@@ -32,8 +32,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx}"
-    api 'br.com.stone.posandroid:hal-api:1.2.1'
-    implementation 'br.com.stone.posandroid:hal-mock:1.2.1'
+    api 'br.com.stone.posandroid:hal-api:1.4.0'
+    implementation 'br.com.stone.posandroid:hal-mock:1.4.0'
 
 
     implementation 'br.com.stone:hal-pin-layout:2.10.0'
