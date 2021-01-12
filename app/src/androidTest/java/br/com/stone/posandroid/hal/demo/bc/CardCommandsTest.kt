@@ -3,6 +3,8 @@ package br.com.stone.posandroid.hal.demo.bc
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks.Companion.INSERT_SWIPE_CARD
 import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks.Companion.PROCESSING
+import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks.Companion.SELECTED_S
+import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks.Companion.UPDATING_TABLES
 import br.com.stone.posandroid.hal.api.bc.ext.getCardOrThrows
 import br.com.stone.posandroid.hal.api.bc.ext.removeCardOrThrows
 import br.com.stone.posandroid.hal.demo.bc.base.AutoLoadTableTest
@@ -28,8 +30,10 @@ class CardCommandsTest : AutoLoadTableTest() {
         assertEquals(VISA_TESTCARD01_OUTPUT, pinpad.getCardOrThrows(DEFAULT_GCR_INPUT))
 
         verifySequence {
+            callback.onEvent(UPDATING_TABLES, "")
             callback.onEvent(INSERT_SWIPE_CARD, "")
             callback.onEvent(PROCESSING, "")
+            callback.onEvent(SELECTED_S, any())
         }
     }
 
