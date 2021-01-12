@@ -22,5 +22,5 @@ android {
         }
     }
 
-    testBuildType "gertec"
+    testBuildType "debug"
 }
