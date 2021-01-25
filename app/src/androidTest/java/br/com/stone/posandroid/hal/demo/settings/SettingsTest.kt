@@ -38,8 +38,17 @@ class SettingsTest {
         )
 
         Assert.assertEquals(
-            DeviceInfo("12345", true, "Stone", "Stone Mock Device", "1.0.0"),
+            DeviceInfo(
+                "12345",
+                true,
+                "Stone",
+                "Stone Mock Device",
+                "1.0.0",
+                kernelVersion = "220121"
+            ),
             subject.getDeviceInfo()
         )
     }
+
+
 }
