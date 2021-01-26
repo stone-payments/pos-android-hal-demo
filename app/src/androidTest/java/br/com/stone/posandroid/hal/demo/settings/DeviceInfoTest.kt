@@ -3,6 +3,7 @@ package br.com.stone.posandroid.hal.demo.settings
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import br.com.stone.posandroid.hal.api.Properties
+import br.com.stone.posandroid.hal.api.settings.CpuInfo
 import br.com.stone.posandroid.hal.api.settings.DeviceInfo
 import br.com.stone.posandroid.hal.demo.HALConfig
 import org.junit.Assert
@@ -32,5 +33,19 @@ class DeviceInfoTest {
         Assert.assertEquals(true, result)
     }
 
+
+    @Test
+    fun When_accessed_usage_cpu_Should_return_a_valid_value() {
+        val cpuUsage = deviceInfo.cpuInfo.getCpuUsage()
+        val result = cpuUsage != CpuInfo.UNKNOWN_VALUE
+        Assert.assertEquals(true, result)
+    }
+
+    @Test
+    fun When_accessed_temperature_cpu_Should_return_a_valid_value(){
+        val temp = deviceInfo.cpuInfo.getCpuTemperature()
+        val result = temp != CpuInfo.UNKNOWN_VALUE
+        Assert.assertEquals(true,result)
+    }
 
 }
