@@ -1,0 +1,13 @@
+name: devsecops
+
+on: [push,pull_request]
+
+jobs:
+  gitleaks:
+    runs-on: Ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: gitleaks-action
+        uses: zricethezav/gitleaks-action@master
