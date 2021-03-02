@@ -20,7 +20,7 @@ class AuthenticationTest : AutoOpenCloseTest() {
 
         assertTrue(
             pinpad.getPINOrThrows(
-                "31600000000000000000000000000000000164391998410650011   10412DIGITE SUA SENHA                "
+                "33100000000000000000000000000000000164391998410650011   10412DIGITE SUA SENHA                "
             ).isValidHex(expectedSize = 36)
         )
     }
