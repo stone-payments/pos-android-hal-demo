@@ -23,6 +23,7 @@ buildscript {
             localProp.load(new FileInputStream(rootProject.file(fileName)))
         }
         packageCloudReadToken = System.env.PACKAGECLOUD_TOKEN != null ? System.env.PACKAGECLOUD_READ_TOKEN  : localProp["packageCloudReadToken"] ?: ""
+        packageCloudReadTokenInternal = System.env.PACKAGECLOUD_TOKEN_INTERNAL != null ? System.env.PACKAGECLOUD_READ_TOKEN_INTERANL  : localProp["packageCloudReadTokenInternal"] ?: ""
     }
 
     repositories {
@@ -46,7 +47,7 @@ allprojects {
         maven { url "https://packagecloud.io/stone/pos-android-hal-internal/maven2" }
         maven { url "https://packagecloud.io/stone/sdk-android/maven2" }
         maven { url "https://packagecloud.io/priv/${packageCloudReadToken}/stone/pos-android/maven2" }
-        maven { url "https://packagecloud.io/stone/sdk-android-internal/maven2" }
+        maven { url "https://packagecloud.io/priv/${packageCloudReadTokenInternal}/stone/pos-android-internal/maven2" }
     }
     group = "br.com.stone.posandroid"
 }

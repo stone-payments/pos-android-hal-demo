@@ -7,11 +7,12 @@ import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.printer.Printer
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer
 import br.com.stone.posandroid.hal.api.printer.PrinterErrorCode
+import br.com.stone.posandroid.hal.api.printer.exception.PrinterException
+import br.com.stone.posandroid.hal.api.printer.ext.printOrThrows
 import br.com.stone.posandroid.hal.demo.HALConfig
 import br.com.stone.posandroid.hal.demo.rule.Precondition
 import br.com.stone.posandroid.hal.demo.rule.PreconditionTestRule
-import br.com.stone.posandroid.hal.demo.util.blockingPrinterAssertions
-import org.junit.Assert.assertTrue
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.fail
 import org.junit.Assert.assertEquals
 import org.junit.Rule
@@ -30,7 +31,7 @@ class PrinterTest {
 
     @Test
     @Precondition("Printer must have paper")
-    fun printOk() {
+    fun printOk() = runBlocking {
         subject = HALConfig.deviceProvider.getPrinter(
             mapOf(
                 RESULTS_FILE_KEY to "$stubResultsFolder/print-ok.json",
@@ -41,21 +42,15 @@ class PrinterTest {
         val param = PrinterBuffer()
         param.addLine(Printer::class.simpleName.toString())
 
-        blockingPrinterAssertions(
-            successAssertions = {
-                assertTrue(true)
-            },
-            errorAssertions = {
-                fail("Codigo de erro: $it")
-            },
-            functionAssertions = {
-                subject.print(param, it)
-            }
-        )
+        try {
+            subject.printOrThrows(param)
+        } catch (e: PrinterException) {
+            fail("Codigo de erro: ${e.code}")
+        }
     }
 
     @Test
-    fun printWithoutContent() {
+    fun printWithoutContent() = runBlocking {
 
         subject = HALConfig.deviceProvider.getPrinter(
             mapOf(
@@ -64,22 +59,16 @@ class PrinterTest {
             )
         )
 
-        blockingPrinterAssertions(
-            successAssertions = {
-                fail("No Content to Print, but callback was success")
-            },
-            errorAssertions = {
-                fail("No Content to Print, but callback was error $it")
-            },
-            functionAssertions = {
-                subject.print(PrinterBuffer(), it)
-            }
-        )
+        try {
+            subject.printOrThrows(PrinterBuffer())
+        } catch (e: PrinterException) {
+            fail("Codigo de erro: ${e.code}")
+        }
     }
 
     @Test
     @Precondition("Printer must have no paper")
-    fun printNoPaper() {
+    fun printNoPaper() = runBlocking {
         subject = HALConfig.deviceProvider.getPrinter(
             mapOf(
                 RESULTS_FILE_KEY to "$stubResultsFolder/print-no-paper.json",
@@ -90,21 +79,16 @@ class PrinterTest {
         val param = PrinterBuffer()
         param.addLine(Printer::class.simpleName.toString())
 
-        blockingPrinterAssertions(
-            successAssertions = {
-                fail()
-            },
-            errorAssertions = {
-                assertEquals(PrinterErrorCode.PRINTER_OUT_OF_PAPER, it)
-            },
-            functionAssertions = {
-                subject.print(PrinterBuffer(), it)
-            }
-        )
+        try {
+            subject.printOrThrows(param)
+            fail("Should fail printing")
+        } catch (e: PrinterException) {
+            assertEquals(PrinterErrorCode.PRINTER_OUT_OF_PAPER, e.code)
+        }
     }
 
     @Test
-    fun printUnsupportedFormat(){
+    fun printUnsupportedFormat() = runBlocking {
         subject = HALConfig.deviceProvider.getPrinter(
             mapOf(
                 RESULTS_FILE_KEY to "$stubResultsFolder/print-unsupported-format.json",
@@ -115,21 +99,16 @@ class PrinterTest {
         val param = PrinterBuffer()
         param.addLine(Printer::class.simpleName.toString())
 
-        blockingPrinterAssertions(
-            successAssertions = {
-                fail()
-            },
-            errorAssertions = {
-                assertEquals(PrinterErrorCode.PRINTER_UNSUPPORTED_FORMAT, it)
-            },
-            functionAssertions = {
-                subject.print(param, it)
-            }
-        )
+        try {
+            subject.printOrThrows(param)
+            fail("Should fail printing")
+        } catch (e: PrinterException) {
+            assertEquals(PrinterErrorCode.PRINTER_UNSUPPORTED_FORMAT, e.code)
+        }
     }
 
     @Test
-    fun printWithLowEnergy(){
+    fun printWithLowEnergy() = runBlocking {
         subject = HALConfig.deviceProvider.getPrinter(
             mapOf(
                 RESULTS_FILE_KEY to "$stubResultsFolder/print-with-low-energy.json",
@@ -140,21 +119,16 @@ class PrinterTest {
         val param = PrinterBuffer()
         param.addLine(Printer::class.simpleName.toString())
 
-        blockingPrinterAssertions(
-            successAssertions = {
-                fail()
-            },
-            errorAssertions = {
-                assertEquals(PrinterErrorCode.PRINTER_LOW_ENERGY, it)
-            },
-            functionAssertions = {
-                subject.print(param, it)
-            }
-        )
+        try {
+            subject.printOrThrows(param)
+            fail("Should fail printing")
+        } catch (e: PrinterException) {
+            assertEquals(PrinterErrorCode.PRINTER_LOW_ENERGY, e.code)
+        }
     }
 
     @Test
-    fun printWithPrinterBusy(){
+    fun printWithPrinterBusy() = runBlocking {
         subject = HALConfig.deviceProvider.getPrinter(
             mapOf(
                 RESULTS_FILE_KEY to "$stubResultsFolder/print-with-printer-busy.json",
@@ -165,21 +139,16 @@ class PrinterTest {
         val param = PrinterBuffer()
         param.addLine(Printer::class.simpleName.toString())
 
-        blockingPrinterAssertions(
-            successAssertions = {
-                fail()
-            },
-            errorAssertions = {
-                assertEquals(PrinterErrorCode.PRINTER_BUSY, it)
-            },
-            functionAssertions = {
-                subject.print(param, it)
-            }
-        )
+        try {
+            subject.printOrThrows(param)
+            fail("Should fail printing")
+        } catch (e: PrinterException) {
+            assertEquals(PrinterErrorCode.PRINTER_BUSY, e.code)
+        }
     }
 
     @Test
-    fun printWithPrinterOverheating(){
+    fun printWithPrinterOverheating() = runBlocking {
         subject = HALConfig.deviceProvider.getPrinter(
             mapOf(
                 RESULTS_FILE_KEY to "$stubResultsFolder/print-with-printer-overheating.json",
@@ -190,21 +159,16 @@ class PrinterTest {
         val param = PrinterBuffer()
         param.addLine(Printer::class.simpleName.toString())
 
-        blockingPrinterAssertions(
-            successAssertions = {
-                fail()
-            },
-            errorAssertions = {
-                assertEquals(PrinterErrorCode.PRINTER_OVERHEATING, it)
-            },
-            functionAssertions = {
-                subject.print(param, it)
-            }
-        )
+        try {
+            subject.printOrThrows(param)
+            fail("Should fail printing")
+        } catch (e: PrinterException) {
+            assertEquals(PrinterErrorCode.PRINTER_OVERHEATING, e.code)
+        }
     }
 
     @Test
-    fun printWithInitializingError(){
+    fun printWithInitializingError() = runBlocking {
         subject = HALConfig.deviceProvider.getPrinter(
             mapOf(
                 RESULTS_FILE_KEY to "$stubResultsFolder/print-with-initializing-error.json",
@@ -215,21 +179,16 @@ class PrinterTest {
         val param = PrinterBuffer()
         param.addLine(Printer::class.simpleName.toString())
 
-        blockingPrinterAssertions(
-            successAssertions = {
-                fail()
-            },
-            errorAssertions = {
-                assertEquals(PrinterErrorCode.PRINTER_INIT_ERROR, it)
-            },
-            functionAssertions = {
-                subject.print(param, it)
-            }
-        )
+        try {
+            subject.printOrThrows(param)
+            fail("Should fail printing")
+        } catch (e: PrinterException) {
+            assertEquals(PrinterErrorCode.PRINTER_INIT_ERROR, e.code)
+        }
     }
 
     @Test
-    fun printWithPrinterPrintError(){
+    fun printWithPrinterPrintError() = runBlocking {
         subject = HALConfig.deviceProvider.getPrinter(
             mapOf(
                 RESULTS_FILE_KEY to "$stubResultsFolder/print-with-printer-print-error.json",
@@ -240,16 +199,11 @@ class PrinterTest {
         val param = PrinterBuffer()
         param.addLine(Printer::class.simpleName.toString())
 
-        blockingPrinterAssertions(
-            successAssertions = {
-                fail()
-            },
-            errorAssertions = {
-                assertEquals(PrinterErrorCode.PRINTER_PRINT_ERROR, it)
-            },
-            functionAssertions = {
-                subject.print(param, it)
-            }
-        )
+        try {
+            subject.printOrThrows(param)
+            fail("Should fail printing")
+        } catch (e: PrinterException) {
+            assertEquals(PrinterErrorCode.PRINTER_PRINT_ERROR, e.code)
+        }
     }
 }
