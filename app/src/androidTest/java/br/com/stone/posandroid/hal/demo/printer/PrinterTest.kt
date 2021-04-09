@@ -10,8 +10,8 @@ import br.com.stone.posandroid.hal.api.printer.PrinterErrorCode
 import br.com.stone.posandroid.hal.api.printer.exception.PrinterException
 import br.com.stone.posandroid.hal.api.printer.ext.printOrThrows
 import br.com.stone.posandroid.hal.demo.HALConfig
+import br.com.stone.posandroid.hal.demo.rule.ConditionTestRule
 import br.com.stone.posandroid.hal.demo.rule.Precondition
-import br.com.stone.posandroid.hal.demo.rule.PreconditionTestRule
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.fail
 import org.junit.Assert.assertEquals
@@ -27,7 +27,7 @@ class PrinterTest {
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
     @get:Rule
-    val preconditionsTestRule = PreconditionTestRule()
+    val conditionTestRule = ConditionTestRule()
 
     @Test
     @Precondition("Printer must have paper")
