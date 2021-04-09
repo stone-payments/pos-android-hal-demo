@@ -34,13 +34,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/test_message_format"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/button_proceed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_test_title" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_test_title"
+        tools:text="@string/test_message_format_before"/>
 
     <Button
         android:id="@+id/button_proceed"
