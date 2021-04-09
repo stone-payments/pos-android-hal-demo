@@ -5,4 +5,4 @@ package br.com.stone.posandroid.hal.demo.rule
  *
  * This annotation is used in conjuction with [PreconditionTestRule].
  */
-annotation class Precondition(val text: String, val before: Boolean = true)
+annotation class Precondition(val text: String)

@@ -48,7 +48,7 @@ class PreconditionTestRule :
                 activity.apply {
                     findViewById<TextView>(R.id.textView_test_title).text = description.methodName
                     findViewById<TextView>(R.id.textView_message).text =
-                        String.format(getString(R.string.test_message_format), precondition.text, if(precondition.before) "before" else "after")
+                        String.format(getString(R.string.test_message_format_before), precondition.text)
                     findViewById<Button>(R.id.button_proceed).setOnClickListener {
                         semaphore.release()
                     }

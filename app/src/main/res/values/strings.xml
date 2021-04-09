@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">pos-android-hal</string>
     <string name="test_warning">Test Execution Paused For</string>
-    <string name="test_message_format">%1$s %2$s proceed</string>
+    <string name="test_message_format_before">%1$s before proceed</string>
     <string name="proceed_button">Proceed</string>
+    <string name="test_message_format_after" >%1$s after proceed</string>
 </resources>
