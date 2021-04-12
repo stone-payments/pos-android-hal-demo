@@ -32,7 +32,7 @@ abstract class AutoOpenCloseTest {
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
     @Before
-    fun setup() {
+    open fun setup() {
         callback = mockk(relaxed = true)
         val queue =
             ArrayDeque(
@@ -62,7 +62,7 @@ abstract class AutoOpenCloseTest {
     }
 
     @After
-    fun tearDown() {
+    open fun tearDown() {
         if (::pinpad.isInitialized) {
             pinpad.runtimeProperties[TARGET_RESULT_KEY] = RESULTS_KEY
             pinpad.close()
