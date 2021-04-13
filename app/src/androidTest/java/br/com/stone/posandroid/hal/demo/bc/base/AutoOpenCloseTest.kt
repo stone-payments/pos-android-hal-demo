@@ -16,6 +16,8 @@ import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_OK
 import br.com.stone.posandroid.hal.api.bc.constants.RuntimeProperties
 import br.com.stone.posandroid.hal.demo.HALConfig.deviceProvider
 import br.com.stone.posandroid.hal.demo.R
+import br.com.stone.posandroid.hal.demo.util.KEYMAP_SUNMI
+import br.com.stone.posandroid.hal.demo.util.LAYOUT_PIN_SUNMI
 import br.com.stone.posandroid.hal.mock.bc.PinpadStub.Companion.CombinedResult
 import io.mockk.mockk
 import org.junit.After
@@ -44,12 +46,12 @@ abstract class AutoOpenCloseTest {
         pinpad = deviceProvider.getPinpad(
             mutableMapOf(
                 KEY_CONTEXT to context,
-                KEY_SUNMI_KEYMAP to "160331\n161332\n160301\n161302\n"
+                KEY_SUNMI_KEYMAP to KEYMAP_SUNMI
             ),
 
             mutableMapOf(
                 RuntimeProperties.PinLayout.KEY_PIN_KBD_LAYOUT_ID to R.layout.regularkeyboard,
-                RuntimeProperties.PinLayout.KEY_SUNMI_LAYOUT_INFO to "{\"layout\":${R.layout.regularkeyboard},\"numX\":16,\"numY\":644,\"numW\":172,\"numH\":170,\"lineW\":0,\"cancelX\":532,\"cancelY\":644,\"cancelW\":172,\"cancelH\":170,\"rows\":4,\"clos\":4,\"keymap0\":49,\"keymap1\":50,\"keymap2\":51,\"keymap3\":27,\"keymap4\":52,\"keymap5\":53,\"keymap6\":54,\"keymap7\":12,\"keymap8\":55,\"keymap9\":56,\"keymap10\":57,\"keymap11\":13,\"keymap12\":0,\"keymap13\":48,\"keymap14\":0,\"keymap15\":13}",
+                RuntimeProperties.PinLayout.KEY_SUNMI_LAYOUT_INFO to LAYOUT_PIN_SUNMI,
                 RESULTS_KEY to queue,
                 TARGET_RESULT_KEY to RESULTS_KEY
             ),
