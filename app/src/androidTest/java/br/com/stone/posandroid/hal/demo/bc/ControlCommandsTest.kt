@@ -28,6 +28,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -70,6 +71,7 @@ class ControlCommandsTest {
     }
 
     @Test
+    @Ignore("Because Sunmi P2 not implement this feature")
     fun validateAlreadyOpen() {
 
         pinpad.runtimeProperties[RESULTS_FILE_KEY] =
@@ -90,6 +92,7 @@ class ControlCommandsTest {
     }
 
     @Test
+    @Ignore("Because Sunmi P2 not implement this feature")
     fun validateNotOpen() {
 
         pinpad.runtimeProperties[RESULTS_FILE_KEY] =
