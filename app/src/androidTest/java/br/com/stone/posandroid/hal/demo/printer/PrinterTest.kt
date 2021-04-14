@@ -7,6 +7,9 @@ import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.printer.Printer
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer
 import br.com.stone.posandroid.hal.api.printer.PrinterErrorCode
+import br.com.stone.posandroid.hal.api.printer.customize.Alignment
+import br.com.stone.posandroid.hal.api.printer.customize.CustomizedTextSize
+import br.com.stone.posandroid.hal.api.printer.customize.PrinterCustomizedText
 import br.com.stone.posandroid.hal.api.printer.exception.PrinterException
 import br.com.stone.posandroid.hal.api.printer.ext.printOrThrows
 import br.com.stone.posandroid.hal.demo.HALConfig
@@ -41,6 +44,46 @@ class PrinterTest {
 
         val param = PrinterBuffer()
         param.addLine(Printer::class.simpleName.toString())
+
+        try {
+            subject.printOrThrows(param)
+        } catch (e: PrinterException) {
+            fail("Codigo de erro: ${e.code}")
+        }
+    }
+
+    @Test
+    @Precondition("Printer must have paper")
+    fun printCustomizedText() = runBlocking {
+        subject = HALConfig.deviceProvider.getPrinter(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-ok.json",
+                KEY_CONTEXT to context
+            )
+        )
+
+        val param = PrinterBuffer()
+        for (align in Alignment.values()) {
+            param.addLine(object: PrinterCustomizedText {
+                override fun getText(): String = align.name
+
+                override fun getAlignment(): Alignment = align
+
+                override fun getTextSize(): CustomizedTextSize = CustomizedTextSize.MEDIUM_32_COLUMNS
+            })
+        }
+
+        for (textSize in CustomizedTextSize.values()) {
+            param.addLine(object: PrinterCustomizedText {
+                override fun getText(): String = textSize.name + ("*".repeat(48))
+
+                override fun getAlignment(): Alignment = Alignment.LEFT
+
+                override fun getTextSize(): CustomizedTextSize = textSize
+            })
+        }
+
+        param.addLine("-".repeat(48))
 
         try {
             subject.printOrThrows(param)
