@@ -49,5 +49,5 @@ dependencies {
     androidTestImplementation "androidx.test:runner:${versions.androidx_test_version}"
     androidTestImplementation "androidx.test:rules:${versions.androidx_test_version}"
     androidTestImplementation "io.mockk:mockk-android:1.9.2"
-    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation 'junit:junit:4.13.2'
 }
