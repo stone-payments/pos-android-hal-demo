@@ -6,7 +6,7 @@ import br.com.stone.posandroid.hal.api.Properties
 import br.com.stone.posandroid.hal.api.settings.CpuInfo
 import br.com.stone.posandroid.hal.api.settings.DeviceInfo
 import br.com.stone.posandroid.hal.demo.HALConfig
-import org.junit.Assert
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -30,7 +30,7 @@ class DeviceInfoTest {
     fun When_accessed_the_kernel_version_Should_return_a_valid_value() {
         val kernelVersion = deviceInfo.kernelVersion
         val result = kernelVersion.isEmpty().not() && kernelVersion != DeviceInfo.KERNEL_UNKNOWN
-        Assert.assertEquals(true, result)
+        assertTrue(result)
     }
 
 
@@ -38,14 +38,14 @@ class DeviceInfoTest {
     fun When_accessed_usage_cpu_Should_return_a_valid_value() {
         val cpuUsage = deviceInfo.cpuInfo.getCpuUsage()
         val result = cpuUsage != CpuInfo.UNKNOWN_VALUE
-        Assert.assertEquals(true, result)
+        assertTrue(result)
     }
 
     @Test
-    fun When_accessed_temperature_cpu_Should_return_a_valid_value(){
+    fun When_accessed_temperature_cpu_Should_return_a_valid_value() {
         val temp = deviceInfo.cpuInfo.getCpuTemperature()
         val result = temp != CpuInfo.UNKNOWN_VALUE
-        Assert.assertEquals(true,result)
+        assertTrue(result)
     }
 
 }
