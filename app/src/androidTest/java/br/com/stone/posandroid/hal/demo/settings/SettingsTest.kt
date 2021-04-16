@@ -6,7 +6,7 @@ import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.settings.DeviceInfo
 import br.com.stone.posandroid.hal.demo.HALConfig
-import org.junit.Assert
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -26,28 +26,27 @@ class SettingsTest {
             )
         )
 
-        Assert.assertTrue(subject.enableStatusBar(false))
-        Assert.assertTrue(subject.enableStatusBar(true))
+        assertTrue(subject.enableStatusBar(false))
+        assertTrue(subject.enableStatusBar(true))
     }
 
     @Test
     fun retrieveDeviceInfo() {
 
         val subject = HALConfig.deviceProvider.getSettings(
-            mapOf(RESULTS_FILE_KEY to "$stubResultsFolder/settings-deviceinfo.json")
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/settings-deviceinfo.json",
+                KEY_CONTEXT to context
+            )
         )
 
-        Assert.assertEquals(
-            DeviceInfo(
-                "12345",
-                true,
-                "Stone",
-                "Stone Mock Device",
-                "1.0.0",
-                kernelVersion = "220121"
-            ),
-            subject.getDeviceInfo()
-        )
+        val deviceInfo = subject.getDeviceInfo()
+        assertTrue("Serial number is empty",deviceInfo.serialNumber.isNotEmpty())
+        assertTrue("Manufacter name is empty",deviceInfo.manufacturerName.isNotEmpty())
+        assertTrue("Firmware version is empty",deviceInfo.firmwareVersion.isNotEmpty())
+        assertTrue("Model name is empty",deviceInfo.modelName.isNotEmpty())
+        assertTrue("Kernel version is empty",deviceInfo.kernelVersion.isNotEmpty() || deviceInfo.kernelVersion != DeviceInfo.KERNEL_UNKNOWN)
+
     }
 
 
