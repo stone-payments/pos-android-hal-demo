@@ -71,7 +71,7 @@ class ControlCommandsTest {
     }
 
     @Test
-    @Ignore("Because Sunmi P2 not implement this feature")
+    @Ignore("Because feature not implement")
     fun validateAlreadyOpen() {
 
         pinpad.runtimeProperties[RESULTS_FILE_KEY] =
@@ -92,7 +92,7 @@ class ControlCommandsTest {
     }
 
     @Test
-    @Ignore("Because Sunmi P2 not implement this feature")
+    @Ignore("Because feature not implement")
     fun validateNotOpen() {
 
         pinpad.runtimeProperties[RESULTS_FILE_KEY] =
