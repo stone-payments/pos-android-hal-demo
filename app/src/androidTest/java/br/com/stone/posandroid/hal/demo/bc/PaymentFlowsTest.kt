@@ -47,14 +47,19 @@ class PaymentFlowsTest : AutoLoadTableTest() {
         val chipEMV = pinpad.goOnChipOrThrows(DEFAULT_GOC_COMMAND)
 
         assertTrue(chipEMV.startsWith('2') || chipEMV.startsWith('1'))
-        assertTrue(pinpad.finishChipOrThrows("0000000000000").startsWith('0'))
+        if(chipEMV.startsWith('2')) {
+            assertTrue(pinpad.finishChipOrThrows("0000000000000").startsWith('0'))
+        }
         assertTrue(pinpad.removeCardOrThrows("Remova o cartão").isBlank())
 
         verifyOrder {
+            callback.onEvent(PinpadCallbacks.UPDATING_TABLES, "")
             callback.onEvent(PinpadCallbacks.PROCESSING, "")
             callback.onEvent(PinpadCallbacks.PIN_STARTING, "")
             callback.onShowPinEntry(any(), any(), any())
-            callback.onEvent(PinpadCallbacks.REMOVE_CARD, "")
+            if(chipEMV.startsWith('2')) {
+                callback.onEvent(PinpadCallbacks.REMOVE_CARD, "")
+            }
         }
     }
 
