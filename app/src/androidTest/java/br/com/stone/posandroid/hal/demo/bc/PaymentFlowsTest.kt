@@ -23,10 +23,13 @@ import io.mockk.verifySequence
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
+import org.junit.FixMethodOrder
 import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runners.MethodSorters
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class PaymentFlowsTest : AutoLoadTableTest() {
 
     private val stubResultsFolder = "resources/bc/payment-flow-tests"
