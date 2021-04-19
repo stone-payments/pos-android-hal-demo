@@ -137,7 +137,7 @@ class PrinterTest {
     }
 
     @Test
-    @Precondition("Printer not busy ")
+    @Precondition("Printer must have paper")
     fun printUnsupportedFormat() = runBlocking {
         subject = HALConfig.deviceProvider.getPrinter(
             mapOf(
