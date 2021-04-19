@@ -9,6 +9,7 @@ import br.com.stone.posandroid.hal.demo.bc.base.AutoLoadTableTest
 import br.com.stone.posandroid.hal.demo.rule.ConditionTestRule
 import br.com.stone.posandroid.hal.demo.rule.Precondition
 import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_INPUT
+import br.com.stone.posandroid.hal.demo.util.REGEX_CARD_CHIP
 import io.mockk.verifyOrder
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue
@@ -35,7 +36,7 @@ class CardCommandsTest : AutoLoadTableTest() {
 
         val subject = pinpad.getCardOrThrows(DEFAULT_GCR_INPUT)
 
-        assertTrue(subject.contains("^0300108\\d{4}\\s{76}".toRegex()))
+        assertTrue(subject.contains(REGEX_CARD_CHIP.toRegex()))
 
         verifyOrder {
             callback.onEvent(UPDATING_TABLES, "")
