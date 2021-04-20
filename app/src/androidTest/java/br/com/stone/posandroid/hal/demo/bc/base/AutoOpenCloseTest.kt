@@ -18,8 +18,9 @@ import br.com.stone.posandroid.hal.demo.HALConfig.deviceProvider
 import br.com.stone.posandroid.hal.demo.R
 import br.com.stone.posandroid.hal.demo.util.KEYMAP_SUNMI
 import br.com.stone.posandroid.hal.demo.util.LAYOUT_PIN_SUNMI
+import br.com.stone.posandroid.hal.demo.util.PinpadCallbackComponent
 import br.com.stone.posandroid.hal.mock.bc.PinpadStub.Companion.CombinedResult
-import io.mockk.mockk
+import io.mockk.unmockkAll
 import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith
@@ -30,12 +31,12 @@ import java.util.ArrayDeque
 abstract class AutoOpenCloseTest {
 
     protected lateinit var pinpad: Pinpad
-    protected lateinit var callback: PinpadCallbacks
+    protected val callback: PinpadCallbacks = PinpadCallbackComponent.init()
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
     @Before
     open fun setup() {
-        callback = mockk(relaxed = true)
+
         val queue =
             ArrayDeque(
                 listOf(
@@ -55,7 +56,7 @@ abstract class AutoOpenCloseTest {
                 RESULTS_KEY to queue,
                 TARGET_RESULT_KEY to RESULTS_KEY
             ),
-            callback
+           callback
         )
 
         pinpad.open()
@@ -69,5 +70,6 @@ abstract class AutoOpenCloseTest {
             pinpad.runtimeProperties[TARGET_RESULT_KEY] = RESULTS_KEY
             pinpad.close()
         }
+        unmockkAll()
     }
 }
