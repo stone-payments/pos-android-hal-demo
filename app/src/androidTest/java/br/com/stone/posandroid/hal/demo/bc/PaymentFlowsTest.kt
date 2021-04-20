@@ -20,6 +20,7 @@ import br.com.stone.posandroid.hal.demo.util.VISA_TESTCARD01_OUTPUT
 import br.com.stone.posandroid.hal.demo.util.isValidHex
 import io.mockk.verifyOrder
 import io.mockk.verifySequence
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -54,7 +55,7 @@ class PaymentFlowsTest : AutoLoadTableTest() {
             assertTrue(pinpad.finishChipOrThrows("0000000000000").startsWith('0'))
         }
         assertTrue(pinpad.removeCardOrThrows("Remova o cartão").isBlank())
-
+        delay(1000)
         verifyOrder {
             callback.onEvent(PinpadCallbacks.UPDATING_TABLES, "")
             callback.onEvent(PinpadCallbacks.PROCESSING, "")
@@ -73,7 +74,7 @@ class PaymentFlowsTest : AutoLoadTableTest() {
 
         pinpad.runtimeProperties[RESULTS_FILE_KEY] =
             "$stubResultsFolder/validate_mag_pin_approved.json"
-
+        delay(500)
         val subject = pinpad.getCardOrThrows(DEFAULT_GCR_INPUT)
 
         assertEquals(DEFAULT_LENGTH_CARD_MAG, subject.length)
