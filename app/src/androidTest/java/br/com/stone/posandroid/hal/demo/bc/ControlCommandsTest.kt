@@ -17,6 +17,7 @@ import br.com.stone.posandroid.hal.api.bc.exception.PinpadException
 import br.com.stone.posandroid.hal.api.bc.ext.getCardOrThrows
 import br.com.stone.posandroid.hal.demo.HALConfig.deviceProvider
 import br.com.stone.posandroid.hal.demo.rule.ConditionTestRule
+import br.com.stone.posandroid.hal.demo.rule.Precondition
 import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_INPUT
 import br.com.stone.posandroid.hal.demo.util.KEYMAP_SUNMI
 import br.com.stone.posandroid.hal.demo.util.LAYOUT_PIN_SUNMI
@@ -102,6 +103,7 @@ class ControlCommandsTest {
     }
 
     @Test
+    @Precondition("Insert the card")
     fun validateAbortCommand() = runBlocking {
 
         var subject: Int = Int.MIN_VALUE
