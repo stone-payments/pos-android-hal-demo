@@ -3,6 +3,7 @@ package br.com.stone.posandroid.hal.demo.bc.base
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
+import br.com.stone.posandroid.hal.api.Properties.KEY_SUNMI_KEYMAP
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_KEY
 import br.com.stone.posandroid.hal.api.Properties.TARGET_RESULT_KEY
@@ -15,8 +16,11 @@ import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_OK
 import br.com.stone.posandroid.hal.api.bc.constants.RuntimeProperties
 import br.com.stone.posandroid.hal.demo.HALConfig.deviceProvider
 import br.com.stone.posandroid.hal.demo.R
+import br.com.stone.posandroid.hal.demo.util.KEYMAP_SUNMI
+import br.com.stone.posandroid.hal.demo.util.LAYOUT_PIN_SUNMI
+import br.com.stone.posandroid.hal.demo.util.PinpadCallbackComponent
 import br.com.stone.posandroid.hal.mock.bc.PinpadStub.Companion.CombinedResult
-import io.mockk.mockk
+import io.mockk.unmockkAll
 import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith
@@ -27,12 +31,12 @@ import java.util.ArrayDeque
 abstract class AutoOpenCloseTest {
 
     protected lateinit var pinpad: Pinpad
-    protected lateinit var callback: PinpadCallbacks
+    protected val callback: PinpadCallbacks = PinpadCallbackComponent.init()
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
     @Before
-    fun setup() {
-        callback = mockk(relaxed = true)
+    open fun setup() {
+
         val queue =
             ArrayDeque(
                 listOf(
@@ -40,17 +44,19 @@ abstract class AutoOpenCloseTest {
                     CombinedResult(PinpadResult(CLO, PP_OK))
                 )
             )
-
         pinpad = deviceProvider.getPinpad(
             mutableMapOf(
-                KEY_CONTEXT to context
+                KEY_CONTEXT to context,
+                KEY_SUNMI_KEYMAP to KEYMAP_SUNMI
             ),
+
             mutableMapOf(
                 RuntimeProperties.PinLayout.KEY_PIN_KBD_LAYOUT_ID to R.layout.regularkeyboard,
+                RuntimeProperties.PinLayout.KEY_SUNMI_LAYOUT_INFO to LAYOUT_PIN_SUNMI,
                 RESULTS_KEY to queue,
                 TARGET_RESULT_KEY to RESULTS_KEY
             ),
-            callback
+           callback
         )
 
         pinpad.open()
@@ -59,8 +65,11 @@ abstract class AutoOpenCloseTest {
     }
 
     @After
-    fun tearDown() {
-        pinpad.runtimeProperties[TARGET_RESULT_KEY] = RESULTS_KEY
-        pinpad.close()
+    open fun tearDown() {
+        if (::pinpad.isInitialized) {
+            pinpad.runtimeProperties[TARGET_RESULT_KEY] = RESULTS_KEY
+            pinpad.close()
+        }
+        unmockkAll()
     }
 }

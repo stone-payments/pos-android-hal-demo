@@ -1,64 +1,15 @@
 package br.com.stone.posandroid.hal.demo.bc.base
 
-import androidx.test.platform.app.InstrumentationRegistry
-import br.com.stone.posandroid.hal.api.Properties
-import br.com.stone.posandroid.hal.api.bc.Pinpad
-import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks
-import br.com.stone.posandroid.hal.api.bc.PinpadResult
-import br.com.stone.posandroid.hal.api.bc.PinpadResult.Companion.TLI
-import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_OK
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_TABEXP
-import br.com.stone.posandroid.hal.api.bc.constants.RuntimeProperties
-import br.com.stone.posandroid.hal.demo.HALConfig
-import br.com.stone.posandroid.hal.demo.R
-import br.com.stone.posandroid.hal.mock.bc.PinpadStub.Companion.CombinedResult
-import io.mockk.mockk
-import org.junit.After
 import org.junit.Before
-import java.util.ArrayDeque
 
 
-abstract class AutoLoadTableTest {
-
-    lateinit var pinpad: Pinpad
-    protected lateinit var callback: PinpadCallbacks
-    private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
+abstract class AutoLoadTableTest : AutoOpenCloseTest() {
 
     @Before
-    open fun setup() {
-        callback = mockk(relaxed = true)
-
-        val queue =
-            ArrayDeque(
-                listOf(
-                    CombinedResult(PinpadResult(PinpadResult.OPN, PP_OK)),
-                    CombinedResult(PinpadResult(TLI, PP_OK)),
-                    CombinedResult(PinpadResult(PinpadResult.CLO, PP_OK))
-                )
-            )
-
-        pinpad = HALConfig.deviceProvider.getPinpad(
-            mutableMapOf(
-                Properties.KEY_CONTEXT to context
-            ),
-            mutableMapOf(
-                RuntimeProperties.PinLayout.KEY_PIN_KBD_LAYOUT_ID to R.layout.regularkeyboard,
-                Properties.RESULTS_KEY to queue,
-                Properties.TARGET_RESULT_KEY to Properties.RESULTS_KEY
-            ), callback
-        )
-
-        pinpad.open()
-
+    override fun setup() {
+        super.setup()
         loadTableIfNeeded()
-
-        pinpad.runtimeProperties[Properties.TARGET_RESULT_KEY] = Properties.RESULTS_FILE_KEY
-    }
-
-    @After
-    fun tearDown() {
-        pinpad.runtimeProperties[Properties.TARGET_RESULT_KEY] = Properties.RESULTS_KEY
-        pinpad.close()
     }
 
     private fun loadTableIfNeeded() {
@@ -76,7 +27,8 @@ abstract class AutoLoadTableTest {
     companion object {
         const val ACQUIRER_ID = "08"
         const val TABLE_STUB_TIMESTAMP = "1808200202"
-//        val TABLE_STUB_TIMESTAMP = UUID.randomUUID().toString().substring(0, 10) //force load table
+
+        //        val TABLE_STUB_TIMESTAMP = UUID.randomUUID().toString().substring(0, 10) //force load table
         val TABLE_STUB_RECORDS = arrayOf(
             "013141080110A0000000041010D0761300000000000001CREDITO         0300020002000007698620              00000       E0F0E8F000F0A00122F850ACF8000400000000FC50ACA0000000000000005f5e0ff0000000000001388000000F9F02065F2A029A039C0195059F370400000000039F370400000000000000000000000000000000Y1Z1Y3Z3000000000000000000000000000000",
             "013141080210A0000000041010D0761200000000000002DEBITO          0300020002000007698620              00000       E0F0E8F000F0F00122F850ACF8000000800000FC50ACA0000000000000005f5e0ff0000000000001388000000F9F02065F2A029A039C0195059F370400000000039F370400000000000000000000000000000000Y1Z1Y3Z3000000000000000000000000000000",

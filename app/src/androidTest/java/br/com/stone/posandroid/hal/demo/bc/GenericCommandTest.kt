@@ -5,6 +5,7 @@ import br.com.stone.posandroid.hal.api.bc.ext.genericCmdOrThrows
 import br.com.stone.posandroid.hal.demo.bc.base.AutoOpenCloseTest
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class GenericCommandTest : AutoOpenCloseTest() {
@@ -17,6 +18,7 @@ class GenericCommandTest : AutoOpenCloseTest() {
         pinpad.runtimeProperties[RESULTS_FILE_KEY] =
             "$stubResultsFolder/validate_generic_command.json"
 
-        assertEquals("", pinpad.genericCmdOrThrows("040040140"))
+        val subject = pinpad.genericCmdOrThrows("040040140")
+        assertTrue(subject.substring(1..2).contains("[1-9]".toRegex()))
     }
 }
