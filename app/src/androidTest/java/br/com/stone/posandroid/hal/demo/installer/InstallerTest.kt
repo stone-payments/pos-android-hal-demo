@@ -25,41 +25,46 @@ class InstallerTest {
     private val stubResultsFolder = "resources/installer/installer-test"
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
     private lateinit var pathFile: String
-
+    private val runningOnEmulator: Boolean by lazy {
+        HALConfig.runningOnEmulator
+    }
 
     @Before
     fun setup() {
-        File("/sdcard/stone/").run {
-            if (!this.exists()) {
-                this.mkdir()
-            }
-            File(this, "Test-Application.apk").also { apk ->
-                if (!apk.exists()) {
-                    val classloader = Thread.currentThread().contextClassLoader
-                    requireNotNull(classloader)
-                    val stream: InputStream = classloader.getResourceAsStream(
-                        "$stubResultsFolder/Test-Application.apk".removePrefix("resources/")
-                    )
-                    apk.writeBytes(stream.readBytes())
-                    pathFile = this.absolutePath
+        if (!runningOnEmulator) {
+            File("/sdcard/stone/").run {
+                if (!this.exists()) {
+                    this.mkdir()
                 }
+                File(this, "Test-Application.apk").also { apk ->
+                    if (!apk.exists()) {
+                        val classloader = Thread.currentThread().contextClassLoader
+                        requireNotNull(classloader)
+                        val stream: InputStream = classloader.getResourceAsStream(
+                            "$stubResultsFolder/Test-Application.apk".removePrefix("resources/")
+                        )
+                        apk.writeBytes(stream.readBytes())
+                        pathFile = this.absolutePath
+                    }
 
+                }
             }
         }
     }
 
     @After
     fun tearDown() {
-        File(pathFile).run {
-            if (this.exists()) {
-                this.deleteRecursively()
+        if (!runningOnEmulator) {
+            File(pathFile).run {
+                if (this.exists()) {
+                    this.deleteRecursively()
+                }
             }
         }
     }
 
     @Test
     fun installSuccess() {
-
         val subject = HALConfig.deviceProvider.getInstaller(
             mapOf(
                 RESULTS_FILE_KEY to "$stubResultsFolder/installer-install.json",
@@ -69,10 +74,12 @@ class InstallerTest {
 
         assertEquals(
             0,
-            subject.install(pathFile)
+            subject.install(if (::pathFile.isInitialized) pathFile else "Running on Emulator")
         )
 
-        assertTrue(isPackageInstalled(context.packageManager, PACKAGE_NAME_APK))
+        if (!runningOnEmulator) {
+            assertTrue(isPackageInstalled(context.packageManager, PACKAGE_NAME_APK))
+        }
     }
 
     @Test
@@ -89,7 +96,9 @@ class InstallerTest {
             subject.uninstallApk(PACKAGE_NAME_APK)
         )
 
-        assertFalse(isPackageInstalled(context.packageManager, PACKAGE_NAME_APK))
+        if (!runningOnEmulator) {
+            assertFalse(isPackageInstalled(context.packageManager, PACKAGE_NAME_APK))
+        }
     }
 
 
