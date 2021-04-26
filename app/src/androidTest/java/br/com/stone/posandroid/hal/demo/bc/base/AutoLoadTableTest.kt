@@ -1,14 +1,26 @@
 package br.com.stone.posandroid.hal.demo.bc.base
 
+import br.com.stone.posandroid.hal.api.bc.PinpadResult
+import br.com.stone.posandroid.hal.api.bc.constants.ResultCode
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_TABEXP
+import br.com.stone.posandroid.hal.mock.bc.PinpadStub
 import org.junit.Before
+import java.util.*
 
 
 abstract class AutoLoadTableTest : AutoOpenCloseTest() {
 
     @Before
     override fun setup() {
-        super.setup()
+        val queue =
+            ArrayDeque(
+                listOf(
+                    PinpadStub.Companion.CombinedResult(PinpadResult(PinpadResult.OPN, ResultCode.PP_OK)),
+                    PinpadStub.Companion.CombinedResult(PinpadResult(PinpadResult.TLI, ResultCode.PP_OK)),
+                    PinpadStub.Companion.CombinedResult(PinpadResult(PinpadResult.CLO, ResultCode.PP_OK))
+                )
+            )
+        initializePinpad(queue)
         loadTableIfNeeded()
     }
 
