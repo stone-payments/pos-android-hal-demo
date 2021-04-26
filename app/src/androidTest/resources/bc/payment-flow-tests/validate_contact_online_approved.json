@@ -7,11 +7,11 @@
     "asyncEvents": [
       {
         "time": 100,
-        "id": 2,
+        "id": 13,
         "params": ""
       },
       {
-        "time": 2000,
+        "time": 100,
         "id": 1,
         "params": ""
       }
@@ -30,6 +30,24 @@
       "command": "GOC",
       "resultCode": 0
     },
+    "asyncEvents": [
+      {
+        "time": 100,
+        "id": 15,
+        "params": ""
+      },
+      {
+        "time": 100,
+        "message": "teste",
+        "amount": 15,
+        "digits": 1
+      },
+      {
+        "time": 100,
+        "id": 12,
+        "params": ""
+      }
+    ],
     "asyncResult": {
       "time": 1000,
       "pinpadResult": {

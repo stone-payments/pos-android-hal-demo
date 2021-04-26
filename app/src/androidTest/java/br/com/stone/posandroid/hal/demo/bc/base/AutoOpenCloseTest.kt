@@ -44,6 +44,12 @@ abstract class AutoOpenCloseTest {
                     CombinedResult(PinpadResult(CLO, PP_OK))
                 )
             )
+
+        initializePinpad(queue)
+
+    }
+
+    protected fun initializePinpad(queue: ArrayDeque<CombinedResult>) {
         pinpad = deviceProvider.getPinpad(
             mutableMapOf(
                 KEY_CONTEXT to context,
@@ -56,11 +62,10 @@ abstract class AutoOpenCloseTest {
                 RESULTS_KEY to queue,
                 TARGET_RESULT_KEY to RESULTS_KEY
             ),
-           callback
+            callback
         )
 
         pinpad.open()
-
         pinpad.runtimeProperties[TARGET_RESULT_KEY] = RESULTS_FILE_KEY
     }
 
