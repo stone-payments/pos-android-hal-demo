@@ -5,7 +5,7 @@ import br.com.stone.posandroid.hal.api.bc.constants.ResultCode
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_TABEXP
 import br.com.stone.posandroid.hal.mock.bc.PinpadStub
 import org.junit.Before
-import java.util.*
+import java.util.ArrayDeque
 
 
 abstract class AutoLoadTableTest : AutoOpenCloseTest() {

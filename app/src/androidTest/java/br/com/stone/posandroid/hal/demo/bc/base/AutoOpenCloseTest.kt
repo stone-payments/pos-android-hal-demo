@@ -24,7 +24,7 @@ import io.mockk.unmockkAll
 import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith
-import java.util.*
+import java.util.ArrayDeque
 
 
 @RunWith(AndroidJUnit4ClassRunner::class)
