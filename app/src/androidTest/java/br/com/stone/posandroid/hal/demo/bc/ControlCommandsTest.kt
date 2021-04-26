@@ -106,6 +106,9 @@ class ControlCommandsTest {
     @Precondition("Insert the card")
     fun validateAbortCommand() = runBlocking {
 
+        pinpad.runtimeProperties[RESULTS_FILE_KEY] =
+            "$stubResultsFolder/validate_abort_command.json"
+
         var subject: Int = Int.MIN_VALUE
         CoroutineScope(Dispatchers.IO).launch {
             delay(1000)
