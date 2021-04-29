@@ -122,12 +122,11 @@ class ControlCommandsTest {
         }
         assertEquals(PP_CANCEL, subject)
 
-//Todo  When Sunmi corrects BC's EOT Bug,uncomment the line to validate
-//      if PinpadCallback.onAbort is being called
+      if PinpadCallback.onAbort is being called
 
-//        verify(exactly = 1) {
-//            pinpadCallbacks.onAbort()
-//        }
+        verify(exactly = 1) {
+            pinpadCallbacks.onAbort()
+        }
 
     }
 }
