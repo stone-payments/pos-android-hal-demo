@@ -6,6 +6,7 @@ import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.network.ApnInfo
 import br.com.stone.posandroid.hal.demo.HALConfig
+import br.com.stone.posandroid.hal.demo.rule.Precondition
 import org.junit.Assert
 import org.junit.Ignore
 import org.junit.Test
@@ -18,6 +19,7 @@ class NetworkTest {
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
     @Test
+    @Precondition("Insert SIM Card")
     fun configureApn() {
         val subject = HALConfig.deviceProvider.getNetwork(
             mapOf(

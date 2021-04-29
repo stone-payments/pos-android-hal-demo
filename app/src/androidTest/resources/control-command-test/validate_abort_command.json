@@ -11,16 +11,16 @@
         "params": ""
       },
       {
-        "time": 2000,
+        "time": 100,
         "id": 1,
         "params": ""
       }
     ],
     "asyncResult": {
-      "time": 1000,
+      "time": 100,
       "pinpadResult": {
         "command": "GCR",
-        "resultCode": 0,
+        "resultCode": 13,
         "output": "03001080500                                                                            344761739001010119=22122011758928889   000                                                                                                        164761739001010119   01                   VISA ACQUIRER TEST/CARD 0122123100                           840000"
       }
     }
