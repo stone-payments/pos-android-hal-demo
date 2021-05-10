@@ -31,6 +31,21 @@ class SettingsTest {
     }
 
     @Test
+    fun toggleKeyCodeMenu() {
+        val subject = HALConfig.deviceProvider.getSettings(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/settings-toggle-statusbar.json",
+                KEY_CONTEXT to context
+            )
+        )
+
+        assertTrue(subject.toggleKeyCodeMenu(true))
+        assertTrue(subject.toggleKeyCodeMenu(false))
+        assertTrue(subject.enableKeyCodeMenu())
+        assertTrue(subject.disableKeyCodeMenu())
+    }
+
+    @Test
     fun retrieveDeviceInfo() {
 
         val subject = HALConfig.deviceProvider.getSettings(
