@@ -11,6 +11,7 @@ import org.junit.Assert
 import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.net.InetSocketAddress
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class NetworkTest {
@@ -46,6 +47,16 @@ class NetworkTest {
 
         Assert.assertTrue(subject.enableMobileNetwork(false))
         Assert.assertTrue(subject.enableMobileNetwork(true))
+    }
+
+    @Test
+    fun configureGlobalProxy() {
+        val subject = HALConfig.deviceProvider.getNetwork(mapOf(
+            RESULTS_FILE_KEY to "$stubResultsFolder/network-toggle-mobile.json",
+            KEY_CONTEXT to context
+        ))
+        val inetSocketAddress = InetSocketAddress(1111)
+        Assert.assertTrue(subject.configureGlobalProxy(inetSocketAddress))
     }
 }
 

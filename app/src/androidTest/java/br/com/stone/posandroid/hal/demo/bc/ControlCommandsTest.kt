@@ -22,6 +22,7 @@ import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_INPUT
 import br.com.stone.posandroid.hal.demo.util.KEYMAP_SUNMI
 import br.com.stone.posandroid.hal.demo.util.LAYOUT_PIN_SUNMI
 import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -121,8 +122,6 @@ class ControlCommandsTest {
             subject = pinpad.result.resultCode
         }
         assertEquals(PP_CANCEL, subject)
-
-      if PinpadCallback.onAbort is being called
 
         verify(exactly = 1) {
             pinpadCallbacks.onAbort()
