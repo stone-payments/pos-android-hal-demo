@@ -29,7 +29,7 @@ class DeviceInfoTest {
 
     @Test
     fun When_accessed_the_kernel_version_Should_return_a_valid_value() {
-        val kernelVersion = deviceInfo.kernelVersion
+        val kernelVersion = deviceInfo.kernelVersion!!
         assertFalse(kernelVersion.isEmpty())
         assertNotEquals(kernelVersion, DeviceInfo.KERNEL_UNKNOWN)
     }
