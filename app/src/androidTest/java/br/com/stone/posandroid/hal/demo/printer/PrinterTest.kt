@@ -4,6 +4,7 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
+import br.com.stone.posandroid.hal.api.printer.DarknessLevel
 import br.com.stone.posandroid.hal.api.printer.Printer
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer.Companion.NO_PRINTER_STEP
@@ -187,6 +188,19 @@ class PrinterTest {
         } catch (e: PrinterException) {
             assertEquals(PrinterErrorCode.PRINTER_BUSY, e.code)
         }
+    }
+
+    @Test
+    fun settingPrinterDarkness() {
+        subject = HALConfig.deviceProvider.getPrinter(
+            mapOf(
+                KEY_CONTEXT to context
+            )
+        )
+
+        assertEquals(0, subject.setPrinterDarkness(DarknessLevel.LOW))
+        assertEquals(0, subject.setPrinterDarkness(DarknessLevel.MEDIUM))
+        assertEquals(0, subject.setPrinterDarkness(DarknessLevel.HIGH))
     }
 
     @Test
