@@ -60,7 +60,7 @@ class SettingsTest {
         assertTrue("Manufacter name is empty",deviceInfo.manufacturerName.isNotEmpty())
         assertTrue("Firmware version is empty",deviceInfo.firmwareVersion.isNotEmpty())
         assertTrue("Model name is empty",deviceInfo.modelName.isNotEmpty())
-        assertTrue("Kernel version is empty",deviceInfo.kernelVersion.isNotEmpty() || deviceInfo.kernelVersion != DeviceInfo.KERNEL_UNKNOWN)
+        assertTrue("Kernel version is empty",deviceInfo.kernelVersion!!.isNotEmpty() || deviceInfo.kernelVersion != DeviceInfo.KERNEL_UNKNOWN)
 
     }
 
