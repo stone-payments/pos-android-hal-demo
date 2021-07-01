@@ -5,7 +5,9 @@ import androidx.test.platform.app.InstrumentationRegistry
 import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.settings.DeviceInfo
+import br.com.stone.posandroid.hal.api.settings.TimeData
 import br.com.stone.posandroid.hal.demo.HALConfig
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -15,6 +17,16 @@ class SettingsTest {
 
     private val stubResultsFolder = "resources/settings/settings-test"
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
+
+    @Test
+    fun setSelfExamTimeTest() {
+        val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))
+
+        val time = TimeData(0, 12, 34)
+        subject.setSelfExamTime(time)
+
+        assertEquals(time, subject.getSelfExamTime())
+    }
 
     @Test
     fun toggleStatusBar() {
