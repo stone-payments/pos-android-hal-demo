@@ -32,9 +32,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx}"
-    api 'br.com.stone.posandroid:hal-api:1.11.0'
+    api 'br.com.stone.posandroid:hal-api:1.13.0'
     implementation 'br.com.stone.posandroid:hal-mock:1.11.0'
-    implementation 'br.com.stone.posandroid:posandroid-manufacturer-sunmi:1.19.1'
+    implementation 'br.com.stone.posandroid:posandroid-manufacturer-sunmi:1.19.2'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-ingenico:1.5.0'
 
 
