@@ -5,6 +5,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.settings.DeviceInfo
+import br.com.stone.posandroid.hal.api.settings.KeyboardType
 import br.com.stone.posandroid.hal.api.settings.TimeData
 import br.com.stone.posandroid.hal.demo.HALConfig
 import org.junit.Assert.assertEquals
@@ -72,7 +73,10 @@ class SettingsTest {
         assertTrue("Manufacter name is empty",deviceInfo.manufacturerName.isNotEmpty())
         assertTrue("Firmware version is empty",deviceInfo.firmwareVersion.isNotEmpty())
         assertTrue("Model name is empty",deviceInfo.modelName.isNotEmpty())
-        assertTrue("Kernel version is empty",deviceInfo.kernelVersion.isNullOrEmpty().not() || deviceInfo.kernelVersion != DeviceInfo.KERNEL_UNKNOWN)
+        val isKernelVersionNotNullOrEmpty = deviceInfo.kernelVersion.isNullOrEmpty().not()
+        val isKernelVersionUnknown = deviceInfo.kernelVersion != DeviceInfo.KERNEL_UNKNOWN
+        assertTrue("Kernel version is empty",isKernelVersionNotNullOrEmpty || isKernelVersionUnknown)
+        assertTrue(deviceInfo.keyboardType == KeyboardType.NONE || deviceInfo.keyboardType == KeyboardType.PINPAD)
 
     }
 
