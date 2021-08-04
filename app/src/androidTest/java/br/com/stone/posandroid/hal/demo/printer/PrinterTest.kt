@@ -48,6 +48,7 @@ class PrinterTest {
 
         val param = PrinterBuffer()
         param.addLine(Printer::class.simpleName.toString())
+        param.step = subject.getStepsToCut()
 
         try {
             subject.printOrThrows(param)
