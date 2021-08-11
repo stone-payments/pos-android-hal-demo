@@ -1,15 +1,13 @@
 
-def keystorePropertiesFile = rootProject.file("gertec/gertec-keystore.properties")
+def keystorePropertiesFile = rootProject.file("positivo/positivo-keystore.properties")
 def keystoreProperties = new Properties()
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-}
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
 
     signingConfigs {
-        gertec {
-            storeFile file("../gertec/${keystoreProperties['storeFile']}")
+        positivo {
+            storeFile file("../positivo/${keystoreProperties['storeFile']}")
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
             storePassword keystoreProperties['storePassword']
@@ -17,9 +15,9 @@ android {
     }
 
     buildTypes {
-        gertec {
+        positivo {
             initWith debug
-            signingConfig signingConfigs.gertec
+            signingConfig signingConfigs.positivo
             matchingFallbacks = ['debug']
         }
     }

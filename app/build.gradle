@@ -26,6 +26,8 @@ android {
 
     }
 
+    testBuildType "debug"
+
 }
 
 dependencies {
