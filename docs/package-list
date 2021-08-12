@@ -1,0 +1,16 @@
+br.com.stone.posandroid.hal.api
+br.com.stone.posandroid.hal.api.bc
+br.com.stone.posandroid.hal.api.bc.constants
+br.com.stone.posandroid.hal.api.bc.exception
+br.com.stone.posandroid.hal.api.bc.ext
+br.com.stone.posandroid.hal.api.installer
+br.com.stone.posandroid.hal.api.mifare
+br.com.stone.posandroid.hal.api.network
+br.com.stone.posandroid.hal.api.network.exception
+br.com.stone.posandroid.hal.api.printer
+br.com.stone.posandroid.hal.api.printer.customize
+br.com.stone.posandroid.hal.api.printer.exception
+br.com.stone.posandroid.hal.api.printer.ext
+br.com.stone.posandroid.hal.api.provider
+br.com.stone.posandroid.hal.api.settings
+br.com.stone.posandroid.hal.api.settings.util
