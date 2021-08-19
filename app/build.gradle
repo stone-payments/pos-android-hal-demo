@@ -25,10 +25,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
+        debug {
+            signingConfig null
+        }
+    }
+
+    flavorDimensions "manufacturer"
+
+    productFlavors {
+        standard {
+            signingConfig signingConfigs.debug
+            dimension "manufacturer"
+            getIsDefault().set(true)
+        }
     }
 
     testBuildType "debug"
-
 }
 
 dependencies {
@@ -36,10 +48,10 @@ dependencies {
 
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx}"
     api 'br.com.stone.posandroid:hal-api:1.17.0'
-    implementation 'br.com.stone.posandroid:hal-mock:1.14.1'
+    implementation 'br.com.stone.posandroid:hal-mock:1.17.0'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-sunmi:1.19.2'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-ingenico:1.6.1'
-    implementation 'br.com.stone.posandroid:posandroid-manufacturer-positivo:4.4.0'
+    implementation 'br.com.stone.posandroid:posandroid-manufacturer-positivo:4.6.0'
 
 
 
