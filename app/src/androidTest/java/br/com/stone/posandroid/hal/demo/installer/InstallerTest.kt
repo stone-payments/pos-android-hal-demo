@@ -46,7 +46,7 @@ class InstallerTest {
                         apk.writeBytes(stream.readBytes())
 
                     }
-                    pathFile = this.absolutePath
+                    pathFile = apk.absolutePath
                 }
             }
         }
