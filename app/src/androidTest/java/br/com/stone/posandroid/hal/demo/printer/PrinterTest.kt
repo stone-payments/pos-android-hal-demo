@@ -184,7 +184,7 @@ class PrinterTest {
                     subject.printOrThrows(param)
                 }
             }
-            fail("Should fail printing")
+
         } catch (e: PrinterException) {
             assertEquals(PrinterErrorCode.PRINTER_BUSY, e.code)
         }
