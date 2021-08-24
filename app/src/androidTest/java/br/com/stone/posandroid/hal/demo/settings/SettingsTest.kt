@@ -70,7 +70,7 @@ class SettingsTest {
 
         val deviceInfo = subject.getDeviceInfo()
         assertTrue("Serial number is empty",deviceInfo.serialNumber.isNotEmpty())
-        assertTrue("Manufacter name is empty",deviceInfo.manufacturerName.isNotEmpty())
+        assertTrue("Manufacture name is empty",deviceInfo.manufacturerName.isNotEmpty())
         assertTrue("Firmware version is empty",deviceInfo.firmwareVersion.isNotEmpty())
         assertTrue("Model name is empty",deviceInfo.modelName.isNotEmpty())
         val isKernelVersionNotNullOrEmpty = deviceInfo.kernelVersion.isNullOrEmpty().not()
