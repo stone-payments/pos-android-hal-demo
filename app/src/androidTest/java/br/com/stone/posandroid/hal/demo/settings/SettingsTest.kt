@@ -59,6 +59,28 @@ class SettingsTest {
     }
 
     @Test
+    fun enableButtonsLight() {
+        val subject = HALConfig.deviceProvider.getSettings(
+            mapOf(
+                KEY_CONTEXT to context
+            )
+        )
+
+        assertTrue(subject.enableButtonsLight())
+    }
+
+    @Test
+    fun disableButtonsLight() {
+        val subject = HALConfig.deviceProvider.getSettings(
+            mapOf(
+                KEY_CONTEXT to context
+            )
+        )
+
+        assertTrue(subject.disableButtonsLight())
+    }
+
+    @Test
     fun retrieveDeviceInfo() {
 
         val subject = HALConfig.deviceProvider.getSettings(
