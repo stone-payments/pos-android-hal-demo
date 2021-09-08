@@ -25,7 +25,7 @@ class DeviceInfoTest {
                 Properties.RESULTS_FILE_KEY to "$stubResultsFolder/settings-deviceinfo.json",
                 Properties.KEY_CONTEXT to context
             )
-        ).getDeviceInfo()
+        ).retrieveDeviceInfo()
     }
 
     @Test
