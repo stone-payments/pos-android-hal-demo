@@ -8,10 +8,14 @@ import br.com.stone.posandroid.hal.api.settings.DeviceInfo
 import br.com.stone.posandroid.hal.api.settings.KeyboardType
 import br.com.stone.posandroid.hal.api.settings.TimeData
 import br.com.stone.posandroid.hal.demo.HALConfig
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
+
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class SettingsTest {
@@ -55,7 +59,29 @@ class SettingsTest {
         assertTrue(subject.toggleKeyCodeMenu(true))
         assertTrue(subject.toggleKeyCodeMenu(false))
         assertTrue(subject.enableKeyCodeMenu())
-        assertTrue(subject.disableKeyCodeMenu())
+//        assertTrue(subject.disableKeyCodeMenu())
+    }
+
+    @Test
+    fun enableButtonsLight() {
+        val subject = HALConfig.deviceProvider.getSettings(
+            mapOf(
+                KEY_CONTEXT to context
+            )
+        )
+
+        assertTrue(subject.enableButtonsLight())
+    }
+
+    @Test
+    fun disableButtonsLight() {
+        val subject = HALConfig.deviceProvider.getSettings(
+            mapOf(
+                KEY_CONTEXT to context
+            )
+        )
+
+        assertTrue(subject.disableButtonsLight())
     }
 
     @Test
@@ -68,10 +94,10 @@ class SettingsTest {
             )
         )
 
-        val deviceInfo = subject.getDeviceInfo()
+        val deviceInfo = subject.retrieveDeviceInfo()
         assertTrue("Serial number is empty",deviceInfo.serialNumber.isNotEmpty())
-        assertTrue("Manufacter name is empty",deviceInfo.manufacturerName.isNotEmpty())
-        assertTrue("Firmware version is empty",deviceInfo.firmwareVersion.isNotEmpty())
+        assertTrue("Manufacture name is empty",deviceInfo.manufacturerName.isNotEmpty())
+        assertTrue("OS build number is empty",deviceInfo.osBuildNumber.isNotEmpty())
         assertTrue("Model name is empty",deviceInfo.modelName.isNotEmpty())
         val isKernelVersionNotNullOrEmpty = deviceInfo.kernelVersion.isNullOrEmpty().not()
         val isKernelVersionUnknown = deviceInfo.kernelVersion != DeviceInfo.KERNEL_UNKNOWN
@@ -80,5 +106,29 @@ class SettingsTest {
 
     }
 
+    @Test
+    fun toggleButtonsLight() = runBlocking {
+        val subject = HALConfig.deviceProvider.getSettings(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/settings-deviceinfo.json",
+                KEY_CONTEXT to context
+            )
+        )
 
+        assertTrue(subject.enableButtonsLight())
+        delay(2000L)
+        assertTrue(subject.disableButtonsLight())
+    }
+
+    @Test
+    @Ignore("Not running the reboot test")
+    fun reboot() {
+        val subject = HALConfig.deviceProvider.getSettings(
+            mapOf(
+                KEY_CONTEXT to context
+            )
+        )
+
+        subject.reboot()
+    }
 }

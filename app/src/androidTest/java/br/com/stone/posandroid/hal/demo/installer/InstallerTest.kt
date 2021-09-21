@@ -44,9 +44,9 @@ class InstallerTest {
                             "$stubResultsFolder/Test-Application.apk".removePrefix("resources/")
                         )
                         apk.writeBytes(stream.readBytes())
-                        pathFile = this.absolutePath
-                    }
 
+                    }
+                    pathFile = apk.absolutePath
                 }
             }
         }

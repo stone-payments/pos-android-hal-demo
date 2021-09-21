@@ -1,6 +1,7 @@
 package br.com.stone.posandroid.hal.demo.rule
 
 import android.content.Intent
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.test.platform.app.InstrumentationRegistry
@@ -55,8 +56,12 @@ class ConditionTestRule: ActivityTestRule<MainActivity>(MainActivity::class.java
 
                     findViewById<TextView>(R.id.textView_test_title).text = description.methodName
                     findViewById<TextView>(R.id.textView_message).text = message
-                    findViewById<Button>(R.id.button_proceed).setOnClickListener {
-                        semaphore.release()
+                    findViewById<Button>(R.id.button_proceed).apply{
+                        visibility = View.VISIBLE
+                        setOnClickListener {
+                            semaphore.release()
+                            it.visibility = View.GONE
+                        }
                     }
                 }
             }

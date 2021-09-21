@@ -23,6 +23,4 @@ android {
             matchingFallbacks = ['debug']
         }
     }
-
-    testBuildType "debug"
 }

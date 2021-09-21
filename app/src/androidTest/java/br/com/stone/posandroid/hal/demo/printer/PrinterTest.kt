@@ -48,6 +48,7 @@ class PrinterTest {
 
         val param = PrinterBuffer()
         param.addLine(Printer::class.simpleName.toString())
+        param.step = subject.getStepsToCut()
 
         try {
             subject.printOrThrows(param)
@@ -183,7 +184,7 @@ class PrinterTest {
                     subject.printOrThrows(param)
                 }
             }
-            fail("Should fail printing")
+
         } catch (e: PrinterException) {
             assertEquals(PrinterErrorCode.PRINTER_BUSY, e.code)
         }

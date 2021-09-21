@@ -58,5 +58,18 @@ class NetworkTest {
         val inetSocketAddress = InetSocketAddress(1111)
         Assert.assertTrue(subject.configureGlobalProxy(inetSocketAddress))
     }
+
+    @Test
+    fun getNetworkInfo() {
+        val subject = HALConfig.deviceProvider.getNetwork(mapOf(
+            RESULTS_FILE_KEY to "$stubResultsFolder/network-toggle-mobile.json",
+            KEY_CONTEXT to context
+        ))
+
+        val networkInfo = subject.getNetworkInfo()
+        Assert.assertFalse(networkInfo.apnName.isEmpty())
+        Assert.assertFalse(networkInfo.carrierName.isEmpty())
+        Assert.assertFalse(networkInfo.simSerialNumber.isEmpty())
+    }
 }
 
