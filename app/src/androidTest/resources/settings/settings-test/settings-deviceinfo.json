@@ -3,9 +3,12 @@
     "serialNumber": "12345",
     "isPosAndroid": true,
     "manufacturerName": "Stone",
-    "fullDeviceName": "Stone Mock Device",
-    "modelName": "Stone Mock Device",
+    "modelName": "Mock Device",
     "firmwareVersion": "1.0.0",
-    "kernelVersion": "220121"
+    "kernelVersion": "220121",
+    "keyboardType": "NONE",
+    "iccReaderPosition": "BOTTOM",
+    "magReaderPosition": "RIGHT",
+    "nfcReaderPosition": "TOP"
   }
 ]
