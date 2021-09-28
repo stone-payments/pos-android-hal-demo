@@ -4,6 +4,7 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
+import br.com.stone.posandroid.hal.api.printer.PrintCallback
 import br.com.stone.posandroid.hal.api.printer.Printer
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer.Companion.NO_PRINTER_STEP
@@ -16,6 +17,7 @@ import br.com.stone.posandroid.hal.api.printer.ext.printOrThrows
 import br.com.stone.posandroid.hal.demo.HALConfig
 import br.com.stone.posandroid.hal.demo.rule.ConditionTestRule
 import br.com.stone.posandroid.hal.demo.rule.Precondition
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
@@ -92,7 +94,10 @@ class PrinterTest {
         param.addLine("-".repeat(48))
 
         try {
+            delay(1000)
             subject.printOrThrows(param)
+
+
         } catch (e: PrinterException) {
             fail("Codigo de erro: ${e.code}")
         }
