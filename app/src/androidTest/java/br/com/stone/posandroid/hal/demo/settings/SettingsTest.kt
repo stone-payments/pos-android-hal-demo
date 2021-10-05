@@ -35,6 +35,7 @@ class SettingsTest {
     }
 
     @Test
+    @Ignore("The test may reboot the device.")
     fun setSelfExamTimeTest() {
         val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))
 
