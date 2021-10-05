@@ -1,6 +1,7 @@
 package br.com.stone.posandroid.hal.demo.settings
 
-import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
+import android.os.Build
 import android.util.Log
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
@@ -137,20 +138,37 @@ class SettingsTest {
     }
 
     @Test
-    @Ignore("WIP")
     fun surpassPermissionsRequest() {
-        val pm = context.packageManager
-        if(isPackageInstalled(pm, PERMISSION_PACKAGE_NAME_APK).not()) {
-            assertEquals("Setup Permission Test App failed", 0, setupPermissionTestApplication())
+        if (Build.VERSION.SDK_INT > 22) {
+
+            val pm = context.packageManager
+            if (isPackageInstalled(pm, PERMISSION_PACKAGE_NAME_APK).not()) {
+                assertEquals(
+                    "Setup Permission Test App failed",
+                    0,
+                    setupPermissionTestApplication()
+                )
+            }
+            val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))
+
+            subject.surpassPermissionsRequest(PERMISSION_PACKAGE_NAME_APK)
+
+            val requestedPermission = pm.getPackageInfo(
+                PERMISSION_PACKAGE_NAME_APK,
+                PackageManager.GET_PERMISSIONS
+            ).requestedPermissions
+            for (permission in requestedPermission) {
+                assertEquals(
+                    PackageManager.PERMISSION_GRANTED,
+                    pm.checkPermission(permission, PERMISSION_PACKAGE_NAME_APK)
+                )
+            }
+
+            if (isPackageInstalled(pm, PERMISSION_PACKAGE_NAME_APK)) {
+                val installer = HALConfig.deviceProvider.getInstaller(mapOf(KEY_CONTEXT to context))
+                installer.uninstallApk(PERMISSION_PACKAGE_NAME_APK)
+            }
         }
-        val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))
-
-        subject.surpassPermissionsRequest(PERMISSION_PACKAGE_NAME_APK)
-
-        val permissionRequested = pm.getPackageInfo(PERMISSION_PACKAGE_NAME_APK, PackageInfo.INSTALL_LOCATION_AUTO).requestedPermissionsFlags
-        val permissionsGranted = pm.getPackageInfo(PERMISSION_PACKAGE_NAME_APK, PackageInfo.REQUESTED_PERMISSION_GRANTED).requestedPermissionsFlags
-        assertEquals(permissionRequested, permissionsGranted)
-        TODO()
     }
 
     private fun setupPermissionTestApplication(): Int {
