@@ -4,7 +4,7 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
-import br.com.stone.posandroid.hal.api.printer.PrintCallback
+import br.com.stone.posandroid.hal.api.printer.DarknessLevel
 import br.com.stone.posandroid.hal.api.printer.Printer
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer.Companion.NO_PRINTER_STEP
@@ -101,6 +101,34 @@ class PrinterTest {
         } catch (e: PrinterException) {
             fail("Codigo de erro: ${e.code}")
         }
+    }
+
+    @Test
+    @Precondition("Printer must have paper")
+    fun settingPrinterDarkness() = runBlocking {
+        subject = HALConfig.deviceProvider.getPrinter(
+            mapOf(
+                KEY_CONTEXT to context
+            )
+        )
+
+        assertEquals(0, subject.setPrinterDarkness(DarknessLevel.LOW))
+        subject.printOrThrows(PrinterBuffer().apply {
+            addLine("LOW")
+            step = 0
+        })
+
+        assertEquals(0, subject.setPrinterDarkness(DarknessLevel.MEDIUM))
+        subject.printOrThrows(PrinterBuffer().apply {
+            addLine("MEDIUM")
+            step = 0
+        })
+
+        assertEquals(0, subject.setPrinterDarkness(DarknessLevel.HIGH))
+        subject.printOrThrows(PrinterBuffer().apply {
+            addLine("HIGH")
+            step = subject.getStepsToCut()
+        })
     }
 
     @Test
