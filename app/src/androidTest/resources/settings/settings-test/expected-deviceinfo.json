@@ -1,0 +1,48 @@
+{
+  "Stone Mock Device": {
+    "serialNumber": "12345",
+    "isPosAndroid": true,
+    "manufacturerName": "Stone",
+    "fullDeviceName": "Stone Mock Device",
+    "modelName": "Mock Device",
+    "firmwareVersion": "1.0.0",
+    "kernelVersion": "220121",
+    "keyboardType": "NONE",
+    "iccReaderPosition": "BOTTOM",
+    "magReaderPosition": "RIGHT",
+    "nfcReaderPosition": "TOP",
+    "customResourceVersion": "CUSTOM_RESOURCE_UNKNOWN"
+  },
+
+  "Positivo L3": {
+    "isPosAndroid": true,
+    "modelName": "L3",
+    "manufacturerName": "Positivo",
+    "keyboardType": "PINPAD",
+    "iccReaderPosition": "BOTTOM",
+    "magReaderPosition": "RIGHT",
+    "nfcReaderPosition": "TOP",
+    "customResourceVersion": "CUSTOM_RESOURCE_UNKNOWN"
+  },
+
+  "SUNMI P2-B": {
+    "isPosAndroid": true,
+    "modelName": "P2-B",
+    "manufacturerName": "SUNMI",
+    "keyboardType": "NONE",
+    "iccReaderPosition": "RIGHT",
+    "magReaderPosition": "TOP",
+    "nfcReaderPosition": "TOP"
+  },
+
+  "Ingenico APOS A8": {
+    "isPosAndroid": true,
+    "modelName": "APOS A8",
+    "manufacturerName": "Ingenico",
+    "keyboardType": "NONE",
+    "iccReaderPosition": "BOTTOM",
+    "magReaderPosition": "RIGHT",
+    "nfcReaderPosition": "TOP",
+    "customResourceVersion": "CUSTOM_RESOURCE_UNKNOWN"
+  }
+}
