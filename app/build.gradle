@@ -53,7 +53,7 @@ dependencies {
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-sunmi:1.23.0'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-gertec:1.16.1'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-ingenico:1.7.1'
-    implementation 'br.com.stone.posandroid:posandroid-manufacturer-positivo:5.0.0'
+    implementation 'br.com.stone.posandroid:posandroid-manufacturer-positivo:6.40.0'
 
 
     implementation 'br.com.stone:hal-pin-layout:2.28.4.1'
