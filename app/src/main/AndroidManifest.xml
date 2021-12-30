@@ -3,6 +3,7 @@
     package="br.com.stone.posandroid.hal.demo">
 
     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SET_TIME"/>
 
     <application
         android:allowBackup="true"
