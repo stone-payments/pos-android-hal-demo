@@ -16,11 +16,11 @@ android {
         }
     }
 
-    buildTypes {
+    productFlavors {
         gertec {
-            initWith debug
+            dimension "manufacturer"
             signingConfig signingConfigs.gertec
-            matchingFallbacks = ['debug']
+            versionNameSuffix "-gertec"
         }
     }
 }
