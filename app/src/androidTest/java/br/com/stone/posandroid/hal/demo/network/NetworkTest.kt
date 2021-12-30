@@ -8,7 +8,6 @@ import br.com.stone.posandroid.hal.api.network.ApnInfo
 import br.com.stone.posandroid.hal.demo.HALConfig
 import br.com.stone.posandroid.hal.demo.rule.Precondition
 import org.junit.Assert
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.net.InetSocketAddress
@@ -47,6 +46,18 @@ class NetworkTest {
 
         Assert.assertTrue(subject.enableMobileNetwork(false))
         Assert.assertTrue(subject.enableMobileNetwork(true))
+    }
+
+    @Test
+    fun deleteAllConfiguredNetworks() {
+        val subject = HALConfig.deviceProvider.getNetwork(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/network-toggle-mobile.json",
+                KEY_CONTEXT to context
+            )
+        )
+
+        Assert.assertTrue(subject.deleteAllConfiguredNetworks())
     }
 
     @Test
