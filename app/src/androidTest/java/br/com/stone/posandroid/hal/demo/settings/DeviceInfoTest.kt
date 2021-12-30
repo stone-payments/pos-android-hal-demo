@@ -78,7 +78,7 @@ class DeviceInfoTest {
         val kernelVersion = deviceInfo.kernelVersion
         assertFalse("kernelVersion is null or empty", kernelVersion.isNullOrEmpty())
         assertNotEquals("kernelVersion returned KERNEL_UNKNOWN", DeviceInfo.KERNEL_UNKNOWN, kernelVersion)
-        assertTrue("kernelVersion doesn't match the expected pattern", kernelVersion!!.matches(versionRegex))
+        assertTrue("kernelVersion doesn't match the expected pattern. Actual: $kernelVersion", kernelVersion!!.matches(versionRegex))
     }
 
     @Test
