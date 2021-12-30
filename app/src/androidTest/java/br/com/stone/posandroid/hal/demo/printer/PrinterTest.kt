@@ -93,8 +93,9 @@ class PrinterTest {
 
         param.addLine("-".repeat(48))
 
+        param.step = subject.getStepsToCut()
+
         try {
-            delay(1000)
             subject.printOrThrows(param)
 
 
