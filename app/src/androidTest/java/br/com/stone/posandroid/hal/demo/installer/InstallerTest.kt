@@ -12,6 +12,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.FixMethodOrder
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.MethodSorters
@@ -99,6 +100,42 @@ class InstallerTest {
         if (!runningOnEmulator) {
             assertFalse(isPackageInstalled(context.packageManager, PACKAGE_NAME_APK))
         }
+    }
+
+    @Test
+    @Ignore("Incomplete")
+    fun installSO() {
+        val subject = HALConfig.deviceProvider.getInstaller(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/installer-uninstall.json",
+                KEY_CONTEXT to context
+            )
+        )
+
+
+        var pathFileSO: String= ""
+
+        if (!runningOnEmulator) {
+            File("/sdcard/stone/").run {
+                if (!this.exists()) {
+                    this.mkdir()
+                }
+                File(this, "L3-ota-DSSTS2021111802-from-DSSTS2021111801.zip").also { apk ->
+                    if (!apk.exists()) {
+                        val classloader = Thread.currentThread().contextClassLoader
+                        requireNotNull(classloader)
+                        val stream: InputStream = classloader.getResourceAsStream(
+                            "$stubResultsFolder/L3-ota-DSSTS2021111802-from-DSSTS2021111801.zip".removePrefix("resources/")
+                        )
+                        apk.writeBytes(stream.readBytes())
+
+                    }
+                    pathFileSO = apk.absolutePath
+                }
+            }
+        }
+
+        subject.install(pathFileSO)
     }
 
 
