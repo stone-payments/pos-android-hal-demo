@@ -20,7 +20,7 @@ val deviceProvider: DeviceProvider = MockDependencyProvider()
 
 Feitas estas modificações, é possível executar todos os testes da pasta `androidTest` para validar a implementação utilizada.
 
-O Manual do Fabricante pode ser encontrado [aqui](https://hardware-stone-integration.readme.io/docs/)
+O Manual do Fabricante pode ser encontrado [aqui](https://hardware-stone-integration.readme.io/docs/) <br/>
 O Javadoc do hal api pode ser encontrado [aqui](https://stone-payments.github.io/pos-android-hal-demo/)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
