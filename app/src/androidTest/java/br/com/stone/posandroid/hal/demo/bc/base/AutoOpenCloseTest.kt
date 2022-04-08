@@ -19,7 +19,7 @@ import br.com.stone.posandroid.hal.demo.R
 import br.com.stone.posandroid.hal.demo.util.KEYMAP_SUNMI
 import br.com.stone.posandroid.hal.demo.util.LAYOUT_PIN_SUNMI
 import br.com.stone.posandroid.hal.demo.util.PinpadCallbackComponent
-import br.com.stone.posandroid.hal.mock.bc.PinpadStub.Companion.CombinedResult
+//import br.com.stone.posandroid.hal.mock.bc.PinpadStub.Companion.CombinedResult
 import io.mockk.unmockkAll
 import org.junit.After
 import org.junit.Before
@@ -37,19 +37,19 @@ abstract class AutoOpenCloseTest {
     @Before
     open fun setup() {
 
-        val queue =
-            ArrayDeque(
-                listOf(
-                    CombinedResult(PinpadResult(OPN, PP_OK)),
-                    CombinedResult(PinpadResult(CLO, PP_OK))
-                )
-            )
+//        val queue =
+//            ArrayDeque(
+//                listOf(
+//                    CombinedResult(PinpadResult(OPN, PP_OK)),
+//                    CombinedResult(PinpadResult(CLO, PP_OK))
+//                )
+//            )
 
-        initializePinpad(queue)
+        initializePinpad()
 
     }
 
-    protected fun initializePinpad(queue: ArrayDeque<CombinedResult>) {
+    protected fun initializePinpad() {
         pinpad = deviceProvider.getPinpad(
             mutableMapOf(
                 KEY_CONTEXT to context,
@@ -59,7 +59,7 @@ abstract class AutoOpenCloseTest {
             mutableMapOf(
                 RuntimeProperties.PinLayout.KEY_PIN_KBD_LAYOUT_ID to R.layout.regularkeyboard,
                 RuntimeProperties.PinLayout.KEY_SUNMI_LAYOUT_INFO to LAYOUT_PIN_SUNMI,
-                RESULTS_KEY to queue,
+                //RESULTS_KEY to queue,
                 TARGET_RESULT_KEY to RESULTS_KEY
             ),
             callback

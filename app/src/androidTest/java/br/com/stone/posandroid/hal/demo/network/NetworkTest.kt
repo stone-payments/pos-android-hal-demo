@@ -19,6 +19,7 @@ class NetworkTest {
     private val stubResultsFolder = "resources/network/network-test"
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
+    // Passed
     @Test
     @Precondition("Insert SIM Card")
     fun configureApn() {
@@ -36,6 +37,7 @@ class NetworkTest {
         )
     }
 
+    // Passed
     @Test
     fun toggleMobileNetwork() {
         val subject = HALConfig.deviceProvider.getNetwork(
@@ -49,6 +51,7 @@ class NetworkTest {
         Assert.assertTrue(subject.enableMobileNetwork(true))
     }
 
+    // Failed - Not implemented in Halmock
     @Test
     fun configureGlobalProxy() {
         val subject = HALConfig.deviceProvider.getNetwork(mapOf(
@@ -59,6 +62,7 @@ class NetworkTest {
         Assert.assertTrue(subject.configureGlobalProxy(inetSocketAddress))
     }
 
+    // Failed - Not implemented in Halmock
     @Test
     fun getNetworkInfo() {
         val subject = HALConfig.deviceProvider.getNetwork(mapOf(

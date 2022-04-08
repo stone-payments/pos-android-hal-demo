@@ -38,6 +38,7 @@ class PrinterTest {
     @get:Rule
     val conditionTestRule = ConditionTestRule()
 
+    // Passed
     @Test
     @Precondition("Printer must have paper")
     fun printOk() = runBlocking {
@@ -59,6 +60,7 @@ class PrinterTest {
         }
     }
 
+    // Passed
     @Test
     @Precondition("Printer must have paper")
     fun printCustomizedText() = runBlocking {
@@ -103,6 +105,7 @@ class PrinterTest {
         }
     }
 
+    // Passed - Arquivo está preparado apenas para duas chamadas print, modificar para 3 chamadas em seguida
     @Test
     @Precondition("Printer must have paper")
     fun settingPrinterDarkness() = runBlocking {
@@ -131,6 +134,7 @@ class PrinterTest {
         })
     }
 
+    // Passed
     @Test
     @Precondition("Printer must have paper")
     fun printWithoutContent() = runBlocking {
@@ -149,6 +153,7 @@ class PrinterTest {
         }
     }
 
+    // Passed, porém deve mudar o Json para retornar -53 na primeira chamada
     @Test
     @Precondition("Printer must have no paper")
     fun printNoPaper() = runBlocking {
@@ -170,6 +175,7 @@ class PrinterTest {
         }
     }
 
+    // Passed
     @Test
     @Precondition("Printer must have paper")
     fun printUnsupportedFormat() = runBlocking {
@@ -194,6 +200,7 @@ class PrinterTest {
         }
     }
 
+    // Passed
     @Test
     fun printWithPrinterBusy() {
         subject = HALConfig.deviceProvider.getPrinter(

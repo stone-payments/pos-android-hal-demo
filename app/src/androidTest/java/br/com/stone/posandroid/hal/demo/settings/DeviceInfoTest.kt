@@ -6,9 +6,9 @@ import br.com.stone.posandroid.hal.api.Properties
 import br.com.stone.posandroid.hal.api.settings.CpuInfo
 import br.com.stone.posandroid.hal.api.settings.DeviceInfo
 import br.com.stone.posandroid.hal.demo.HALConfig
-import br.com.stone.posandroid.hal.mock.readFile
 import com.google.gson.Gson
-import com.google.gson.JsonParser
+import com.google.gson.JsonParser.parseString
+import java.io.InputStreamReader
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotEquals
@@ -20,7 +20,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class DeviceInfoTest {
 
-    private val stubResultsFolder = "resources/settings/settings-test"
+    private val stubResultsFolder = "settings/settings-test"
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
     private val versionRegex = Regex("^(?:(\\d+\\.){1,3}\\d{1,3}|\\d{4,16})\$")
 
@@ -35,25 +35,28 @@ class DeviceInfoTest {
 
     private val expectedDeviceInfo: DeviceInfo? by lazy {
         val gson = Gson()
-        val rootElement = JsonParser().parse(readFile("$stubResultsFolder/expected-deviceinfo.json"))
+        val rootElement = parseString(getFileContent("$stubResultsFolder/expected-deviceinfo.json"))
         gson.fromJson(
             rootElement.asJsonObject.get(deviceInfo.manufacturerModel),
             DeviceInfo::class.java
         )
     }
 
+    // Passou
     @Test
     fun serialNumber() {
         val serialNumber = deviceInfo.serialNumber
         assertFalse(serialNumber.isEmpty())
     }
 
+    // Passou
     @Test
     fun isPosAndroid() {
         val isPosAndroid = deviceInfo.isPosAndroid
-        assertEquals(expectedDeviceInfo?.isPosAndroid ?: false, isPosAndroid)
+        assertEquals(expectedDeviceInfo?.isPosAndroid, isPosAndroid)
     }
 
+    // Passou
     @Test
     fun manufacturerModel() {
         val manufacturerModel = deviceInfo.manufacturerModel
@@ -66,6 +69,7 @@ class DeviceInfoTest {
         assertTrue(manufacturerModel in supportedDevices)
     }
 
+    // Passou
     @Test
     fun osBuildNumber() {
         val osBuildNumber = deviceInfo.osBuildNumber
@@ -73,6 +77,7 @@ class DeviceInfoTest {
         assertTrue("osBuildNumber doesn't match the expected pattern", osBuildNumber.matches(versionRegex))
     }
 
+    // Passou
     @Test
     fun kernelVersion() {
         val kernelVersion = deviceInfo.kernelVersion
@@ -81,6 +86,7 @@ class DeviceInfoTest {
         assertTrue("kernelVersion doesn't match the expected pattern", kernelVersion!!.matches(versionRegex))
     }
 
+    // Passou
     @Test
     fun customResourceVersion() {
         val customResourceVersion = deviceInfo.customResourceVersion
@@ -92,6 +98,7 @@ class DeviceInfoTest {
     }
 
 
+    // Passou
     @Test
     fun cpuUsage() {
         val cpuUsage = deviceInfo.cpuInfo.getCpuUsage()
@@ -99,6 +106,7 @@ class DeviceInfoTest {
         assertNotEquals("getCpuUsage returned UNKNOWN_VALUE", CpuInfo.UNKNOWN_VALUE, cpuUsage)
     }
 
+    // Passou
     @Test
     fun cpuTemperature() {
         val cpuTemperature = deviceInfo.cpuInfo.getCpuTemperature()
@@ -106,23 +114,34 @@ class DeviceInfoTest {
         assertNotEquals("getCpuTemperature returned UNKNOWN_VALUE", CpuInfo.UNKNOWN_VALUE, cpuTemperature)
     }
 
+    // Passou
     @Test
     fun iccReaderPosition() {
         assertEquals(expectedDeviceInfo?.iccReaderPosition, deviceInfo.iccReaderPosition)
     }
 
+    // Passou
     @Test
     fun magReaderPosition() {
         assertEquals(expectedDeviceInfo?.magReaderPosition, deviceInfo.magReaderPosition)
     }
 
+    // Passou
     @Test
     fun nfcReaderPosition() {
         assertEquals(expectedDeviceInfo?.nfcReaderPosition, deviceInfo.nfcReaderPosition)
     }
 
+    // Passou
     @Test
     fun keyBoardType() {
         assertEquals(expectedDeviceInfo?.keyboardType, deviceInfo.keyboardType)
     }
+
+
+    // Criar arquivo ReadFile no hal-mock
+    private fun getFileContent(path: String): String {
+        return InputStreamReader(this.javaClass.classLoader!!.getResourceAsStream(path)).readText()
+    }
+
 }

@@ -12,6 +12,7 @@ class GenericCommandTest : AutoOpenCloseTest() {
 
     private val stubResultsFolder = "resources/bc"
 
+    // Not passed
     @Test
     fun validateGenericCommand() = runBlocking {
 

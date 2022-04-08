@@ -12,15 +12,15 @@ abstract class AutoLoadTableTest : AutoOpenCloseTest() {
 
     @Before
     override fun setup() {
-        val queue =
-            ArrayDeque(
-                listOf(
-                    PinpadStub.Companion.CombinedResult(PinpadResult(PinpadResult.OPN, ResultCode.PP_OK)),
-                    PinpadStub.Companion.CombinedResult(PinpadResult(PinpadResult.TLI, ResultCode.PP_OK)),
-                    PinpadStub.Companion.CombinedResult(PinpadResult(PinpadResult.CLO, ResultCode.PP_OK))
-                )
-            )
-        initializePinpad(queue)
+//        val queue =
+//            ArrayDeque(
+//                listOf(
+//                    PinpadStub.Companion.CombinedResult(PinpadResult(PinpadResult.OPN, ResultCode.PP_OK)),
+//                    PinpadStub.Companion.CombinedResult(PinpadResult(PinpadResult.TLI, ResultCode.PP_OK)),
+//                    PinpadStub.Companion.CombinedResult(PinpadResult(PinpadResult.CLO, ResultCode.PP_OK))
+//                )
+//            )
+        initializePinpad()
         loadTableIfNeeded()
     }
 
@@ -28,9 +28,9 @@ abstract class AutoLoadTableTest : AutoOpenCloseTest() {
 
         if (pinpad.tableLoadInit("$ACQUIRER_ID$TABLE_STUB_TIMESTAMP") == PP_TABEXP) {
 
-            TABLE_STUB_RECORDS.forEach {
-                pinpad.tableLoadRec(it)
-            }
+//            TABLE_STUB_RECORDS.forEach {
+//                pinpad.tableLoadRec(it)
+//            }
 
             pinpad.tableLoadEnd()
         }
