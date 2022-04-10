@@ -45,7 +45,6 @@ class SettingsTest {
         assertEquals(time, subject.getSelfExamTime())
     }
 
-    // Passed
     @Test
     fun toggleStatusBar() {
 
@@ -60,7 +59,6 @@ class SettingsTest {
         assertTrue(subject.enableStatusBar(true))
     }
 
-    // Not implemented in hal-mock
     @Test
     fun toggleKeyCodeMenu() {
         val subject = HALConfig.deviceProvider.getSettings(
@@ -76,7 +74,6 @@ class SettingsTest {
         assertTrue(subject.disableKeyCodeMenu())
     }
 
-    // Passed
     @Test
     fun retrieveDeviceInfo() {
         val subject = HALConfig.deviceProvider.getSettings(
@@ -95,7 +92,6 @@ class SettingsTest {
     }
 
 
-    // Not implemented in HAL Mock
     @Test
     fun toggleButtonsLight() = runBlocking {
         val subject = HALConfig.deviceProvider.getSettings(
@@ -111,7 +107,6 @@ class SettingsTest {
     }
 
 
-    // A8 Only
     @Test
     fun intentToSelfTestApp() {
         val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))
@@ -119,7 +114,6 @@ class SettingsTest {
         assertFalse(intent?.`package`.isNullOrEmpty())
     }
 
-    // Not passed
     @Test
     fun setSystemTime() {
         val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))
@@ -134,7 +128,6 @@ class SettingsTest {
         subject.setSystemTime(Date().time - oneHour)
     }
 
-    // Not passed
     @Test
     fun setTimeZone() {
         val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))

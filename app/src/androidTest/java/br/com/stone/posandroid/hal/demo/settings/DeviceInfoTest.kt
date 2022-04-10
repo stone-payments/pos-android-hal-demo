@@ -42,21 +42,18 @@ class DeviceInfoTest {
         )
     }
 
-    // Passou
     @Test
     fun serialNumber() {
         val serialNumber = deviceInfo.serialNumber
         assertFalse(serialNumber.isEmpty())
     }
 
-    // Passou
     @Test
     fun isPosAndroid() {
         val isPosAndroid = deviceInfo.isPosAndroid
         assertEquals(expectedDeviceInfo?.isPosAndroid, isPosAndroid)
     }
 
-    // Passou
     @Test
     fun manufacturerModel() {
         val manufacturerModel = deviceInfo.manufacturerModel
@@ -69,7 +66,6 @@ class DeviceInfoTest {
         assertTrue(manufacturerModel in supportedDevices)
     }
 
-    // Passou
     @Test
     fun osBuildNumber() {
         val osBuildNumber = deviceInfo.osBuildNumber
@@ -77,7 +73,6 @@ class DeviceInfoTest {
         assertTrue("osBuildNumber doesn't match the expected pattern", osBuildNumber.matches(versionRegex))
     }
 
-    // Passou
     @Test
     fun kernelVersion() {
         val kernelVersion = deviceInfo.kernelVersion
@@ -86,7 +81,6 @@ class DeviceInfoTest {
         assertTrue("kernelVersion doesn't match the expected pattern", kernelVersion!!.matches(versionRegex))
     }
 
-    // Passou
     @Test
     fun customResourceVersion() {
         val customResourceVersion = deviceInfo.customResourceVersion
@@ -97,8 +91,6 @@ class DeviceInfoTest {
         }
     }
 
-
-    // Passou
     @Test
     fun cpuUsage() {
         val cpuUsage = deviceInfo.cpuInfo.getCpuUsage()
@@ -106,7 +98,6 @@ class DeviceInfoTest {
         assertNotEquals("getCpuUsage returned UNKNOWN_VALUE", CpuInfo.UNKNOWN_VALUE, cpuUsage)
     }
 
-    // Passou
     @Test
     fun cpuTemperature() {
         val cpuTemperature = deviceInfo.cpuInfo.getCpuTemperature()
@@ -114,25 +105,21 @@ class DeviceInfoTest {
         assertNotEquals("getCpuTemperature returned UNKNOWN_VALUE", CpuInfo.UNKNOWN_VALUE, cpuTemperature)
     }
 
-    // Passou
     @Test
     fun iccReaderPosition() {
         assertEquals(expectedDeviceInfo?.iccReaderPosition, deviceInfo.iccReaderPosition)
     }
 
-    // Passou
     @Test
     fun magReaderPosition() {
         assertEquals(expectedDeviceInfo?.magReaderPosition, deviceInfo.magReaderPosition)
     }
 
-    // Passou
     @Test
     fun nfcReaderPosition() {
         assertEquals(expectedDeviceInfo?.nfcReaderPosition, deviceInfo.nfcReaderPosition)
     }
 
-    // Passou
     @Test
     fun keyBoardType() {
         assertEquals(expectedDeviceInfo?.keyboardType, deviceInfo.keyboardType)

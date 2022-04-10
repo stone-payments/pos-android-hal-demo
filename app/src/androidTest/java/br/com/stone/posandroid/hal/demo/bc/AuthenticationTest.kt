@@ -18,7 +18,6 @@ class AuthenticationTest : AutoOpenCloseTest() {
     @get:Rule
     val preconditionsTestRule = ConditionTestRule()
 
-    // Not Passed Incompatible command. Expected: GPN Actual: CLO
     @Test
     @Postcondition("Enter a 6-digit password and confirm")
     fun validateGetPin() = runBlocking {

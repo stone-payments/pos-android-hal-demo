@@ -63,7 +63,6 @@ class ControlCommandsTest {
         )
     }
 
-    // Passed
     @Test
     fun validateOpen() {
 
@@ -74,7 +73,6 @@ class ControlCommandsTest {
     }
 
 
-    // Ignored
     @Test
     @Ignore("Because feature not implement")
     fun validateAlreadyOpen() {
@@ -86,7 +84,6 @@ class ControlCommandsTest {
         assertEquals(PP_ALREADYOPEN, pinpad.open())
     }
 
-    // Passed
     @Test
     fun validateOpenAndClose() {
 
@@ -97,7 +94,6 @@ class ControlCommandsTest {
         assertEquals(PP_OK, pinpad.close())
     }
 
-    // Ignored
     @Test
     @Ignore("Because feature not implement")
     fun validateNotOpen() {
@@ -116,10 +112,10 @@ class ControlCommandsTest {
             "$stubResultsFolder/validate_abort_command.json"
 
         var subject: Int = Int.MIN_VALUE
-//        CoroutineScope(Dispatchers.IO).launch {
-//            delay(1000)
-//            pinpad.abort()
-//        }
+        CoroutineScope(Dispatchers.IO).launch {
+            delay(1000)
+            pinpad.abort()
+        }
 
         try {
             pinpad.getCardOrThrows(DEFAULT_GCR_INPUT)
@@ -128,9 +124,9 @@ class ControlCommandsTest {
         }
         assertEquals(PP_CANCEL, subject)
 
-//        verify(exactly = 1) {
-//            pinpadCallbacks.onAbort()
-//        }
+        verify(exactly = 1) {
+            pinpadCallbacks.onAbort()
+        }
 
     }
 }

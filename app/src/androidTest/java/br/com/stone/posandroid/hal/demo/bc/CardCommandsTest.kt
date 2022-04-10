@@ -1,6 +1,5 @@
 package br.com.stone.posandroid.hal.demo.bc
 
-import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks.Companion.PROCESSING
 import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks.Companion.UPDATING_TABLES
 import br.com.stone.posandroid.hal.api.bc.ext.getCardOrThrows
@@ -20,8 +19,6 @@ import org.junit.runners.MethodSorters
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class CardCommandsTest : AutoLoadTableTest() {
-
-    private val stubResultsFolder = "resources/card-commands-test"
 
     @get:Rule
     val conditionsTestRule = ConditionTestRule()
