@@ -30,29 +30,19 @@ class CardCommandsTest : AutoLoadTableTest() {
     @Test
     @Precondition("Insert Card")
     fun validateGetCard() = runBlocking {
-
-        pinpad.runtimeProperties[RESULTS_FILE_KEY] =
-            "$stubResultsFolder/validate_get_card.json"
-
         val subject = pinpad.getCardOrThrows(DEFAULT_GCR_INPUT)
 
         assertTrue(subject.contains(REGEX_CARD_CHIP.toRegex()))
 
         verifyOrder {
-            callback.onEvent(UPDATING_TABLES, "")
-            callback.onEvent(PROCESSING, "")
-
+            callback.onEvent(UPDATING_TABLES, any())
+            callback.onEvent(PROCESSING, any())
         }
-
     }
 
     @Test
     @Precondition("Remove card")
     fun validateRemoveCard() = runBlocking {
-
-        pinpad.runtimeProperties[RESULTS_FILE_KEY] =
-            "$stubResultsFolder/validate_remove_card.json"
-
         assertTrue(pinpad.removeCardOrThrows("Remova o cartão").isBlank())
     }
 }
