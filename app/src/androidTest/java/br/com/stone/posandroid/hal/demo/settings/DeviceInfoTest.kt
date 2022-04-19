@@ -125,8 +125,6 @@ class DeviceInfoTest {
         assertEquals(expectedDeviceInfo?.keyboardType, deviceInfo.keyboardType)
     }
 
-
-    // Criar arquivo ReadFile no hal-mock
     private fun getFileContent(path: String): String {
         return InputStreamReader(this.javaClass.classLoader!!.getResourceAsStream(path)).readText()
     }
