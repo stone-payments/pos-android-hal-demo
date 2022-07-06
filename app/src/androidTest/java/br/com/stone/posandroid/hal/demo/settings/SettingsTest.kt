@@ -12,10 +12,7 @@ import br.com.stone.posandroid.hal.demo.HALConfig
 import br.com.stone.posandroid.hal.demo.util.isPackageInstalled
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
-import org.junit.Assert.fail
+import org.junit.Assert.*
 import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -32,6 +29,13 @@ class SettingsTest {
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
     private val runningOnEmulator: Boolean by lazy {
         HALConfig.runningOnEmulator
+    }
+
+
+    @Test
+    fun getSelfExamTime_should_return_time(){
+        val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))
+        assertNotNull(subject.getSelfExamTime())
     }
 
     @Test
