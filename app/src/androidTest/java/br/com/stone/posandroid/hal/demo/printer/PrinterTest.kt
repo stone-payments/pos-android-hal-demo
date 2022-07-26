@@ -1,20 +1,24 @@
 package br.com.stone.posandroid.hal.demo.printer
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
-import br.com.stone.posandroid.hal.api.printer.DarknessLevel
-import br.com.stone.posandroid.hal.api.printer.Printer
-import br.com.stone.posandroid.hal.api.printer.PrinterBuffer
+import br.com.stone.posandroid.hal.api.printer.*
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer.Companion.NO_PRINTER_STEP
-import br.com.stone.posandroid.hal.api.printer.PrinterErrorCode
 import br.com.stone.posandroid.hal.api.printer.customize.Alignment
 import br.com.stone.posandroid.hal.api.printer.customize.CustomizedTextSize
 import br.com.stone.posandroid.hal.api.printer.customize.PrinterCustomizedText
 import br.com.stone.posandroid.hal.api.printer.exception.PrinterException
 import br.com.stone.posandroid.hal.api.printer.ext.printOrThrows
 import br.com.stone.posandroid.hal.demo.HALConfig
+import br.com.stone.posandroid.hal.demo.R
 import br.com.stone.posandroid.hal.demo.rule.ConditionTestRule
 import br.com.stone.posandroid.hal.demo.rule.Precondition
 import kotlinx.coroutines.delay
@@ -305,5 +309,79 @@ class PrinterTest {
         } catch (e: PrinterException) {
             assertEquals(PrinterErrorCode.PRINTER_PRINT_ERROR, e.code)
         }
+    }
+
+    @Test
+    @Precondition("Printer must have paper")
+    fun printWithStepsToCut () = runBlocking {
+        subject = HALConfig.deviceProvider.getPrinter(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-ok.json",
+                KEY_CONTEXT to context
+            )
+        )
+        val printerBuffer = PrinterBuffer()
+        printerBuffer.addLine(Printer::class.simpleName.toString())
+        printerBuffer.step = subject.getStepsToCut()
+        try {
+            printBitmap()
+        } catch (e: Throwable) {
+            if (e is PrinterException) {
+                val result =
+                    (e.code == PrinterErrorCode.PRINTER_UNSUPPORTED_FORMAT || e.code == PrinterErrorCode.PRINTER_INVALID_DATA)
+                assertTrue(result)
+            }
+        }
+    }
+
+    private fun printBitmap() {
+        val printerBuffer = PrinterBuffer()
+        val resource: View = inflateViewBaseOnMeasureSpec(context, R.layout.demo_cut_line)
+        val bitmap = createBitmapFromView(resource)
+        printerBuffer.addImage(bitmap)
+        printerBuffer.step = subject.getStepsToCut()
+
+        subject.print(printerBuffer,
+            object : PrintCallback {
+                override fun onSuccess() {
+                }
+
+                override fun onError(errorCode: Int) {
+                }
+            })
+    }
+
+    private fun createBitmapFromView(view: View): Bitmap {
+        view.apply {
+            setPadding(DEFAULT_PADDING, DEFAULT_PADDING, DEFAULT_PADDING, DEFAULT_PADDING)
+
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+
+            measure(
+                View.MeasureSpec.makeMeasureSpec(WIDTH_DEFAULT, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(UNSPECIFIED_SIZE, View.MeasureSpec.UNSPECIFIED)
+            )
+
+            layout(POSITION_DEFAULT, POSITION_DEFAULT, this.measuredWidth, this.measuredHeight)
+        }
+        val bitmap = Bitmap.createBitmap(view.measuredWidth, view.measuredHeight, Bitmap.Config.RGB_565)
+        val canvas = Canvas(bitmap)
+        view.draw(canvas)
+        return bitmap
+    }
+
+    private fun inflateViewBaseOnMeasureSpec(context: Context, layoutResId: Int): View {
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        return inflater.inflate(layoutResId, null)
+    }
+
+    companion object {
+        private const val WIDTH_DEFAULT = 384
+        private const val POSITION_DEFAULT = 0
+        private const val UNSPECIFIED_SIZE = 0
+        private const val DEFAULT_PADDING = 0
     }
 }
