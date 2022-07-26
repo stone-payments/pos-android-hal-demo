@@ -322,9 +322,8 @@ class PrinterTest {
         )
         val printerBuffer = PrinterBuffer()
         printerBuffer.addLine(Printer::class.simpleName.toString())
-        printerBuffer.step = subject.getStepsToCut()
         try {
-            printBitmap()
+            printBitmap(printerBuffer)
         } catch (e: Throwable) {
             if (e is PrinterException) {
                 val result =
@@ -334,8 +333,7 @@ class PrinterTest {
         }
     }
 
-    private fun printBitmap() {
-        val printerBuffer = PrinterBuffer()
+    private fun printBitmap(printerBuffer: PrinterBuffer) {
         val resource: View = inflateViewBaseOnMeasureSpec(context, R.layout.demo_cut_line)
         val bitmap = createBitmapFromView(resource)
         printerBuffer.addImage(bitmap)
