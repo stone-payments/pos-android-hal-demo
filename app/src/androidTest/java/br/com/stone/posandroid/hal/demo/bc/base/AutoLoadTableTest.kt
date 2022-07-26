@@ -1,37 +1,22 @@
 package br.com.stone.posandroid.hal.demo.bc.base
 
-import br.com.stone.posandroid.hal.api.bc.PinpadResult
-import br.com.stone.posandroid.hal.api.bc.constants.ResultCode
 import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_TABEXP
-import br.com.stone.posandroid.hal.mock.bc.PinpadStub
 import org.junit.Before
-import java.util.ArrayDeque
-
+import java.util.UUID
 
 abstract class AutoLoadTableTest : AutoOpenCloseTest() {
 
     @Before
     override fun setup() {
-        val queue =
-            ArrayDeque(
-                listOf(
-                    PinpadStub.Companion.CombinedResult(PinpadResult(PinpadResult.OPN, ResultCode.PP_OK)),
-                    PinpadStub.Companion.CombinedResult(PinpadResult(PinpadResult.TLI, ResultCode.PP_OK)),
-                    PinpadStub.Companion.CombinedResult(PinpadResult(PinpadResult.CLO, ResultCode.PP_OK))
-                )
-            )
-        initializePinpad(queue)
+        initializePinpad()
         loadTableIfNeeded()
     }
 
     private fun loadTableIfNeeded() {
-
         if (pinpad.tableLoadInit("$ACQUIRER_ID$TABLE_STUB_TIMESTAMP") == PP_TABEXP) {
-
             TABLE_STUB_RECORDS.forEach {
                 pinpad.tableLoadRec(it)
             }
-
             pinpad.tableLoadEnd()
         }
     }
@@ -40,7 +25,7 @@ abstract class AutoLoadTableTest : AutoOpenCloseTest() {
         const val ACQUIRER_ID = "08"
         const val TABLE_STUB_TIMESTAMP = "3615208604"
 
-        //        val TABLE_STUB_TIMESTAMP = UUID.randomUUID().toString().substring(0, 10) //force load table
+        val TABLE_DIFFERENT_STUB_TIMESTAMP = UUID.randomUUID().toString().substring(0, 10) //force load table
         val TABLE_STUB_RECORDS = arrayOf(
             "013401080110A0000000041010D0761300000000000001CREDITO         0300020002000007698620              00000       E0F8E8F000F0A00122F850ACF8000400000000FC50ACA0000000000001405f5e0ff0000000000002710000009F02065F2A029A039C0195059F370400000000009F37040000000000000000000000000000000000Y1Z1Y3Z3F850ACF8000400000000FC50ACA000E060C81F000F0A00105f5e0ff1",
             "013401080210A0000000041010D0761200000000000002DEBITO          0300020002000007698620              00000       E0F0E8F000F0F00122F850ACF8000000800000FC50ACA0000000000001405f5e0ff0000000000002710000009F02065F2A029A039C0195059F370400000000009F37040000000000000000000000000000000000Y1Z1Y3Z3F850ACF8000000800000FC50ACA000E060C81F000F0F00105f5e0ff1",

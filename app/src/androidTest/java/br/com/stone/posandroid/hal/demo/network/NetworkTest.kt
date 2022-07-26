@@ -8,7 +8,6 @@ import br.com.stone.posandroid.hal.api.network.ApnInfo
 import br.com.stone.posandroid.hal.demo.HALConfig
 import br.com.stone.posandroid.hal.demo.rule.Precondition
 import org.junit.Assert
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.net.InetSocketAddress

@@ -4,18 +4,20 @@ buildscript {
 
     ext {
         versions = [
-                android_compile_sdk  : 29,
+                android_compile_sdk  : 31,
                 android_min_sdk      : 21,
-                android_target_sdk   : 29,
+                android_target_sdk   : 31,
                 androidx_test_version: "1.3.0",
                 build_tools          : "29.0.2",
                 build_gradle         : "3.5.0",
-                kotlin               : "1.4.32",
-                kotlinx              : "1.3.2",
+                kotlin               : "1.6.0",
+                kotlinx              : "1.6.0",
                 dokka                : "0.9.18",
                 junit5               : "5.5.0",
                 junit                : "4.12",
-                test_runner          : "1.0.2"
+                test_runner          : "1.0.2",
+                gson                 : "2.8.6",
+                halApi               : "1.22.0"
         ]
         localProp = new Properties()
         fileName = 'local.properties'
@@ -50,6 +52,10 @@ allprojects {
         maven { url "https://packagecloud.io/priv/${packageCloudReadTokenInternal}/stone/pos-android-internal/maven2" }
     }
     group = "br.com.stone.posandroid"
+
+    configurations.all {
+        resolutionStrategy.force 'org.objenesis:objenesis:2.6'
+    }
 }
 
 task clean(type: Delete) {

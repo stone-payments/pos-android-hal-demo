@@ -95,6 +95,7 @@ class SettingsTest {
         }
     }
 
+
     @Test
     fun toggleButtonsLight() = runBlocking {
         val subject = HALConfig.deviceProvider.getSettings(
@@ -108,6 +109,7 @@ class SettingsTest {
         delay(2000L)
         assertTrue(subject.disableButtonsLight())
     }
+
 
     @Test
     fun intentToSelfTestApp() {

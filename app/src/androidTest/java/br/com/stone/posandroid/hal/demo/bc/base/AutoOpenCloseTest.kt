@@ -9,22 +9,16 @@ import br.com.stone.posandroid.hal.api.Properties.RESULTS_KEY
 import br.com.stone.posandroid.hal.api.Properties.TARGET_RESULT_KEY
 import br.com.stone.posandroid.hal.api.bc.Pinpad
 import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks
-import br.com.stone.posandroid.hal.api.bc.PinpadResult
-import br.com.stone.posandroid.hal.api.bc.PinpadResult.Companion.CLO
-import br.com.stone.posandroid.hal.api.bc.PinpadResult.Companion.OPN
-import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_OK
 import br.com.stone.posandroid.hal.api.bc.constants.RuntimeProperties
 import br.com.stone.posandroid.hal.demo.HALConfig.deviceProvider
 import br.com.stone.posandroid.hal.demo.R
 import br.com.stone.posandroid.hal.demo.util.KEYMAP_SUNMI
 import br.com.stone.posandroid.hal.demo.util.LAYOUT_PIN_SUNMI
 import br.com.stone.posandroid.hal.demo.util.PinpadCallbackComponent
-import br.com.stone.posandroid.hal.mock.bc.PinpadStub.Companion.CombinedResult
 import io.mockk.unmockkAll
 import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith
-import java.util.ArrayDeque
 
 
 @RunWith(AndroidJUnit4ClassRunner::class)
@@ -36,20 +30,10 @@ abstract class AutoOpenCloseTest {
 
     @Before
     open fun setup() {
-
-        val queue =
-            ArrayDeque(
-                listOf(
-                    CombinedResult(PinpadResult(OPN, PP_OK)),
-                    CombinedResult(PinpadResult(CLO, PP_OK))
-                )
-            )
-
-        initializePinpad(queue)
-
+        initializePinpad()
     }
 
-    protected fun initializePinpad(queue: ArrayDeque<CombinedResult>) {
+    protected fun initializePinpad() {
         pinpad = deviceProvider.getPinpad(
             mutableMapOf(
                 KEY_CONTEXT to context,
@@ -59,7 +43,6 @@ abstract class AutoOpenCloseTest {
             mutableMapOf(
                 RuntimeProperties.PinLayout.KEY_PIN_KBD_LAYOUT_ID to R.layout.regularkeyboard,
                 RuntimeProperties.PinLayout.KEY_SUNMI_LAYOUT_INFO to LAYOUT_PIN_SUNMI,
-                RESULTS_KEY to queue,
                 TARGET_RESULT_KEY to RESULTS_KEY
             ),
             callback
