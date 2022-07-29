@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>DeviceInfo</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>HAL API</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="HAL API::br.com.stone.posandroid.hal.api.settings/DeviceInfo///PointingToDeclaration//1086730362">
+  <div class="breadcrumbs"><a href="../../../index.html">HAL API</a><span class="delimiter">/</span><a href="../index.html">br.com.stone.posandroid.hal.api.settings</a><span class="delimiter">/</span><a href="index.html">DeviceInfo</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Device</span><wbr></wbr><span><span>Info</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">DeviceInfo</a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>serialNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>isPosAndroid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>manufacturerName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>fullDeviceName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;&quot;</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>osBuildNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>firmwareVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>osBuildNumber<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>modelName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>fullDeviceName<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>soSupportedExtension<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>DEFAULT_SO_SUPPORTED_EXTENSION<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>kernelVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>KERNEL_UNKNOWN<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>cpuInfo<span class="token operator">: </span><a href="../-cpu-info/index.html">CpuInfo</a><span class="token operator"> = </span>CpuInfoFromExec(SENSOR_TEMP_DEFAULT)<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>iccReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token operator"> = </span>defaultIccReaderPosition<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>magReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token operator"> = </span>defaultMagReaderPosition<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>nfcReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token operator"> = </span>defaultNfcReaderPosition<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>keyboardType<span class="token operator">: </span><a href="../-keyboard-type/index.html">KeyboardType</a><span class="token operator"> = </span>defaultKeyboardType<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;<span class="token keyword">val </span>customResourceVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>CUSTOM_RESOURCE_UNKNOWN</span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="block"></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Parameters">Parameters</button></div>
+    <div class="tabs-section-body">
+      <h2 class="">Parameters</h2>
+      <div data-togglable="Parameters">
+        <div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>serial</span><wbr></wbr><span><span>Number</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Device Serial Number</p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>is</span><wbr></wbr><span>Pos</span><wbr></wbr><span><span>Android</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">The device is a Point Of Sale System</p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>manufacturer</span><wbr></wbr><span><span>Name</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Device Manufacturer Name</p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>full</span><wbr></wbr><span>Device</span><wbr></wbr><span><span>Name</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Full Device Name (deprecated, instead set 'modelName' and retrieve with 'manufacturerModel)</p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>os</span><wbr></wbr><span>Build</span><wbr></wbr><span><span>Number</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">OS build number. <strong>Requirements:</strong><i>Sequential number</i>; <i>Only numbers and dots</i>; <i>For each field between the points the amount of digits must be constant</i>; <i>Max of four fields between the points (e.g. 1.0.0.0)</i>. Examples of accepted Kernel Version: <i>&quot;AAMMDD&quot;</i>, <i>&quot;AA.MM.DD&quot;</i></p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>firmware</span><wbr></wbr><span><span>Version</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Device Firmware Version (deprecated, use <a href="os-build-number.html">osBuildNumber</a> instead).</p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>model</span><wbr></wbr><span><span>Name</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Device Model Name.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>so</span><wbr></wbr><span>Supported</span><wbr></wbr><span><span>Extension</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">so extension(with dot).</p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>kernel</span><wbr></wbr><span><span>Version</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Device Kernel Version. <strong>Requirements:</strong><i>Sequential number</i>; <i>Only numbers and dots</i>; <i>For each field between the points the amount of digits must be constant</i>; <i>Max of four fields between the points (e.g. 1.0.0.0)</i>. Examples of accepted Kernel Version: <i>&quot;AAMMDD&quot;</i>, <i>&quot;AA.MM.DD&quot;</i></p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>cpu</span><wbr></wbr><span><span>Info</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Returns the hardware information of the CPU.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>icc</span><wbr></wbr><span>Reader</span><wbr></wbr><span><span>Position</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Position of ICC (Contact) Reader.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>mag</span><wbr></wbr><span>Reader</span><wbr></wbr><span><span>Position</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Position of MAG STRIPE Reader.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>nfc</span><wbr></wbr><span>Reader</span><wbr></wbr><span><span>Position</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Position of NFC (Contactless) Reader.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>keyboard</span><wbr></wbr><span><span>Type</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Type of keyboard referenced in <a href="../-keyboard-type/index.html">KeyboardType</a>.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><span>custom</span><wbr></wbr><span>Resource</span><wbr></wbr><span><span>Version</span></span></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Custom Resource Version. Return <a href="-companion/-c-u-s-t-o-m_-r-e-s-o-u-r-c-e_-u-n-k-n-o-w-n.html">CUSTOM_RESOURCE_UNKNOWN</a><strong>if not applicable</strong>.</p></div></div></div></div></div></div></div></div></div>
+      </div>
+      <h2 class="tabbedcontent">Constructors</h2>
+      <div class="table" data-togglable="Constructors"><a data-name="-659628965%2FConstructors%2F1086730362" anchor-label="DeviceInfo" id="-659628965%2FConstructors%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-device-info.html"><span>Device</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-659628965%2FConstructors%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-device-info.html"><span class="token function">DeviceInfo</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;serialNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;isPosAndroid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;manufacturerName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;fullDeviceName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;firmwareVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">Simple constructor to ensure retro-compatibility with 1.4</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="559022592%2FConstructors%2F1086730362" anchor-label="DeviceInfo" id="559022592%2FConstructors%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-device-info.html"><span>Device</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="559022592%2FConstructors%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-device-info.html"><span class="token function">DeviceInfo</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;serialNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;isPosAndroid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;manufacturerName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;fullDeviceName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;firmwareVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;modelName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1643451990%2FConstructors%2F1086730362" anchor-label="DeviceInfo" id="1643451990%2FConstructors%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-device-info.html"><span>Device</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1643451990%2FConstructors%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-device-info.html"><span class="token function">DeviceInfo</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;serialNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;isPosAndroid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;manufacturerName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;fullDeviceName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;firmwareVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;modelName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>fullDeviceName<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;kernelVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;cpuInfo<span class="token operator">: </span><a href="../-cpu-info/index.html">CpuInfo</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;iccReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;magReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;nfcReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1064567387%2FConstructors%2F1086730362" anchor-label="DeviceInfo" id="1064567387%2FConstructors%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-device-info.html"><span>Device</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1064567387%2FConstructors%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-device-info.html"><span class="token function">DeviceInfo</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;serialNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;isPosAndroid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;manufacturerName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;fullDeviceName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;&quot;</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;firmwareVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;&quot;</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;modelName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>fullDeviceName<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;kernelVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>KERNEL_UNKNOWN<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;cpuInfo<span class="token operator">: </span><a href="../-cpu-info/index.html">CpuInfo</a><span class="token operator"> = </span>CpuInfoFromExec(SENSOR_TEMP_DEFAULT)<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;iccReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token operator"> = </span>defaultIccReaderPosition<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;magReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token operator"> = </span>defaultMagReaderPosition<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;nfcReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token operator"> = </span>defaultNfcReaderPosition<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;keyboardType<span class="token operator">: </span><a href="../-keyboard-type/index.html">KeyboardType</a><span class="token operator"> = </span>defaultKeyboardType</span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="994206848%2FConstructors%2F1086730362" anchor-label="DeviceInfo" id="994206848%2FConstructors%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-device-info.html"><span>Device</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="994206848%2FConstructors%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-device-info.html"><span class="token function">DeviceInfo</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;serialNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;isPosAndroid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;manufacturerName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;fullDeviceName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;&quot;</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;osBuildNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;firmwareVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>osBuildNumber<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;modelName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>fullDeviceName<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;kernelVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>KERNEL_UNKNOWN<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;cpuInfo<span class="token operator">: </span><a href="../-cpu-info/index.html">CpuInfo</a><span class="token operator"> = </span>CpuInfoFromExec(SENSOR_TEMP_DEFAULT)<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;iccReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token operator"> = </span>defaultIccReaderPosition<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;magReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token operator"> = </span>defaultMagReaderPosition<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;nfcReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token operator"> = </span>defaultNfcReaderPosition<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;keyboardType<span class="token operator">: </span><a href="../-keyboard-type/index.html">KeyboardType</a><span class="token operator"> = </span>defaultKeyboardType</span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="2090946058%2FConstructors%2F1086730362" anchor-label="DeviceInfo" id="2090946058%2FConstructors%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-device-info.html"><span>Device</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2090946058%2FConstructors%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-device-info.html"><span class="token function">DeviceInfo</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;serialNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;isPosAndroid<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;manufacturerName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;fullDeviceName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;&quot;</span><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;osBuildNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;firmwareVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>osBuildNumber<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;modelName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>fullDeviceName<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;soSupportedExtension<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>DEFAULT_SO_SUPPORTED_EXTENSION<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;kernelVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>KERNEL_UNKNOWN<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;cpuInfo<span class="token operator">: </span><a href="../-cpu-info/index.html">CpuInfo</a><span class="token operator"> = </span>CpuInfoFromExec(SENSOR_TEMP_DEFAULT)<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;iccReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token operator"> = </span>defaultIccReaderPosition<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;magReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token operator"> = </span>defaultMagReaderPosition<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;nfcReaderPosition<span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="token operator"> = </span>defaultNfcReaderPosition<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;keyboardType<span class="token operator">: </span><a href="../-keyboard-type/index.html">KeyboardType</a><span class="token operator"> = </span>defaultKeyboardType<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;customResourceVersion<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>CUSTOM_RESOURCE_UNKNOWN</span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Types</h2>
+      <div class="table" data-togglable="Types"><a data-name="-412738639%2FClasslikes%2F1086730362" anchor-label="Companion" id="-412738639%2FClasslikes%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-412738639%2FClasslikes%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Properties</h2>
+      <div class="table" data-togglable="Properties"><a data-name="-1155998732%2FProperties%2F1086730362" anchor-label="cpuInfo" id="-1155998732%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="cpu-info.html">cpuInfo</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1155998732%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="-1155998732%2FProperties%2F1086730362" anchor-label="cpuInfo" id="-1155998732%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="cpu-info.html">cpuInfo</a><span class="token operator">: </span><a href="../-cpu-info/index.html">CpuInfo</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1318105041%2FProperties%2F1086730362" anchor-label="customResourceVersion" id="1318105041%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="custom-resource-version.html">customResourceVersion</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1318105041%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="1318105041%2FProperties%2F1086730362" anchor-label="customResourceVersion" id="1318105041%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="custom-resource-version.html">customResourceVersion</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1684280147%2FProperties%2F1086730362" anchor-label="firmwareVersion" id="-1684280147%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="firmware-version.html">firmwareVersion</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1684280147%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="-1684280147%2FProperties%2F1086730362" anchor-label="firmwareVersion" id="-1684280147%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace strikethrough"><strike><span class="token keyword"></span></strike><strike><span class="token keyword">val </span></strike><a href="firmware-version.html"><strike>firmwareVersion</strike></a><strike><span class="token operator">: </span></strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-671488704%2FProperties%2F1086730362" anchor-label="fullDeviceName" id="-671488704%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="full-device-name.html">fullDeviceName</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-671488704%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="-671488704%2FProperties%2F1086730362" anchor-label="fullDeviceName" id="-671488704%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace strikethrough"><strike><span class="token keyword"></span></strike><strike><span class="token keyword">val </span></strike><a href="full-device-name.html"><strike>fullDeviceName</strike></a><strike><span class="token operator">: </span></strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="154491157%2FProperties%2F1086730362" anchor-label="iccReaderPosition" id="154491157%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="icc-reader-position.html">iccReaderPosition</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="154491157%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="154491157%2FProperties%2F1086730362" anchor-label="iccReaderPosition" id="154491157%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="icc-reader-position.html">iccReaderPosition</a><span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1633290421%2FProperties%2F1086730362" anchor-label="isPosAndroid" id="-1633290421%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="is-pos-android.html">isPosAndroid</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1633290421%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="-1633290421%2FProperties%2F1086730362" anchor-label="isPosAndroid" id="-1633290421%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="is-pos-android.html">isPosAndroid</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="2060963439%2FProperties%2F1086730362" anchor-label="kernelVersion" id="2060963439%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="kernel-version.html">kernelVersion</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2060963439%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="2060963439%2FProperties%2F1086730362" anchor-label="kernelVersion" id="2060963439%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="kernel-version.html">kernelVersion</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1321517391%2FProperties%2F1086730362" anchor-label="keyboardType" id="1321517391%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="keyboard-type.html">keyboardType</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1321517391%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="1321517391%2FProperties%2F1086730362" anchor-label="keyboardType" id="1321517391%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="keyboard-type.html">keyboardType</a><span class="token operator">: </span><a href="../-keyboard-type/index.html">KeyboardType</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1778490123%2FProperties%2F1086730362" anchor-label="magReaderPosition" id="1778490123%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="mag-reader-position.html">magReaderPosition</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1778490123%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="1778490123%2FProperties%2F1086730362" anchor-label="magReaderPosition" id="1778490123%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="mag-reader-position.html">magReaderPosition</a><span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1804725906%2FProperties%2F1086730362" anchor-label="manufacturerModel" id="1804725906%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="manufacturer-model.html">manufacturerModel</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1804725906%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="1804725906%2FProperties%2F1086730362" anchor-label="manufacturerModel" id="1804725906%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="manufacturer-model.html">manufacturerModel</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1804725906%2FProperties%2F1086730362" anchor-label="manufacturerModel" id="1804725906%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><p class="paragraph">Returns the properties 'manufacturerName' and 'modelName' as used by Stone internal systems, such as &quot;Ingenico APOS A8&quot; or &quot;Sunmi P2&quot;</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1203191308%2FProperties%2F1086730362" anchor-label="manufacturerName" id="-1203191308%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="manufacturer-name.html">manufacturerName</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1203191308%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="-1203191308%2FProperties%2F1086730362" anchor-label="manufacturerName" id="-1203191308%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="manufacturer-name.html">manufacturerName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1454373994%2FProperties%2F1086730362" anchor-label="modelName" id="-1454373994%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="model-name.html">modelName</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1454373994%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="-1454373994%2FProperties%2F1086730362" anchor-label="modelName" id="-1454373994%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="model-name.html">modelName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-737156173%2FProperties%2F1086730362" anchor-label="nfcReaderPosition" id="-737156173%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="nfc-reader-position.html">nfcReaderPosition</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-737156173%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="-737156173%2FProperties%2F1086730362" anchor-label="nfcReaderPosition" id="-737156173%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="nfc-reader-position.html">nfcReaderPosition</a><span class="token operator">: </span><a href="../-reader-position/index.html">ReaderPosition</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-599447433%2FProperties%2F1086730362" anchor-label="osBuildNumber" id="-599447433%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="os-build-number.html">osBuildNumber</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-599447433%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="-599447433%2FProperties%2F1086730362" anchor-label="osBuildNumber" id="-599447433%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="os-build-number.html">osBuildNumber</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-494315981%2FProperties%2F1086730362" anchor-label="serialNumber" id="-494315981%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="serial-number.html">serialNumber</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-494315981%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="-494315981%2FProperties%2F1086730362" anchor-label="serialNumber" id="-494315981%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="serial-number.html">serialNumber</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="409384163%2FProperties%2F1086730362" anchor-label="soSupportedExtension" id="409384163%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":api:dokkaHtml/release" data-filterable-set=":api:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="so-supported-extension.html">soSupportedExtension</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="409384163%2FProperties%2F1086730362"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":api:dokkaHtml/release"><a data-name="409384163%2FProperties%2F1086730362" anchor-label="soSupportedExtension" id="409384163%2FProperties%2F1086730362" data-filterable-set=":api:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="so-supported-extension.html">soSupportedExtension</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
