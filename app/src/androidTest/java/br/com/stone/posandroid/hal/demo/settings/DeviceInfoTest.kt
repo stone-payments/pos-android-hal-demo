@@ -6,9 +6,9 @@ import br.com.stone.posandroid.hal.api.Properties
 import br.com.stone.posandroid.hal.api.settings.CpuInfo
 import br.com.stone.posandroid.hal.api.settings.DeviceInfo
 import br.com.stone.posandroid.hal.demo.HALConfig
-import br.com.stone.posandroid.hal.mock.readFile
 import com.google.gson.Gson
-import com.google.gson.JsonParser
+import com.google.gson.JsonParser.parseString
+import java.io.InputStreamReader
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotEquals
@@ -20,7 +20,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4ClassRunner::class)
 class DeviceInfoTest {
 
-    private val stubResultsFolder = "resources/settings/settings-test"
+    private val stubResultsFolder = "settings/settings-test"
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
     private val versionRegex = Regex("^(?:(\\d+\\.){1,3}\\d{1,3}|\\d{4,16})\$")
 
@@ -35,7 +35,7 @@ class DeviceInfoTest {
 
     private val expectedDeviceInfo: DeviceInfo? by lazy {
         val gson = Gson()
-        val rootElement = JsonParser().parse(readFile("$stubResultsFolder/expected-deviceinfo.json"))
+        val rootElement = parseString(getFileContent("$stubResultsFolder/expected-deviceinfo.json"))
         gson.fromJson(
             rootElement.asJsonObject.get(deviceInfo.manufacturerModel),
             DeviceInfo::class.java
@@ -51,7 +51,7 @@ class DeviceInfoTest {
     @Test
     fun isPosAndroid() {
         val isPosAndroid = deviceInfo.isPosAndroid
-        assertEquals(expectedDeviceInfo?.isPosAndroid ?: false, isPosAndroid)
+        assertEquals(expectedDeviceInfo?.isPosAndroid, isPosAndroid)
     }
 
     @Test
@@ -91,7 +91,6 @@ class DeviceInfoTest {
         }
     }
 
-
     @Test
     fun cpuUsage() {
         val cpuUsage = deviceInfo.cpuInfo.getCpuUsage()
@@ -125,4 +124,9 @@ class DeviceInfoTest {
     fun keyBoardType() {
         assertEquals(expectedDeviceInfo?.keyboardType, deviceInfo.keyboardType)
     }
+
+    private fun getFileContent(path: String): String {
+        return InputStreamReader(this.javaClass.classLoader!!.getResourceAsStream(path)).readText()
+    }
+
 }

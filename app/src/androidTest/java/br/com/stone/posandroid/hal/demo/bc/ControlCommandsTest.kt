@@ -72,6 +72,7 @@ class ControlCommandsTest {
         assertEquals(PP_OK, pinpad.open())
     }
 
+
     @Test
     @Ignore("Because feature not implement")
     fun validateAlreadyOpen() {
