@@ -10,7 +10,10 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
-import br.com.stone.posandroid.hal.api.printer.*
+import br.com.stone.posandroid.hal.api.printer.DarknessLevel
+import br.com.stone.posandroid.hal.api.printer.Printer
+import br.com.stone.posandroid.hal.api.printer.PrinterBuffer
+import br.com.stone.posandroid.hal.api.printer.PrinterErrorCode
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer.Companion.NO_PRINTER_STEP
 import br.com.stone.posandroid.hal.api.printer.customize.Alignment
 import br.com.stone.posandroid.hal.api.printer.customize.CustomizedTextSize
@@ -333,20 +336,13 @@ class PrinterTest {
         }
     }
 
-    private fun printBitmap(printerBuffer: PrinterBuffer) {
+    private fun printBitmap(printerBuffer: PrinterBuffer) = runBlocking {
         val resource: View = inflateViewBaseOnMeasureSpec(context, R.layout.demo_cut_line)
         val bitmap = createBitmapFromView(resource)
         printerBuffer.addImage(bitmap)
         printerBuffer.step = subject.getStepsToCut()
 
-        subject.print(printerBuffer,
-            object : PrintCallback {
-                override fun onSuccess() {
-                }
-
-                override fun onError(errorCode: Int) {
-                }
-            })
+        subject.printOrThrows(printerBuffer)
     }
 
     private fun createBitmapFromView(view: View): Bitmap {
