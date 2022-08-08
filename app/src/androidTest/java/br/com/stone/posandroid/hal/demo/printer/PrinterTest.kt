@@ -325,15 +325,7 @@ class PrinterTest {
         )
         val printerBuffer = PrinterBuffer()
         printerBuffer.addLine(Printer::class.simpleName.toString())
-        try {
-            printBitmap(printerBuffer)
-        } catch (e: Throwable) {
-            if (e is PrinterException) {
-                val result =
-                    (e.code == PrinterErrorCode.PRINTER_UNSUPPORTED_FORMAT || e.code == PrinterErrorCode.PRINTER_INVALID_DATA)
-                assertTrue(result)
-            }
-        }
+        printBitmap(printerBuffer)
     }
 
     private fun printBitmap(printerBuffer: PrinterBuffer) = runBlocking {
