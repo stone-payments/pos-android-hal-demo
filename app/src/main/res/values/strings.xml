@@ -4,4 +4,7 @@
     <string name="test_message_format_before">%1$s before proceed\n</string>
     <string name="proceed_button">Proceed</string>
     <string name="test_message_format_after" >%1$s after proceed</string>
+
+    <string name="text_cut_line" >Linha de corte</string>
+    <string name="text_under_score" >________________________</string>
 </resources>
