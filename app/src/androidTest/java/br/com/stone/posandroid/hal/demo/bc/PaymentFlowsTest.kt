@@ -18,6 +18,7 @@ import br.com.stone.posandroid.hal.demo.util.REGEX_CARD_CHIP
 import br.com.stone.posandroid.hal.demo.util.REGEX_CARD_MAG
 import br.com.stone.posandroid.hal.demo.util.VISA_TESTCARD01_OUTPUT
 import br.com.stone.posandroid.hal.demo.util.isValidHex
+import io.mockk.verify
 import io.mockk.verifyOrder
 import io.mockk.verifySequence
 import kotlinx.coroutines.delay
@@ -48,6 +49,7 @@ class PaymentFlowsTest : AutoLoadTableTest() {
 
         val subject = pinpad.getCardOrThrows(DEFAULT_GCR_INPUT)
         assertTrue(subject.contains(REGEX_CARD_CHIP.toRegex()))
+
         val chipEMV = pinpad.goOnChipOrThrows(DEFAULT_GOC_COMMAND)
 
         assertTrue(chipEMV.startsWith('2') || chipEMV.startsWith('1'))
@@ -64,6 +66,24 @@ class PaymentFlowsTest : AutoLoadTableTest() {
             if(chipEMV.startsWith('2')) {
                 callback.onEvent(PinpadCallbacks.REMOVE_CARD, "")
             }
+        }
+    }
+
+    @Test
+    @Precondition("Insert card")
+    fun validatePreInsertedCardWithOnlyOneAID() = runBlocking {
+
+        val subject = pinpad.getCardOrThrows(DEFAULT_GCR_INPUT)
+        assertTrue(subject.contains(REGEX_CARD_CHIP.toRegex()))
+
+        verify(exactly = 0) {
+            callback.onEvent(PinpadCallbacks.INSERT_SWIPE_CARD,"")
+            callback.onEvent(PinpadCallbacks.TAP_INSERT_SWIPE_CARD,"")
+        }
+
+        verifySequence {
+            callback.onEvent(PinpadCallbacks.PROCESSING, "")
+            callback.onEvent(PinpadCallbacks.SELECTED_S, "")
         }
     }
 
