@@ -17,7 +17,7 @@ buildscript {
                 junit                : "4.12",
                 test_runner          : "1.0.2",
                 gson                 : "2.8.6",
-                halApi               : "2.2.1-RC2-PR_177-11feeee"
+                halApi               : "2.2.1"
         ]
         localProp = new Properties()
         fileName = 'local.properties'
