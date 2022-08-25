@@ -491,11 +491,13 @@ $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings///PointingToDe
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/Settings/#kotlin.collections.Map[kotlin.String,kotlin.Any]/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/-settings.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/addToWhiteList/#kotlin.String/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/add-to-white-list.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/disableButtonsLight/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/disable-buttons-light.html
+$dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/disableHomeKey/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/disable-home-key.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/disableKeyCodeMenu/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/disable-key-code-menu.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/disableStatusBar/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/disable-status-bar.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/disableSystemLauncher/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/disable-system-launcher.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/disableWakeupMode/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/disable-wakeup-mode.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/enableButtonsLight/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/enable-buttons-light.html
+$dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/enableHomeKey/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/enable-home-key.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/enableKeyCodeMenu/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/enable-key-code-menu.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/enableStatusBar/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/enable-status-bar.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/enableStatusBar/#kotlin.Boolean/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/enable-status-bar.html
@@ -515,6 +517,7 @@ $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/setSystemTimeA
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/setTimeZone/#java.util.TimeZone/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/set-time-zone.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/surpassPermissionsRequest/#kotlin.String/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/surpass-permissions-request.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/toggleButtonsLight/#kotlin.Boolean/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/toggle-buttons-light.html
+$dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/toggleHomeKeyFunction/#kotlin.Boolean/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/toggle-home-key-function.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/toggleKeyCodeMenu/#kotlin.Boolean/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/toggle-key-code-menu.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/toggleWakeupMode/#kotlin.Boolean/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/toggle-wakeup-mode.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/SettingsErrorCode///PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings-error-code/index.html
