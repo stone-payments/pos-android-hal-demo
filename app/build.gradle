@@ -62,7 +62,7 @@ dependencies {
     implementation "br.com.stone.posandroid:hal-mock:${versions.halApi}"
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-sunmi:1.23.0'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-gertec:1.16.1'
-    implementation 'br.com.stone.posandroid:posandroid-manufacturer-ingenico:1.7.1'
+    implementation 'br.com.stone.posandroid:posandroid-manufacturer-ingenico:1.9.0'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-positivo:5.0.0'
     implementation "com.google.code.gson:gson:${versions.gson}"
 
@@ -79,4 +79,8 @@ dependencies {
     androidTestImplementation "androidx.test:rules:${versions.androidx_test_version}"
     androidTestImplementation "io.mockk:mockk-android:1.9.3"
     androidTestImplementation 'junit:junit:4.13.2'
+
+    testImplementation "br.com.stone.posandroid:hal-api:${versions.halApi}"
+    androidTestImplementation project(path: ':app')
+
 }

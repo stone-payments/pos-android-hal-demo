@@ -40,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_test_title"
-        tools:text="@string/test_message_format_before"/>
+        tools:text="@string/test_message_format_before" />
 
     <Button
         android:id="@+id/button_proceed"
@@ -51,4 +51,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_message" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

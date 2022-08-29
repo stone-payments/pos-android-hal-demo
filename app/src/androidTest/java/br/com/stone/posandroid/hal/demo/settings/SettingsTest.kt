@@ -12,6 +12,7 @@ import br.com.stone.posandroid.hal.demo.HALConfig
 import br.com.stone.posandroid.hal.demo.util.isPackageInstalled
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert
 import org.junit.Assert.*
 import org.junit.Ignore
 import org.junit.Test
@@ -33,7 +34,7 @@ class SettingsTest {
 
 
     @Test
-    fun getSelfExamTime_should_return_time(){
+    fun getSelfExamTime_should_return_time() {
         val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))
         assertNotNull(subject.getSelfExamTime())
     }
@@ -86,7 +87,7 @@ class SettingsTest {
                 KEY_CONTEXT to context
             )
         )
-        
+
         try {
             val deviceInfo = subject.retrieveDeviceInfo()
         } catch (t: Throwable) {
@@ -143,6 +144,7 @@ class SettingsTest {
         assertTrue(subject.setTimeZone(timeZone))
         assertEquals(timeZone.id, TimeZone.getDefault().id)
     }
+
 
     @Test
     fun surpassPermissionsRequest() {
@@ -221,6 +223,13 @@ class SettingsTest {
         )
 
         subject.reboot()
+    }
+
+    @Test
+    fun toggleHomeKeyFunction() {
+        val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))
+        assertEquals(subject.toggleHomeKeyFunction(false), 0)
+        assertEquals(subject.toggleHomeKeyFunction(true), 0)
     }
 
     companion object {
