@@ -2,6 +2,7 @@ package br.com.stone.posandroid.hal.demo.bc
 
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
+import br.com.stone.posandroid.hal.demo.HALConfig.deviceProvider
 import br.com.stone.posandroid.hal.api.Properties
 import br.com.stone.posandroid.hal.api.Properties.KEY_CONTEXT
 import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
@@ -15,7 +16,6 @@ import br.com.stone.posandroid.hal.api.bc.constants.ResultCode.Companion.PP_OK
 import br.com.stone.posandroid.hal.api.bc.constants.RuntimeProperties
 import br.com.stone.posandroid.hal.api.bc.exception.PinpadException
 import br.com.stone.posandroid.hal.api.bc.ext.getCardOrThrows
-import br.com.stone.posandroid.hal.demo.HALConfig.deviceProvider
 import br.com.stone.posandroid.hal.demo.rule.ConditionTestRule
 import br.com.stone.posandroid.hal.demo.rule.Precondition
 import br.com.stone.posandroid.hal.demo.util.DEFAULT_GCR_INPUT
