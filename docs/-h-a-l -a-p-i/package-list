@@ -286,6 +286,14 @@ $dokka.location:br.com.stone.posandroid.hal.api.network/ApnInfo/carrierName/#/Po
 $dokka.location:br.com.stone.posandroid.hal.api.network/ApnInfo/password/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-apn-info/password.html
 $dokka.location:br.com.stone.posandroid.hal.api.network/ApnInfo/proxy/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-apn-info/proxy.html
 $dokka.location:br.com.stone.posandroid.hal.api.network/ApnInfo/user/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-apn-info/user.html
+$dokka.location:br.com.stone.posandroid.hal.api.network/AppDataUsage.Companion///PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-app-data-usage/-companion/index.html
+$dokka.location:br.com.stone.posandroid.hal.api.network/AppDataUsage.Companion/transformFrom/#br.com.stone.posandroid.hal.api.network.AppNetworkStats/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-app-data-usage/-companion/transform-from.html
+$dokka.location:br.com.stone.posandroid.hal.api.network/AppDataUsage///PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-app-data-usage/index.html
+$dokka.location:br.com.stone.posandroid.hal.api.network/AppDataUsage/AppDataUsage/#kotlin.String#kotlin.Long#kotlin.Long#kotlin.Long/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-app-data-usage/-app-data-usage.html
+$dokka.location:br.com.stone.posandroid.hal.api.network/AppDataUsage/mobileBytes/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-app-data-usage/mobile-bytes.html
+$dokka.location:br.com.stone.posandroid.hal.api.network/AppDataUsage/packageName/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-app-data-usage/package-name.html
+$dokka.location:br.com.stone.posandroid.hal.api.network/AppDataUsage/totalBytes/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-app-data-usage/total-bytes.html
+$dokka.location:br.com.stone.posandroid.hal.api.network/AppDataUsage/wifiBytes/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-app-data-usage/wifi-bytes.html
 $dokka.location:br.com.stone.posandroid.hal.api.network/AppNetworkStats///PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-app-network-stats/index.html
 $dokka.location:br.com.stone.posandroid.hal.api.network/AppNetworkStats/AppNetworkStats/#kotlin.String#kotlin.Long#kotlin.Long#kotlin.Long#kotlin.Long#kotlin.Long#kotlin.Long/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-app-network-stats/-app-network-stats.html
 $dokka.location:br.com.stone.posandroid.hal.api.network/AppNetworkStats/mobileRxBytes/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-app-network-stats/mobile-rx-bytes.html
@@ -304,7 +312,7 @@ $dokka.location:br.com.stone.posandroid.hal.api.network/Network/deleteAllConfigu
 $dokka.location:br.com.stone.posandroid.hal.api.network/Network/disableMobileNetwork/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-network/disable-mobile-network.html
 $dokka.location:br.com.stone.posandroid.hal.api.network/Network/enableMobileNetwork/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-network/enable-mobile-network.html
 $dokka.location:br.com.stone.posandroid.hal.api.network/Network/enableMobileNetwork/#kotlin.Boolean/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-network/enable-mobile-network.html
-$dokka.location:br.com.stone.posandroid.hal.api.network/Network/getAppsNetworkStats/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-network/get-apps-network-stats.html
+$dokka.location:br.com.stone.posandroid.hal.api.network/Network/getAppDataUsageList/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-network/get-app-data-usage-list.html
 $dokka.location:br.com.stone.posandroid.hal.api.network/Network/getNetworkInfo/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-network/get-network-info.html
 $dokka.location:br.com.stone.posandroid.hal.api.network/Network/properties/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-network/properties.html
 $dokka.location:br.com.stone.posandroid.hal.api.network/Network/removeApn/#kotlin.String/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.network/-network/remove-apn.html
@@ -519,6 +527,7 @@ $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/surpassPermiss
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/toggleButtonsLight/#kotlin.Boolean/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/toggle-buttons-light.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/toggleHomeKeyFunction/#kotlin.Boolean/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/toggle-home-key-function.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/toggleKeyCodeMenu/#kotlin.Boolean/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/toggle-key-code-menu.html
+$dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/toggleNativeFotaUpdate/#kotlin.Boolean/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/toggle-native-fota-update.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/Settings/toggleWakeupMode/#kotlin.Boolean/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings/toggle-wakeup-mode.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/SettingsErrorCode///PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings-error-code/index.html
 $dokka.location:br.com.stone.posandroid.hal.api.settings/SettingsErrorCode/PERMISSION_DENIED/#/PointingToDeclaration/-h-a-l -a-p-i/br.com.stone.posandroid.hal.api.settings/-settings-error-code/-p-e-r-m-i-s-s-i-o-n_-d-e-n-i-e-d.html
