@@ -36,12 +36,12 @@ class InstallerTest {
                 if (!this.exists()) {
                     this.mkdir()
                 }
-                File(this, "Test-Application.apk").also { apk ->
+                File(this, "CustomTzData-1.1.0.pkg").also { apk ->
                     if (!apk.exists()) {
                         val classloader = Thread.currentThread().contextClassLoader
                         requireNotNull(classloader)
                         val stream: InputStream = classloader.getResourceAsStream(
-                            "$stubResultsFolder/Test-Application.apk".removePrefix("resources/")
+                            "$stubResultsFolder/CustomTzData-1.1.0.pkg".removePrefix("resources/")
                         )
                         apk.writeBytes(stream.readBytes())
 
