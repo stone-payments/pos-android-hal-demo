@@ -2,11 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.stone.posandroid.hal.demo">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true" />
+        android:supportsRtl="true" >
+
+        <receiver
+            android:name="br.com.stone.posandroid.updateso.broadcast.UpdateSOBroadCast"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="br.com.stone.posandroid.ACTION_START"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
 
 </manifest>
