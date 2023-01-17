@@ -9,7 +9,7 @@ import android.os.Environment
 import br.com.stone.posandroid.hal.api.Properties
 import br.com.stone.posandroid.hal.api.installer.Installer
 import br.com.stone.posandroid.hal.api.provider.AutoProvider
-import br.com.stone.posandroid.hal.demo.R
+import br.com.stone.posandroid.updateso.R
 import br.com.stone.posandroid.updateso.data.UpdatedSORepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
