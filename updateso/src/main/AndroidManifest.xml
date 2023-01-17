@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.stone.posandroid.hal.demo">
+    package="br.com.stone.posandroid.updateso">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -15,7 +15,7 @@
         android:supportsRtl="true" >
 
         <receiver
-            android:name="br.com.stone.posandroid.updateso.broadcast.UpdateSOBroadCast"
+            android:name=".broadcast.UpdateSOBroadCast"
             android:exported="false">
             <intent-filter>
                 <action android:name="br.com.stone.posandroid.ACTION_START"/>
