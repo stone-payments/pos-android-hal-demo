@@ -32,6 +32,9 @@ android {
     aaptOptions {
         noCompress "m3_comp_bottom_app_bar_container_color"
     }
+    packagingOptions {
+        exclude 'META-INF/com.android.tools/proguard/coroutines.pro'
+    }
 }
 
 dependencies {
@@ -40,6 +43,7 @@ dependencies {
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-ingenico:1.9.0'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation "org.slf4j:slf4j-api:1.7.26"
+    implementation "androidx.work:work-runtime-ktx:2.7.1"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'

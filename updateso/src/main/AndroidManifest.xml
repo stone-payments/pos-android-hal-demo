@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
 
 
 
@@ -16,7 +17,7 @@
 
         <receiver
             android:name=".broadcast.UpdateSOBroadCast"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="br.com.stone.posandroid.ACTION_START"/>
             </intent-filter>
