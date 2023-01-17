@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+    <property name="log_path" value="${EXTERNAL_STORAGE}"/>
+    <property name="logcat_pattern" value="%thread %msg%n"/>
+    <property name="file_pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %1.-1level/%logger{36}: [%thread] %msg%n"/>
+
+    <appender name="Logcat" class="ch.qos.logback.classic.android.LogcatAppender">
+        <tagEncoder>
+            <pattern>%logger{12}</pattern>
+        </tagEncoder>
+        <encoder>
+            <pattern>${logcat_pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="File" class="ch.qos.logback.core.FileAppender">
+        <file>${log_path}/stone-sdk/log.txt</file>
+        <encoder>
+            <pattern>${file_pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="TRACE">
+        <appender-ref ref="Logcat" />
+        <appender-ref ref="File"/>
+    </root>
+</configuration>
