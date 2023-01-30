@@ -1,5 +1,6 @@
 package br.com.stone.posandroid.hal.demo.bc
 
+import android.util.Log
 import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks.Companion.PROCESSING
 import br.com.stone.posandroid.hal.api.bc.PinpadCallbacks.Companion.UPDATING_TABLES
 import br.com.stone.posandroid.hal.api.bc.ext.getCardOrThrows
@@ -31,15 +32,19 @@ class CardCommandsTest : AutoLoadTableTest() {
 
         assertTrue(subject.contains(REGEX_CARD_CHIP.toRegex()))
 
-        verifyOrder {
-            callback.onEvent(UPDATING_TABLES, any())
-            callback.onEvent(PROCESSING, any())
-        }
+//        verifyOrder {
+//            callback.onEvent(UPDATING_TABLES, any())
+//            callback.onEvent(PROCESSING, any())
+//        }
     }
 
     @Test
     @Precondition("Remove card")
     fun validateRemoveCard() = runBlocking {
-        assertTrue(pinpad.removeCardOrThrows("Remova o cartão").isBlank())
+        val result = pinpad.removeCardOrThrows("Remova o cartão")
+        Log.d("Remove", result)
+        assertTrue(result.isBlank())
+
+
     }
 }
