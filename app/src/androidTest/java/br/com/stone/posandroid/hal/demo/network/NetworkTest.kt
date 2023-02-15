@@ -18,6 +18,11 @@ class NetworkTest {
     private val stubResultsFolder = "resources/network/network-test"
     private val context by lazy { InstrumentationRegistry.getInstrumentation().targetContext }
 
+    companion object {
+        private const val WIFI_SSID = ""
+        private const val WIFI_PASSWORD = ""
+    }
+
     @Test
     @Precondition("Insert SIM Card")
     fun configureApn() {
@@ -69,6 +74,17 @@ class NetworkTest {
         Assert.assertFalse(networkInfo.apnName.isEmpty())
         Assert.assertFalse(networkInfo.carrierName.isEmpty())
         Assert.assertFalse(networkInfo.simSerialNumber.isEmpty())
+    }
+
+
+    @Test
+    fun connectWifi() {
+        val subject = HALConfig.deviceProvider.getNetwork(mapOf(
+            RESULTS_FILE_KEY to "$stubResultsFolder/network-toggle-mobile.json",
+            KEY_CONTEXT to context
+        ))
+
+        Assert.assertTrue(subject.connectToWifiNetwork(WIFI_SSID, WIFI_PASSWORD))
     }
 }
 
