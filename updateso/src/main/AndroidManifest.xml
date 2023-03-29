@@ -2,11 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.stone.posandroid.updateso">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
-
-
 
     <application
         android:allowBackup="true"
@@ -14,15 +9,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true" >
-
-        <receiver
-            android:name=".broadcast.UpdateSOBroadCast"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="br.com.stone.posandroid.ACTION_START"/>
-            </intent-filter>
-        </receiver>
-
     </application>
 
 </manifest>
