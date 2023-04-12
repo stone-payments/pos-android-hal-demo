@@ -108,7 +108,7 @@ dependencies {
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-sunmi:1.29.1'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-gertec:1.25.2'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-ingenico:1.9.0'
-    implementation 'br.com.stone.posandroid:posandroid-manufacturer-positivo:4.75.1'
+    implementation 'br.com.stone.posandroid:posandroid-manufacturer-positivo:4.85.0'
     implementation "com.google.code.gson:gson:${versions.gson}"
 
 
@@ -117,6 +117,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.github.tony19:logback-android:2.0.0'
+    implementation 'com.google.android.material:material:1.8.0'
 
 
     androidTestImplementation "androidx.test:runner:1.5.2"

@@ -86,5 +86,25 @@ class NetworkTest {
 
         Assert.assertTrue(subject.connectToWifiNetwork(WIFI_SSID, WIFI_PASSWORD))
     }
+
+    @Test
+    fun enableWifi() {
+        val subject = HALConfig.deviceProvider.getNetwork(mapOf(
+            RESULTS_FILE_KEY to "$stubResultsFolder/network-toggle-mobile.json",
+            KEY_CONTEXT to context
+        ))
+
+        Assert.assertTrue(subject.changeWifiNetwork(true))
+    }
+
+    @Test
+    fun disableWifi() {
+        val subject = HALConfig.deviceProvider.getNetwork(mapOf(
+            RESULTS_FILE_KEY to "$stubResultsFolder/network-toggle-mobile.json",
+            KEY_CONTEXT to context
+        ))
+
+        Assert.assertTrue(subject.changeWifiNetwork(false))
+    }
 }
 
