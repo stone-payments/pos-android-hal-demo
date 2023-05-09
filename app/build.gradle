@@ -50,6 +50,7 @@ android {
     packagingOptions {
         exclude 'META-INF/LICENSE-notice.md'
         exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/com.android.tools/proguard/coroutines.pro'
     }
 }
 
