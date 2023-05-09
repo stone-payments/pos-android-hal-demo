@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Posandroidhaldemo">
         <activity
-            android:name=".MainActivity"
+            android:name="br.com.stone.posandroid.hal.printing.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
