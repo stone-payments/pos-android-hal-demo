@@ -4,20 +4,20 @@ buildscript {
 
     ext {
         versions = [
-                android_compile_sdk  : 31,
+                android_compile_sdk  : 33,
                 android_min_sdk      : 22,
                 android_target_sdk   : 31,
-                androidx_test_version: "1.4.0",
+                androidx_test_version: "1.5.0",
                 build_tools          : "29.0.2",
-                build_gradle         : "3.5.0",
-                kotlin               : "1.6.0",
-                kotlinx              : "1.6.0",
+                build_gradle         : '7.4.2',
+                kotlin               : '1.8.21',
+                kotlinx              : "1.7.0",
                 dokka                : "0.9.18",
                 junit5               : "5.5.0",
                 junit                : "4.12",
                 test_runner          : "1.0.2",
-                gson                 : "2.8.9",
-                halApi               : "2.5.0"
+                gson                 : "2.9.0",
+                halApi               : "2.10.2"
         ]
         localProp = new Properties()
         fileName = 'local.properties'
