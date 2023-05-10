@@ -13,14 +13,13 @@ import br.com.stone.posandroid.hal.api.printer.exception.PrinterException
 import br.com.stone.posandroid.hal.api.printer.ext.printOrThrows
 import br.com.stone.posandroid.hal.api.provider.AutoProvider
 import br.com.stone.posandroid.hal.demo.printing.R
-import java.net.URL
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    private val printer : Printer by lazy {
+    private val printer: Printer by lazy {
         AutoProvider.provider.getPrinter(mapOf(Properties.KEY_CONTEXT to this.applicationContext))
     }
 
@@ -37,44 +36,49 @@ class MainActivity : AppCompatActivity() {
         buttonPrintInvoice.setOnClickListener {
             printInvoice()
         }
+
+        val buttonPrintLargeInvoice = findViewById<Button>(R.id.button_print_large_invoice)
+        buttonPrintLargeInvoice.setOnClickListener {
+            printLargeInvoice()
+        }
     }
 
     private fun printAndroid() {
-        val bitmapUrl = ""
-
         GlobalScope.launch(Dispatchers.Default) {
-
-            val invoiceBitmapUrl = URL(bitmapUrl)
-
-            val invoiceBitmap = BitmapFactory.decodeStream(
-                invoiceBitmapUrl.openConnection().getInputStream()
-            )
-
-            printBitmap(invoiceBitmap)
+            val androidBitmap = BitmapFactory.decodeResource(resources, R.raw.android)
+            printBitmap(androidBitmap)
         }
     }
 
     private fun printInvoice() {
-
-        val bitmapUrl = "https://tms.stone.com.br/Addons/v1/prints/or_Gv2M665UlrtkYMOY-NFE.png"
-
         GlobalScope.launch(Dispatchers.Default) {
-
-            val invoiceBitmapUrl = URL(bitmapUrl)
-
-            val invoiceBitmap = BitmapFactory.decodeStream(
-                invoiceBitmapUrl.openConnection().getInputStream()
-            )
-
+            val invoiceBitmap = BitmapFactory.decodeResource(resources, R.raw.invoice)
             printBitmap(invoiceBitmap)
         }
     }
 
-    private suspend fun printBitmap(bitmap: Bitmap) {
-        val printerBuffer = PrinterBuffer()
-        printerBuffer.step = printer.getStepsToCut()
+    private fun printLargeInvoice() {
+        GlobalScope.launch(Dispatchers.Default) {
+            val invoiceLargeBitmap = BitmapFactory.decodeResource(resources, R.raw.invoice_large)
+            printBitmap(invoiceLargeBitmap)
+        }
+    }
 
-        printerBuffer.addImage(bitmap)
+    private suspend fun printBitmap(bitmap: Bitmap) {
+
+        val steps = printer.getStepsToCut()
+
+        val printerBuffer = PrinterBuffer()
+        printerBuffer.step = steps
+        Log.d("Printing", "bitmap steps=$steps, bw=${bitmap.width}, bh=${bitmap.height}")
+
+        val resizedBitmap = getResizedBitmap(image = bitmap)
+        Log.d(
+            "Printing",
+            "bitmap(resized)steps=$steps, bw=${resizedBitmap.width}, bh=${resizedBitmap.height}"
+        )
+
+        printerBuffer.addImage(resizedBitmap)
 
         try {
             printer.printOrThrows(printerBuffer = printerBuffer)
@@ -84,4 +88,18 @@ class MainActivity : AppCompatActivity() {
             Log.e("Printing", exception.message.orEmpty())
         }
     }
+
+    private fun getResizedBitmap(image: Bitmap): Bitmap {
+        var width = image.width
+        var height = image.height
+        val bitmapRatio = width.toFloat() / height.toFloat()
+        width = WIDTH_DEFAULT
+        height = (width / bitmapRatio).toInt()
+        return Bitmap.createScaledBitmap(image, width, height, true)
+    }
+
+    companion object{
+        private const val WIDTH_DEFAULT = 384
+    }
+
 }
