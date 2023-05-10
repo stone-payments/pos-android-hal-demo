@@ -72,13 +72,7 @@ class MainActivity : AppCompatActivity() {
         printerBuffer.step = steps
         Log.d("Printing", "bitmap steps=$steps, bw=${bitmap.width}, bh=${bitmap.height}")
 
-        val resizedBitmap = getResizedBitmap(image = bitmap)
-        Log.d(
-            "Printing",
-            "bitmap(resized)steps=$steps, bw=${resizedBitmap.width}, bh=${resizedBitmap.height}"
-        )
-
-        printerBuffer.addImage(resizedBitmap)
+        printerBuffer.addImage(bitmap)
 
         try {
             printer.printOrThrows(printerBuffer = printerBuffer)
@@ -87,19 +81,6 @@ class MainActivity : AppCompatActivity() {
         } catch (exception: Exception) {
             Log.e("Printing", exception.message.orEmpty())
         }
-    }
-
-    private fun getResizedBitmap(image: Bitmap): Bitmap {
-        var width = image.width
-        var height = image.height
-        val bitmapRatio = width.toFloat() / height.toFloat()
-        width = WIDTH_DEFAULT
-        height = (width / bitmapRatio).toInt()
-        return Bitmap.createScaledBitmap(image, width, height, true)
-    }
-
-    companion object{
-        private const val WIDTH_DEFAULT = 384
     }
 
 }
