@@ -17,7 +17,8 @@ buildscript {
                 junit                : "4.12",
                 test_runner          : "1.0.2",
                 gson                 : "2.8.9",
-                halApi               : "2.5.0"
+                halApi               : "2.9.0"
+//                halApi               : "2.8.1-PR_204-5c12b96"
         ]
         localProp = new Properties()
         fileName = 'local.properties'
@@ -34,8 +35,8 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:${versions.build_gradle}"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+        classpath "com.android.tools.build:gradle:7.4.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21"
         classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:${versions.dokka}"
     }
 

@@ -1,21 +1,54 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply from: '../gertec/gertec-signing-config.gradle'
-apply from: '../positivo/positivo-signing-config.gradle'
+//apply from: '../gertec/gertec-signing-config.gradle'
+//apply from: '../positivo/positivo-signing-config.gradle'
 
 android {
 
-    compileSdkVersion versions.android_compile_sdk
-    buildToolsVersion versions.build_tools
+    compileSdkVersion 33
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "br.com.stone.posandroid.hal.demo"
-        minSdkVersion versions.android_min_sdk
-        targetSdkVersion versions.android_target_sdk
+        minSdkVersion 22
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+    signingConfigs {
+        gertec {
+            def keystorePropertiesFile = rootProject.file("gertec/gertec-keystore.properties")
+            def keystoreProperties = new Properties()
+            if (keystorePropertiesFile.exists()) {
+                keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+            }
+
+            storeFile file("../gertec/${keystoreProperties['storeFile']}")
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storePassword keystoreProperties['storePassword']
+        }
+        positivo {
+            def keystorePropertiesFile = rootProject.file("positivo/positivo-keystore.properties")
+            def keystoreProperties = new Properties()
+
+            if (keystorePropertiesFile.exists()) {
+                keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+            }
+
+            storeFile file("../positivo/${keystoreProperties.getProperty('storeFile', System.env.POSITIVO_KEYSTORE_FILE)}")
+            keyAlias keystoreProperties.getProperty('keyAlias', System.env.POSITIVO_KEYSTORE_ALIAS)
+            keyPassword keystoreProperties.getProperty('keyPassword', System.env.POSITIVO_KEYSTORE_KEY_PASSWORD)
+            storePassword keystoreProperties.getProperty('storePassword', System.env.POSITIVO_KEYSTORE_PASSWORD)
+        }
+        debug {
+        }
+        defaultConfig {
+        }
     }
 
     buildTypes {
@@ -38,9 +71,20 @@ android {
             dimension "manufacturer"
             getIsDefault().set(true)
         }
+
+        positivo {
+            dimension "manufacturer"
+            signingConfig signingConfigs.positivo
+            versionNameSuffix "-positivo"
+
+        }
+        gertec {
+            dimension "manufacturer"
+            signingConfig signingConfigs.gertec
+            versionNameSuffix "-gertec"
+        }
     }
 
-    testBuildType "debug"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -50,37 +94,41 @@ android {
     packagingOptions {
         exclude 'META-INF/LICENSE-notice.md'
         exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/com.android.tools/proguard/coroutines.pro'
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx}"
 
     implementation "br.com.stone.posandroid:hal-api:${versions.halApi}"
     implementation "br.com.stone.posandroid:hal-mock:${versions.halApi}"
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-sunmi:1.29.1'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-gertec:1.25.2'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-ingenico:1.9.0'
-    implementation 'br.com.stone.posandroid:posandroid-manufacturer-positivo:7.4.1'
+    implementation 'br.com.stone.posandroid:posandroid-manufacturer-positivo:4.85.0'
     implementation "com.google.code.gson:gson:${versions.gson}"
 
 
-    implementation 'br.com.stone:hal-pin-layout:3.1.1'
+    implementation 'br.com.stone:hal-pin-layout:3.4.4'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.github.tony19:logback-android:2.0.0'
+    implementation 'com.google.android.material:material:1.8.0'
 
 
-    androidTestImplementation "androidx.test:core:${versions.androidx_test_version}"
-    androidTestImplementation "androidx.test:runner:${versions.androidx_test_version}"
-    androidTestImplementation "androidx.test:rules:${versions.androidx_test_version}"
-    androidTestImplementation "io.mockk:mockk-android:1.12.4"
+    androidTestImplementation "androidx.test:runner:1.5.2"
+    androidTestImplementation "androidx.test:rules:1.5.0"
+
+    androidTestImplementation "io.mockk:mockk-android:1.13.3"
+    androidTestImplementation "io.mockk:mockk-agent:1.13.3"
     androidTestImplementation 'junit:junit:4.13.2'
+//
+////    testImplementation "br.com.stone.posandroid:hal-api:${versions.halApi}"
 
-    testImplementation "br.com.stone.posandroid:hal-api:${versions.halApi}"
-    androidTestImplementation project(path: ':app')
 
 }

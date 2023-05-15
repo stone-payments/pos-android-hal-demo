@@ -74,7 +74,7 @@ class InstallerTest {
 
         assertEquals(
             0,
-            subject.install(if (::pathFile.isInitialized) pathFile else "Running on Emulator")
+            subject.install("/sdcard/Android/media/br.com.stone.posandroid.hal.demo/Test-Application.apk")
         )
 
         if (!runningOnEmulator) {
