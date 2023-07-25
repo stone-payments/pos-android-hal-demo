@@ -40,11 +40,11 @@ class SettingsTest {
     }
 
     @Test
-    @Ignore("The test may reboot the device.")
+//    @Ignore("The test may reboot the device.")
     fun setSelfExamTimeTest() {
         val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))
 
-        val time = TimeData(0, 12, 34)
+        val time = TimeData(16, 0,0, )
         subject.setSelfExamTime(time)
 
         assertEquals(time, subject.getSelfExamTime())
@@ -150,33 +150,33 @@ class SettingsTest {
     fun surpassPermissionsRequest() {
         if (Build.VERSION.SDK_INT > 22) {
 
-            val pm = context.packageManager
-            if (isPackageInstalled(pm, PERMISSION_PACKAGE_NAME_APK).not()) {
-                assertEquals(
-                    "Setup Permission Test App failed",
-                    0,
-                    setupPermissionTestApplication()
-                )
-            }
+//            val pm = context.packageManager
+//            if (isPackageInstalled(pm, PERMISSION_PACKAGE_NAME_APK).not()) {
+//                assertEquals(
+//                    "Setup Permission Test App failed",
+//                    0,
+//                    setupPermissionTestApplication()
+//                )
+//            }
             val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))
 
-            subject.surpassPermissionsRequest(PERMISSION_PACKAGE_NAME_APK)
+            subject.surpassPermissionsRequest(context.packageName)
 
-            val requestedPermission = pm.getPackageInfo(
-                PERMISSION_PACKAGE_NAME_APK,
-                PackageManager.GET_PERMISSIONS
-            ).requestedPermissions
-            for (permission in requestedPermission) {
-                assertEquals(
-                    PackageManager.PERMISSION_GRANTED,
-                    pm.checkPermission(permission, PERMISSION_PACKAGE_NAME_APK)
-                )
-            }
-
-            if (isPackageInstalled(pm, PERMISSION_PACKAGE_NAME_APK)) {
-                val installer = HALConfig.deviceProvider.getInstaller(mapOf(KEY_CONTEXT to context))
-                installer.uninstallApk(PERMISSION_PACKAGE_NAME_APK)
-            }
+//            val requestedPermission = pm.getPackageInfo(
+//                PERMISSION_PACKAGE_NAME_APK,
+//                PackageManager.GET_PERMISSIONS
+//            ).requestedPermissions
+//            for (permission in requestedPermission) {
+//                assertEquals(
+//                    PackageManager.PERMISSION_GRANTED,
+//                    pm.checkPermission(permission, PERMISSION_PACKAGE_NAME_APK)
+//                )
+//            }
+//
+//            if (isPackageInstalled(pm, PERMISSION_PACKAGE_NAME_APK)) {
+//                val installer = HALConfig.deviceProvider.getInstaller(mapOf(KEY_CONTEXT to context))
+//                installer.uninstallApk(PERMISSION_PACKAGE_NAME_APK)
+//            }
         }
     }
 

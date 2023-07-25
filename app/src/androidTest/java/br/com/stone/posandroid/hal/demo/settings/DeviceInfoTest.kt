@@ -59,6 +59,7 @@ class DeviceInfoTest {
         val manufacturerModel = deviceInfo.manufacturerModel
         val supportedDevices = listOf(
             "Positivo L3",
+            "Positivo L400",
             "SUNMI P2-B",
             "Ingenico APOS A8",
             "Stone Mock Device"

@@ -112,8 +112,10 @@ class ControlCommandsTest {
             "$stubResultsFolder/validate_abort_command.json"
 
         var subject: Int = Int.MIN_VALUE
-        CoroutineScope(Dispatchers.IO).launch {
-            delay(1000)
+
+
+        launch(Dispatchers.IO) {
+            delay(100)
             pinpad.abort()
         }
 

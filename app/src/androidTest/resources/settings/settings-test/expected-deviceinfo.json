@@ -44,5 +44,16 @@
     "magReaderPosition": "RIGHT",
     "nfcReaderPosition": "TOP",
     "customResourceVersion": "CUSTOM_RESOURCE_UNKNOWN"
+  },
+
+  "Positivo L400": {
+    "isPosAndroid": true,
+    "modelName": "L400",
+    "manufacturerName": "Positivo",
+    "keyboardType": "NONE",
+    "iccReaderPosition": "RIGHT",
+    "magReaderPosition": "TOP",
+    "nfcReaderPosition": "TOP",
+    "customResourceVersion": "CUSTOM_RESOURCE_UNKNOWN"
   }
 }
