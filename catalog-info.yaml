@@ -1,0 +1,24 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pos-android-hal-demo
+  title: POS Android HAL Demo
+  description: HAL Demo
+  namespace: stone
+  annotations:
+    legacy.stone.tech/owner-email: frodrigues@stone.com.br
+    legacy.stone.tech/prod-date: "2022-12-01"
+    
+  labels:
+    legacy.stone.tech/internal-user-auth-base: not-applicable
+    legacy.stone.tech/access-request-type: not-applicable
+    legacy.stone.tech/handle-lgpd: "false"
+    legacy.stone.tech/customer-auth-method: not-applicable
+    stone.tech/endpoint-type: public
+  
+spec:
+  type: website
+  lifecycle: experimental
+  owner: stone-payments/pos-android-writer
+  system: system:stone/pos-android
+  
