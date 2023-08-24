@@ -232,6 +232,12 @@ class SettingsTest {
         assertEquals(subject.toggleHomeKeyFunction(true), 0)
     }
 
+    @Test
+    fun setScreenOffTimeout(){
+        val subject = HALConfig.deviceProvider.getSettings(mapOf(KEY_CONTEXT to context))
+        assertEquals(subject.setScreenOffTimeout(10_000), true)
+    }
+
     companion object {
         const val TAG = "SettingsTest"
         private const val PERMISSION_PACKAGE_NAME_APK = "com.example.testapplicationpermission"
