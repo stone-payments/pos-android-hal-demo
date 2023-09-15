@@ -13,8 +13,8 @@ import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.printer.DarknessLevel
 import br.com.stone.posandroid.hal.api.printer.Printer
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer
-import br.com.stone.posandroid.hal.api.printer.PrinterErrorCode
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer.Companion.NO_PRINTER_STEP
+import br.com.stone.posandroid.hal.api.printer.PrinterErrorCode
 import br.com.stone.posandroid.hal.api.printer.customize.Alignment
 import br.com.stone.posandroid.hal.api.printer.customize.CustomizedTextSize
 import br.com.stone.posandroid.hal.api.printer.customize.PrinterCustomizedText
@@ -64,6 +64,29 @@ class PrinterTest {
         } catch (e: PrinterException) {
             fail("Codigo de erro: ${e.code}")
         }
+    }
+
+    @Test
+    @Precondition("Printer must have paper")
+    fun getTotalMm(): Unit = runBlocking {
+        subject = HALConfig.deviceProvider.getPrinter(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-ok.json",
+                KEY_CONTEXT to context
+            )
+        )
+
+        val param = PrinterBuffer()
+        param.addLine(Printer::class.simpleName.toString())
+        param.step = subject.getStepsToCut()
+
+        try {
+            subject.printOrThrows(param)
+        } catch (e: PrinterException) {
+            fail("Codigo de erro: ${e.code}")
+        }
+
+        assertTrue(subject.getTotalMillimetersPrinted() > 0)
     }
 
     @Test

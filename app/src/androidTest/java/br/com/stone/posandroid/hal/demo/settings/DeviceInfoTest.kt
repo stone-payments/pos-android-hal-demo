@@ -95,7 +95,7 @@ class DeviceInfoTest {
     @Test
     fun cpuUsage() {
         val cpuUsage = deviceInfo.cpuInfo.getCpuUsage()
-        assertTrue("cpuUsage is less than zero", cpuUsage > 0.0)
+        assertTrue("cpuUsage is not more than zero. cpuUsage = $cpuUsage", cpuUsage > 0.0)
         assertNotEquals("getCpuUsage returned UNKNOWN_VALUE", CpuInfo.UNKNOWN_VALUE, cpuUsage)
     }
 
