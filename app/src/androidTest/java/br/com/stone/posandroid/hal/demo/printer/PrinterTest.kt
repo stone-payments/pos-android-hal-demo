@@ -3,6 +3,7 @@ package br.com.stone.posandroid.hal.demo.printer
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +14,8 @@ import br.com.stone.posandroid.hal.api.Properties.RESULTS_FILE_KEY
 import br.com.stone.posandroid.hal.api.printer.DarknessLevel
 import br.com.stone.posandroid.hal.api.printer.Printer
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer
-import br.com.stone.posandroid.hal.api.printer.PrinterErrorCode
 import br.com.stone.posandroid.hal.api.printer.PrinterBuffer.Companion.NO_PRINTER_STEP
+import br.com.stone.posandroid.hal.api.printer.PrinterErrorCode
 import br.com.stone.posandroid.hal.api.printer.customize.Alignment
 import br.com.stone.posandroid.hal.api.printer.customize.CustomizedTextSize
 import br.com.stone.posandroid.hal.api.printer.customize.PrinterCustomizedText
@@ -316,7 +317,7 @@ class PrinterTest {
 
     @Test
     @Precondition("Printer must have paper")
-    fun printWithStepsToCut () = runBlocking {
+    fun printWithStepsToCut() = runBlocking {
         subject = HALConfig.deviceProvider.getPrinter(
             mapOf(
                 RESULTS_FILE_KEY to "$stubResultsFolder/print-ok.json",
@@ -326,6 +327,18 @@ class PrinterTest {
         val printerBuffer = PrinterBuffer()
         printerBuffer.addLine(Printer::class.simpleName.toString())
         printBitmap(printerBuffer)
+    }
+
+    @Test
+    fun getTotalMillimetersPrinted() {
+        subject = HALConfig.deviceProvider.getPrinter(
+            mapOf(
+                RESULTS_FILE_KEY to "$stubResultsFolder/print-ok.json",
+                KEY_CONTEXT to context
+            )
+        )
+
+        Log.d("Print calculation test", subject.getTotalMillimetersPrinted().toString())
     }
 
     private fun printBitmap(printerBuffer: PrinterBuffer) = runBlocking {
@@ -353,7 +366,8 @@ class PrinterTest {
 
             layout(POSITION_DEFAULT, POSITION_DEFAULT, this.measuredWidth, this.measuredHeight)
         }
-        val bitmap = Bitmap.createBitmap(view.measuredWidth, view.measuredHeight, Bitmap.Config.RGB_565)
+        val bitmap =
+            Bitmap.createBitmap(view.measuredWidth, view.measuredHeight, Bitmap.Config.RGB_565)
         val canvas = Canvas(bitmap)
         view.draw(canvas)
         return bitmap
