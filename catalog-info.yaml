@@ -6,7 +6,7 @@ metadata:
   description: HAL Demo
   namespace: stone
   annotations:
-    legacy.stone.tech/owner-email: frodrigues@stone.com.br
+    legacy.stone.tech/owner-email: open-source@stone.com.br
     legacy.stone.tech/prod-date: "2022-12-01"
     
   labels:
