@@ -109,6 +109,7 @@ dependencies {
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-gertec:1.25.2'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-ingenico:2.1.1'
     implementation 'br.com.stone.posandroid:posandroid-manufacturer-positivo:4.85.0'
+    implementation 'br.com.stone.posandroid:posandroid-manufacturer-tectoy:2.0.3'
     implementation "com.google.code.gson:gson:${versions.gson}"
 
 
