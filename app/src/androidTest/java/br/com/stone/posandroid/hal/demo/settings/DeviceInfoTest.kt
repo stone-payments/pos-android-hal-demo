@@ -61,6 +61,7 @@ class DeviceInfoTest {
             "Positivo L3",
             "Positivo L400",
             "SUNMI P2-B",
+            "Gertec GPOS700X",
             "Ingenico APOS A8",
             "Stone Mock Device"
         )

@@ -55,5 +55,17 @@
     "magReaderPosition": "TOP",
     "nfcReaderPosition": "TOP",
     "customResourceVersion": "CUSTOM_RESOURCE_UNKNOWN"
+  },
+
+  "Gertec GPOS700X" : {
+    "isPosAndroid": true,
+    "modelName": "GPOS700X",
+    "manufacturerName": "Gertec",
+    "keyboardType": "NONE",
+    "iccReaderPosition": "RIGHT",
+    "magReaderPosition": "TOP",
+    "nfcReaderPosition": "TOP",
+    "customResourceVersion": "CUSTOM_RESOURCE_UNKNOWN"
   }
+
 }
