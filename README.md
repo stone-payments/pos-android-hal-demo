@@ -1,5 +1,3 @@
-![StoneSDK](https://cloud.githubusercontent.com/assets/2567823/11539067/6300c838-990c-11e5-9831-4f8ce691859e.png)
-
 # Stone HAL Demo
 Este repositório visa auxiliar fabricantes de POS Android que desejam implementar a Hardware Abstraction Layer (HAL) da Stone, provendo uma suite de testes de validação da API.
 A principio, à título de demonstração, a suite de testes utiliza o HAL Mock, uma biblioteca que tem o intuito de emular um fabricante utilizando arquivos json para mockar o comportamento da implementação.
